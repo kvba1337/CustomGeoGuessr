@@ -1,0 +1,19 @@
+:root {
+    --border-radius: 20px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+    --margin-bottom: 20px;
+    --height: 400px;
+}
+
+.result-map {
+    width: 50%;
+    height: var(--height);
+    margin-bottom: var(--margin-bottom);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+
+    .gm-style {
+        border-radius: var(--border-radius);
+    }
+}

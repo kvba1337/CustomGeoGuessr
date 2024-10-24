@@ -1,0 +1,69 @@
+:root {
+    --button-bg-color: #4b4b4b;
+    --button-color: white;
+    --button-padding: 10px 12px;
+    --button-font-size: 17px;
+    --button-opacity: 0.8;
+    --button-hover-opacity: 1;
+    --transition-ease: ease;
+    --z-index-button: 2;
+    --z-index-overlay: 3;
+    --overlay-bg: transparent;
+    --control-bottom: 240px;
+    --control-left: 0px;
+}
+
+.game-page {
+    position: relative;
+
+    .gm-style .gm-style-cc {
+        display: none;
+    }
+
+    .gm-style .gm-bundled-control {
+        bottom: var(--control-bottom) !important;
+        left: var(--control-left) !important;
+        right: unset !important;
+    }
+
+    .return-button {
+        position: fixed;
+        bottom: 35px;
+        left: 14px;
+        background-color: var(--button-bg-color);
+        color: var(--button-color);
+        padding: var(--button-padding);
+        border: none;
+        cursor: pointer;
+        z-index: var(--z-index-button);
+        transition: opacity var(--transition-ease);
+    }
+
+    .return-button i {
+        font-size: var(--button-font-size);
+        opacity: var(--button-opacity);
+        transition: opacity var(--transition-ease);
+    }
+
+    .return-button:hover {
+        opacity: var(--button-hover-opacity);
+    }
+
+    .return-button:hover i {
+        opacity: var(--button-hover-opacity);
+    }
+
+    .transparent-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--overlay-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: var(--z-index-overlay);
+        pointer-events: all;
+    }
+}

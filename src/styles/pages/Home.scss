@@ -1,0 +1,101 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    background-image: url('../../assets/images/backgrounds/background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+    &__content {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        margin-top: 0;
+        text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+    }
+
+    &__button {
+        background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
+        color: white;
+        padding: 1rem 2.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border: 1px solid black;
+        border-radius: 30px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+
+        &:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(5, 25, 141, 0.02);
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+
+        &:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: -1;
+        }
+
+        &:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+}

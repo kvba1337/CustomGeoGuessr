@@ -1,0 +1,53 @@
+:root {
+    --timer-bg-color: rgba(20, 20, 20, 0.8);
+    --timer-color: #fff;
+    --timer-font-weight: bold;
+    --timer-border-radius: 100px;
+    --timer-transition-duration: 1s;
+}
+
+.timer {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: var(--timer-font-weight);
+    background-color: var(--timer-bg-color);
+    border-radius: var(--timer-border-radius);
+    z-index: 2;
+    transition: border-color var(--timer-transition-duration);
+    width: 120px;
+
+    svg {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.warning {
+    animation: warning-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes warning-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 2px 4px rgba(255, 0, 0, 0.2);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 4px 8px rgba(255, 0, 0, 0.6);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 2px 4px rgba(255, 0, 0, 0.2);
+        opacity: 1;
+    }
+}
+
+.timer-path {
+    transition: stroke-dashoffset var(--timer-transition-duration) linear;
+}
