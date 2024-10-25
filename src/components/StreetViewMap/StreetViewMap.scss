@@ -1,0 +1,14 @@
+:root {
+    --control-bottom: 240px;
+    --control-left: 0px;
+}
+
+.gm-style .gm-style-cc {
+    display: none;
+}
+
+.gm-style .gm-bundled-control {
+    bottom: var(--control-bottom) !important;
+    left: var(--control-left) !important;
+    right: unset !important;
+}

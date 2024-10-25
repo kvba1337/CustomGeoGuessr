@@ -1,0 +1,38 @@
+.map-btn {
+    --btn-bg-color: white;
+    --btn-hover-bg-color: #f0f0f0;
+    --btn-border-radius: 50%;
+    --btn-padding: 5px 10px;
+    --btn-font-size: 18px;
+    --btn-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --btn-opacity: 0.8;
+    --btn-hover-opacity: 1;
+    --btn-disabled-opacity: 0.3;
+    --transition-duration: 0.2s;
+
+    background-color: var(--btn-bg-color);
+    border: none;
+    border-radius: var(--btn-border-radius);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    cursor: pointer;
+    box-shadow: var(--btn-box-shadow);
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease, opacity var(--transition-duration) ease;
+    opacity: var(--btn-opacity);
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--btn-hover-bg-color);
+        opacity: var(--btn-hover-opacity);
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: var(--btn-disabled-opacity);
+    }
+
+    i {
+        color: black;
+        transform: rotate(-40deg);
+    }
+}

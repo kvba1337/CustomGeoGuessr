@@ -1,0 +1,61 @@
+:root {
+    --bg-gradient: linear-gradient(180deg, #1a1a2e 0%, #10101c 100%);
+    --text-color: #fff;
+    --text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+    --font-family: 'Poppins', sans-serif;
+    --h1-font-size: 2.5rem;
+    --points-font-size: 2rem;
+    --points-color: #fecd19;
+    --distance-font-size: 1rem;
+    --span-bg: rgba(0, 0, 0, 0.4);
+    --span-padding: 5px 7px;
+    --span-border-radius: 5px;
+    --progress-bar-bg: #333;
+    --progress-bar-radius: 15px;
+    --progress-value-bg: radial-gradient(circle, #34495e 40%, #273646 80%, #28333d);
+    --btn-bg: radial-gradient(circle, #347a40 10%, #275f31 80%, #356e3e);
+    --btn-bg2-hover: radial-gradient(circle, #2a6b35 10%, #23582d 80%, #2e5f35);
+    --btn-bg-alt: radial-gradient(circle, #34495e 40%, #273646 80%, #28333d);
+    --btn-bg-hover: radial-gradient(circle, #2a4058 40%, #203142 80%, #242e38);
+    --btn-color: white;
+    --btn-padding: 15px 30px;
+    --btn-font-size: 1.2rem;
+    --btn-border-radius: 30px;
+    --btn-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    --btn-hover-transform: scale(1.05);
+    --btn-active-transform: translateY(1px);
+    --transition-duration: 0.2s;
+}
+
+.play-again-btn,
+.home-btn {
+    background: rgb(108, 185, 40);
+    background-image: radial-gradient(150% 160% at 50% 15%, hsla(0, 0%, 100%, 0.6) 0, transparent 30%);
+    color: var(--btn-color);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    transition: transform var(--transition-duration) ease;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(.975);
+    }
+}
+
+.home-btn {
+    background: #34495e;
+    background-image: radial-gradient(150% 160% at 50% 15%, hsla(0, 0%, 100%, 0.4) 0, transparent 30%);
+}

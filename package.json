@@ -1,5 +1,5 @@
 {
-  "name": "geo-guessr-app",
+  "name": "custom-geo-guessr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

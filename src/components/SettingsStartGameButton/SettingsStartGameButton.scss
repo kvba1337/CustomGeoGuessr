@@ -1,0 +1,25 @@
+.settings-btn {
+    padding: 1rem 2rem;
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    color: white;
+    background: rgb(108, 185, 40);
+    background-image: radial-gradient(150% 160% at 50% 15%, hsla(0, 0%, 100%, 0.6) 0, transparent 30%);
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(.975);
+    }
+}
