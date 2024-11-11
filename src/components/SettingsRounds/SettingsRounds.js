@@ -1,26 +1,28 @@
-import React, { memo } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setRounds } from "../../redux/actions/gameSettingsActions";
 import "./SettingsRounds.scss";
 
-const options = [1, 3, 5, 10];
+const SettingsRounds = () => {
+  const dispatch = useDispatch();
+  const { rounds } = useSelector((state) => state.gameSettings);
 
-const SettingsRounds = ({ totalRounds, setTotalRounds }) => {
+  const handleRoundsChange = (rounds) => {
+    dispatch(setRounds(rounds));
+  };
+
   return (
     <div className="rounds">
       <h3>Number Of Rounds:</h3>
       <div className="rounds-options">
-        {options.map((option) => (
+        {[1, 3, 5, 10].map((round) => (
           <label
-            key={option}
-            className={totalRounds === option ? "active" : ""}
+            key={round}
+            className={rounds === round ? "active" : ""}
+            onClick={() => handleRoundsChange(round)}
           >
-            <input
-              type="radio"
-              name="rounds"
-              value={option}
-              checked={totalRounds === option}
-              onChange={() => setTotalRounds(option)}
-            />
-            {option}
+            {round}
+            <input type="radio" name="rounds" value={round} />
           </label>
         ))}
       </div>
@@ -28,4 +30,4 @@ const SettingsRounds = ({ totalRounds, setTotalRounds }) => {
   );
 };
 
-export default memo(SettingsRounds);
+export default SettingsRounds;

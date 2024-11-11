@@ -1,44 +1,90 @@
-import React, { useCallback, memo } from "react";
+import React, { useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { GoogleMap } from "@react-google-maps/api";
-import "./RoundResultMap.scss";
-import avatar1 from "../../assets/images/avatars/avatar1.png";
-import correctLocation from "../../assets/images/icons/correct-location.png";
 import CustomMarker from "../CustomMarker/CustomMarker";
 import CustomPolyline from "../CustomPolyline/CustomPolyline";
+import correctLocation from "../../assets/images/icons/correct-location.png";
+import "./RoundResultMap.scss";
 
-const RoundResultMap = ({ currentLocation, userGuessLocation }) => {
-  const onLoadMap = useCallback(
-    (map) => {
+const RoundResultMap = () => {
+  const { gameLocations, currentRound, roundResults, selectedMap } =
+    useSelector((state) => state.game);
+  const { username, avatar } = useSelector((state) => state.user);
+  const { opponent } = useSelector((state) => state.room);
+
+  const { userResult, opponentResult } = roundResults;
+  const currentLocation = gameLocations[currentRound - 1];
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (mapRef.current && currentLocation) {
       const bounds = new window.google.maps.LatLngBounds();
-      if (userGuessLocation && currentLocation) {
-        bounds.extend(currentLocation);
-        bounds.extend(userGuessLocation);
-        map.fitBounds(bounds);
-      } else if (currentLocation) {
-        map.setCenter(currentLocation);
-        map.setZoom(3);
+      bounds.extend(currentLocation);
+      if (userResult && userResult.guessedLocation) {
+        bounds.extend(userResult.guessedLocation);
       }
-    },
-    [userGuessLocation, currentLocation]
-  );
+      if (opponentResult && opponentResult.guessedLocation) {
+        bounds.extend(opponentResult.guessedLocation);
+      }
+      if (!userResult?.guessedLocation && !opponentResult?.guessedLocation) {
+        mapRef.current.setCenter(currentLocation);
+        mapRef.current.setZoom(selectedMap.zoomLevel);
+      } else {
+        mapRef.current.fitBounds(bounds);
+      }
+    }
+  }, [currentLocation, userResult, opponentResult, selectedMap]);
+
+  const handleMapLoad = (map) => {
+    mapRef.current = map;
+    const bounds = new window.google.maps.LatLngBounds();
+    bounds.extend(currentLocation);
+    if (userResult && userResult.guessedLocation) {
+      bounds.extend(userResult.guessedLocation);
+    }
+    if (opponentResult && opponentResult.guessedLocation) {
+      bounds.extend(opponentResult.guessedLocation);
+    }
+    if (!userResult?.guessedLocation && !opponentResult?.guessedLocation) {
+      map.setCenter(currentLocation);
+      map.setZoom(selectedMap.zoomLevel);
+    } else {
+      map.fitBounds(bounds);
+    }
+  };
+
+  const options = {
+    disableDefaultUI: true,
+    minZoom: 2,
+  };
 
   return (
-    <div className="result-map">
+    <div className="round-result-map">
       <GoogleMap
-        mapContainerStyle={{ width: "100%", height: "400px" }}
-        onLoad={onLoadMap}
-        options={{
-          disableDefaultUI: true,
-          minZoom: 2,
-        }}
+        id="result-map"
+        mapContainerStyle={{ width: "100%", height: "100%" }}
+        options={options}
+        onLoad={handleMapLoad}
       >
         <CustomMarker location={currentLocation} icon={correctLocation} />
-        {userGuessLocation && (
+        {userResult && userResult.guessedLocation && (
           <>
-            <CustomMarker location={userGuessLocation} icon={avatar1} />
+            <CustomMarker location={userResult.guessedLocation} icon={avatar} />
             <CustomPolyline
-              location={currentLocation}
-              location2={userGuessLocation}
+              location={userResult.guessedLocation}
+              location2={currentLocation}
+            />
+          </>
+        )}
+        {opponentResult && opponentResult.guessedLocation && (
+          <>
+            <CustomMarker
+              location={opponentResult.guessedLocation}
+              icon={opponent.avatar}
+            />
+            <CustomPolyline
+              location={opponentResult.guessedLocation}
+              location2={currentLocation}
             />
           </>
         )}
@@ -47,4 +93,4 @@ const RoundResultMap = ({ currentLocation, userGuessLocation }) => {
   );
 };
 
-export default memo(RoundResultMap);
+export default RoundResultMap;

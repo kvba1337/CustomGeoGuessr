@@ -1,10 +1,9 @@
 .game-mode {
-    --border-color: rgba(255, 255, 255, 0.4);
-    --hover-bg-color: rgba(255, 255, 255, 0.1);
-    --active-bg-color: rgba(255, 255, 255, 0.2);
-    --transition-duration: 0.3s;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 1.5rem;
+    width: 100%;
 
     h3 {
         margin-bottom: 0.5rem;
@@ -13,28 +12,30 @@
     }
 
     label {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1rem;
         margin: 0.5rem 0;
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 0.5rem 2rem;
         border-radius: 5px;
-        border: 1px solid var(--border-color);
-        transition: background var(--transition-duration), transform var(--transition-duration);
+        width: 40%;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: background 0.3s, transform 0.3s;
 
         &:hover {
-            background: var(--hover-bg-color);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         &.active {
-            background: var(--active-bg-color);
+            background: rgba(255, 255, 255, 0.2);
             font-weight: bold;
             transform: scale(1.02);
         }
-    }
 
-    .visually-hidden {
-        position: absolute;
-        left: -9999px;
+        input[type="radio"] {
+            display: none;
+        }
     }
 }

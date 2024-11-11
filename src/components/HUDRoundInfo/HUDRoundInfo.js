@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./HUDRoundInfo.scss";
 
-const HUDRoundInfo = ({ currentRound, totalRounds }) => {
+const HUDRoundInfo = () => {
+  const { currentRound, totalRounds } = useSelector((state) => state.game);
+
   return (
     <div className="round-hud">
       <div className="round-hud__title">ROUND</div>

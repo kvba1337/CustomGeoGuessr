@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import { Polyline } from "@react-google-maps/api";
 
-const CustomPolyline = memo(({ location, location2 }) => (
+const CustomPolyline = ({ location, location2 }) => (
   <Polyline
     path={[location, location2]}
     options={{
@@ -23,6 +23,6 @@ const CustomPolyline = memo(({ location, location2 }) => (
       ],
     }}
   />
-));
+);
 
 export default CustomPolyline;

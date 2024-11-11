@@ -1,21 +1,10 @@
 import React from "react";
 import "./RoundResultButtons.scss";
 
-const RoundResultButtons = ({
-  handleViewSummary,
-  handleNextRound,
-  isLastRound,
-}) => (
+const RoundResultButtons = () => (
   <>
-    {isLastRound ? (
-      <button className="view-summary-btn" onClick={handleViewSummary}>
-        View Summary
-      </button>
-    ) : (
-      <button className="next-round-btn" onClick={handleNextRound}>
-        Next Round
-      </button>
-    )}
+    <button className="view-summary-btn">View Summary</button>
+    <button className="next-round-btn">Next Round</button>
   </>
 );
 

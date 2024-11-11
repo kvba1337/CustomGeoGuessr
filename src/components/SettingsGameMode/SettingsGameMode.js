@@ -1,29 +1,31 @@
-import React, { memo } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setGameMode } from "../../redux/actions/gameSettingsActions";
 import "./SettingsGameMode.scss";
 
-const modes = ["move", "noMove", "NMPZ"];
+const SettingsGameMode = () => {
+  const dispatch = useDispatch();
+  const { gameMode } = useSelector((state) => state.gameSettings);
 
-const SettingsGameMode = ({ gameMode, setGameMode }) => {
+  const handleGameModeChange = (mode) => {
+    dispatch(setGameMode(mode));
+  };
+
   return (
     <div className="game-mode">
       <h3>Game Mode:</h3>
-      {modes.map((mode) => (
+      {["Move", "NoMove", "NMPZ"].map((mode) => (
         <label
           key={mode}
-          className={`game-mode-option ${gameMode === mode ? "active" : ""}`}
+          className={gameMode === mode ? "active" : ""}
+          onClick={() => handleGameModeChange(mode)}
         >
-          <input
-            type="radio"
-            value={mode}
-            checked={gameMode === mode}
-            onChange={(e) => setGameMode(e.target.value)}
-            className="visually-hidden"
-          />
-          {mode.charAt(0).toUpperCase() + mode.slice(1)}
+          {mode}
+          <input type="radio" name="gameMode" value={mode} />
         </label>
       ))}
     </div>
   );
 };
 
-export default memo(SettingsGameMode);
+export default SettingsGameMode;

@@ -1,0 +1,15 @@
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #ff6f61;
+    }
+}

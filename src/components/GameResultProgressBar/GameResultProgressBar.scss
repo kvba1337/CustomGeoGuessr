@@ -27,41 +27,45 @@
     --transition-duration: 0.2s;
 }
 
-.progress-bar-container {
-    width: 25%;
+.progress-bar__details {
+    width: 100%;
     margin: 10px 0;
     position: relative;
+    padding: 10px;
+    border: 2px solid #66cdaa;
+    border-radius: var(--progress-bar-radius);
+    background-color: rgba(138, 43, 226, 0.1);
 
-    progress {
-        width: 100%;
-        height: 20px;
-        appearance: none;
-        -webkit-appearance: none;
-        border-radius: var(--progress-bar-radius);
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-        &::-webkit-progress-bar {
-            background-color: var(--progress-bar-bg);
-            border-radius: var(--progress-bar-radius);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        &::-webkit-progress-value {
-            background: rgb(108, 185, 40);
-            background-image: radial-gradient(150% 160% at 50% 15%, hsla(0, 0%, 100%, 0.6) 0, transparent 30%);
-            border-radius: var(--progress-bar-radius);
-            box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
+    &.progress-bar--red progress::-webkit-progress-value {
+        background: linear-gradient(90deg, #ff0000, #ff7f00); // Red to Orange
     }
 
-    .progress-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 0.9rem;
-        color: #fff;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    &.progress-bar--orange progress::-webkit-progress-value {
+        background: linear-gradient(90deg, #ff7f00, #ffff00); // Orange to Yellow
+    }
+
+    &.progress-bar--green progress::-webkit-progress-value {
+        background: linear-gradient(90deg, #00ff00, #00ff7f); // Green to Light Green
+    }
+}
+
+progress {
+    width: 100%;
+    height: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: var(--progress-bar-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &::-webkit-progress-bar {
+        background-color: var(--progress-bar-bg);
+        border-radius: var(--progress-bar-radius);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgb(84, 40, 143);
+    }
+
+    &::-webkit-progress-value {
+        border-radius: var(--progress-bar-radius);
     }
 }

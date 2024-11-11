@@ -44,7 +44,7 @@
         padding: 1rem 2.5rem;
         font-size: 1.5rem;
         font-weight: bold;
-        border: 1px solid black;
+        border: 2px solid black;
         border-radius: 30px;
         cursor: pointer;
         position: relative;
@@ -96,6 +96,12 @@
 
         &:hover::after {
             transform: translate(-50%, -50%) scale(1);
+        }
+
+        &.disabled {
+            background: #5a5a5a;
+            cursor: not-allowed;
+            pointer-events: none;
         }
     }
 }

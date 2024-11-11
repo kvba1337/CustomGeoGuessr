@@ -1,29 +1,14 @@
-import React, { memo } from "react";
+import React from "react";
 import MiniMapControlButton from "../MiniMapControlButton/MiniMapControlButton";
 import "./MiniMapControlButtons.scss";
 
-const MiniMapControlButtons = ({
-  enlargeMap,
-  shrinkMap,
-  isEnlargeDisabled,
-  isShrinkDisabled,
-}) => {
+const MiniMapControlButtons = ({ onZoomIn, onZoomOut, isMaxSize, isMinSize }) => {
   return (
     <div className="map-buttons">
-      <MiniMapControlButton
-        onClick={enlargeMap}
-        isDisabled={isEnlargeDisabled}
-        iconClass="fa-solid fa-arrow-up"
-        btnClass="enlarge-btn"
-      />
-      <MiniMapControlButton
-        onClick={shrinkMap}
-        isDisabled={isShrinkDisabled}
-        iconClass="fa-solid fa-arrow-down"
-        btnClass="shrink-btn"
-      />
+      <MiniMapControlButton onClick={onZoomIn} icon="fa-arrow-up" disabled={isMaxSize} />
+      <MiniMapControlButton onClick={onZoomOut} icon="fa-arrow-down" disabled={isMinSize} />
     </div>
   );
 };
 
-export default memo(MiniMapControlButtons);
+export default MiniMapControlButtons;

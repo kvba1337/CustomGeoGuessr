@@ -1,9 +1,35 @@
-import React, { memo, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ref, update } from "firebase/database";
+import { database } from "../../firebaseConfig";
 import "./HUDTimer.scss";
 
 const dashArray = 467.347;
 
-const Timer = ({ remainingTime, totalTime }) => {
+const HUDTimer = () => {
+  const dispatch = useDispatch();
+  const { timeLimit } = useSelector((state) => state.game.settings);
+  const { roomId } = useSelector((state) => state.room);
+  const { userId } = useSelector((state) => state.user);
+  const [remainingTime, setRemainingTime] = useState(timeLimit);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemainingTime((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          update(ref(database, `rooms/${roomId}/users/${userId}`), {
+            hasGuessed: true,
+          });
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLimit, dispatch, roomId, userId]);
+
   const formatTime = useMemo(() => {
     const minutes = String(Math.floor(remainingTime / 60)).padStart(2, "0");
     const seconds = String(remainingTime % 60).padStart(2, "0");
@@ -11,8 +37,8 @@ const Timer = ({ remainingTime, totalTime }) => {
   }, [remainingTime]);
 
   const dashOffset = useMemo(
-    () => (dashArray * (totalTime - remainingTime)) / totalTime,
-    [remainingTime, totalTime]
+    () => (dashArray * (timeLimit - remainingTime)) / timeLimit,
+    [remainingTime, timeLimit]
   );
 
   const timerClass = remainingTime <= 10 ? "timer warning" : "timer";
@@ -52,4 +78,4 @@ const Timer = ({ remainingTime, totalTime }) => {
   );
 };
 
-export default memo(Timer);
+export default HUDTimer;
