@@ -1,0 +1,36 @@
+$primary-color: #ffffff;
+$secondary-color: #fecd19;
+$tertiary-color: #ff6347;
+$quaternary-color: #66cdaa;
+$background-color: rgba(0, 0, 0, 0.7);
+$box-shadow-color: rgba(0, 0, 0, 0.3);
+$font-family: "Arial", sans-serif;
+$border-radius: 20px;
+$max-width: 1000px;
+
+.progress-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  margin: 0 auto;
+  gap: 10rem;
+
+  .progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 3px solid $primary-color;
+    }
+  }
+}

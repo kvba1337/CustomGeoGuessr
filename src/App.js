@@ -1,54 +1,34 @@
-import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebaseConfig";
-import { logoutUser } from "./redux/actions/userActions";
-import Home from "./pages/Home/Home";
-import MapSelection from "./pages/MapSelection/MapSelection";
-import GameSettings from "./pages/GameSettings/GameSettings";
-import Game from "./pages/Game/Game";
-import Multiplayer from "./pages/Multiplayer/Multiplayer";
-import NotFound from "./pages/NotFound/NotFound";
+import React, { useCallback } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useAuth from "@hooks/useAuth";
 
-const App = () => {
-  const dispatch = useDispatch();
+import HomePage from "@pages/HomePage/HomePage";
+import MapSelectionPage from "@pages/MapSelectionPage/MapSelectionPage";
+import GameSettingsPage from "@pages/GameSettingsPage/GameSettingsPage";
+import GamePage from "@pages/GamePage/GamePage";
+import MultiplayerPage from "@pages/MultiplayerPage/MultiplayerPage";
+import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
+
+const App = React.memo(() => {
+  useAuth();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        user.getIdToken().then((idToken) => {
-          dispatch({
-            type: "SET_AUTHENTICATED",
-            payload: true,
-          });
-        });
-      } else {
-        dispatch(logoutUser());
-      }
-    });
-
-    return () => unsubscribe();
-  }, [dispatch]);
-
-  const ProtectedRoute = ({ children }) => {
-    return isAuthenticated ? children : <Navigate to="/" />;
-  };
+  const ProtectedRoute = useCallback(
+    ({ children }) => {
+      return isAuthenticated ? children : <Navigate to="/" />;
+    },
+    [isAuthenticated]
+  );
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
       <Route
         path="/select-map"
         element={
           <ProtectedRoute>
-            <MapSelection />
+            <MapSelectionPage />
           </ProtectedRoute>
         }
       />
@@ -56,7 +36,7 @@ const App = () => {
         path="/game-settings"
         element={
           <ProtectedRoute>
-            <GameSettings />
+            <GameSettingsPage />
           </ProtectedRoute>
         }
       />
@@ -64,7 +44,7 @@ const App = () => {
         path="/game"
         element={
           <ProtectedRoute>
-            <Game />
+            <GamePage />
           </ProtectedRoute>
         }
       />
@@ -72,13 +52,13 @@ const App = () => {
         path="/multiplayer"
         element={
           <ProtectedRoute>
-            <Multiplayer />
+            <MultiplayerPage />
           </ProtectedRoute>
         }
       />
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
-};
+});
 
 export default App;

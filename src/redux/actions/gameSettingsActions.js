@@ -1,11 +1,12 @@
+import { ref, update } from "firebase/database";
+
+import { database } from "@services/firebaseConfig";
 import {
   SET_ROUNDS,
   SET_TIME_LIMIT,
   SET_GAME_MODE,
   START_GAME,
 } from "../constants/gameSettingsConstants";
-import { database } from "../../firebaseConfig";
-import { ref, update } from "firebase/database";
 
 export const setRounds = (rounds) => ({
   type: SET_ROUNDS,

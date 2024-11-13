@@ -1,0 +1,22 @@
+.next-round-info__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  letter-spacing: 0.8px;
+  font-family: "Knewave", system-ui;
+  text-transform: uppercase;
+
+  h1 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    color: #fecd19;
+    line-height: 1.2;
+    margin: 0;
+  }
+}

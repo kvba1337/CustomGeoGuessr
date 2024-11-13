@@ -1,5 +1,6 @@
-import { database } from "../../firebaseConfig";
 import { ref, set, get, child, remove, onDisconnect } from "firebase/database";
+
+import { database } from "@services/firebaseConfig";
 import {
   CREATE_ROOM_REQUEST,
   CREATE_ROOM_SUCCESS,
@@ -25,23 +26,27 @@ export const setOpponentData = (opponentData) => ({
 });
 
 export const fetchOpponentData = (roomId, userId) => async (dispatch) => {
-  const usersRef = ref(database, `rooms/${roomId}/users`);
-  const snapshot = await get(usersRef);
+  try {
+    const usersRef = ref(database, `rooms/${roomId}/users`);
+    const snapshot = await get(usersRef);
 
-  if (snapshot.exists()) {
-    const users = snapshot.val();
-    const opponentId = Object.keys(users).find((id) => id !== userId);
+    if (snapshot.exists()) {
+      const users = snapshot.val();
+      const opponentId = Object.keys(users).find((id) => id !== userId);
 
-    if (opponentId) {
-      const opponentRef = ref(database, `users/${opponentId}`);
-      const opponentSnapshot = await get(opponentRef);
+      if (opponentId) {
+        const opponentRef = ref(database, `users/${opponentId}`);
+        const opponentSnapshot = await get(opponentRef);
 
-      if (opponentSnapshot.exists()) {
-        const opponentData = opponentSnapshot.val();
-        const { avatar, username } = opponentData;
-        dispatch(setOpponentData({ avatar, username }));
+        if (opponentSnapshot.exists()) {
+          const opponentData = opponentSnapshot.val();
+          const { avatar, username } = opponentData;
+          dispatch(setOpponentData({ avatar, username }));
+        }
       }
     }
+  } catch (error) {
+    console.error("Error fetching opponent data:", error);
   }
 };
 
@@ -70,6 +75,7 @@ export const createRoom = (userId) => async (dispatch) => {
     dispatch({ type: SET_ROOM_STATUS, payload: "waiting" });
   } catch (error) {
     dispatch({ type: CREATE_ROOM_FAIL, payload: error.message });
+    console.error("Error creating room:", error);
   }
 };
 
@@ -97,6 +103,7 @@ export const joinRoom = (roomId, userId) => async (dispatch) => {
     }
   } catch (error) {
     dispatch({ type: JOIN_ROOM_FAIL, payload: error.message });
+    console.error("Error joining room:", error);
   }
 };
 
@@ -113,6 +120,7 @@ export const deleteRoom = (roomId) => async (dispatch) => {
     dispatch({ type: SET_ROOM_STATUS, payload: null });
   } catch (error) {
     dispatch({ type: DELETE_ROOM_FAIL, payload: error.message });
+    console.error("Error deleting room:", error);
   }
 };
 
@@ -129,6 +137,7 @@ export const leaveRoom = (roomId, userId) => async (dispatch) => {
     dispatch({ type: SET_ROOM_STATUS, payload: null });
   } catch (error) {
     dispatch({ type: LEAVE_ROOM_FAIL, payload: error.message });
+    console.error("Error leaving room:", error);
   }
 };
 

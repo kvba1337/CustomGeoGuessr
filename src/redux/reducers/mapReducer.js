@@ -1,7 +1,7 @@
 import {
+  FETCH_MAP_FAIL,
   FETCH_MAP_REQUEST,
   FETCH_MAP_SUCCESS,
-  FETCH_MAP_FAIL,
   SET_SELECTED_MAP,
 } from "../constants/mapConstants";
 

@@ -1,0 +1,57 @@
+:root {
+  --transition-duration: 0.3s;
+  --border-radius: 15px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.3);
+  --box-shadow-active: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --gradient-bg: linear-gradient(
+    180deg,
+    #388e3c 0%,
+    #66bb6a 25%,
+    #81c784 50%,
+    #66bb6a 75%,
+    #388e3c 100%
+  );
+  --gradient-bg-hover: linear-gradient(
+    180deg,
+    #327e35 0%,
+    #5daa61 25%,
+    #73b176 50%,
+    #5daa61 75%,
+    #327e35 100%
+  );
+}
+
+#guess-map-container {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 320px;
+  height: 250px;
+  transition: all var(--transition-duration) ease;
+  overflow: hidden;
+  z-index: 4;
+  border-radius: var(--border-radius);
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  &.expanded {
+    width: 600px;
+    height: 400px;
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#guess-map {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-duration) ease;
+}

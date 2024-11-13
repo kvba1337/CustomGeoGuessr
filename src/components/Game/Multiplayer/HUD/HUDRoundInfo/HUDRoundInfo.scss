@@ -1,0 +1,27 @@
+.round-hud {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Knewave", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+
+  &__title {
+    letter-spacing: 1px;
+    font-size: 10px;
+    color: #a0a0a0;
+  }
+
+  &__info {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}

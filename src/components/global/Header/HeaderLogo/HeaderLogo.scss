@@ -1,0 +1,48 @@
+.header__logo-container {
+  --bg-color: radial-gradient(circle, #2c3e50 0%, #19232e 50%, #090d11 100%);
+  --text-color: white;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+  --logo-bg: radial-gradient(circle, #2c3e50 0%, #19232e 50%, #090d11 100%);
+  --transition-duration: 0.3s;
+  --title-hover-color: #f39c12;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--logo-bg);
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid black;
+    transition: transform var(--transition-duration),
+      color var(--transition-duration), text-shadow var(--transition-duration);
+
+    &:hover {
+      transform: scale(1.05);
+      color: var(--title-hover-color);
+      text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12;
+    }
+
+    &:link,
+    &:visited {
+      color: var(--text-color);
+    }
+  }
+
+  .header__logo-image {
+    height: 40px;
+    filter: drop-shadow(0 0 5px #000);
+    margin-right: 0.5rem;
+  }
+
+  .header__title {
+    font-size: 2rem;
+  }
+}

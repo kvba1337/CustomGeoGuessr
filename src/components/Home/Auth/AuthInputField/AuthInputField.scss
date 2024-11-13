@@ -1,0 +1,26 @@
+.guest-form input[type="text"],
+.sign-in-form input[type="text"],
+.sign-in-form input[type="password"],
+.sign-up-form input[type="text"],
+.sign-up-form input[type="password"] {
+  width: 60%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #4b4691;
+  border-radius: 5px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  font-size: 1rem;
+  text-align: left;
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.guest-form input[type="text"]:focus,
+.sign-in-form input[type="text"]:focus,
+.sign-in-form input[type="password"]:focus,
+.sign-up-form input[type="text"]:focus,
+.sign-up-form input[type="password"]:focus {
+  border-color: #5494be;
+}

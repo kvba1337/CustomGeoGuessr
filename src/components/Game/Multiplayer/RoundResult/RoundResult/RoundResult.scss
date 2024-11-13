@@ -1,0 +1,42 @@
+$primary-color: #ffffff;
+$secondary-color: #fecd19;
+$tertiary-color: #ff6347;
+$quaternary-color: #66cdaa;
+$background-color: rgba(0, 0, 0, 0.7);
+$box-shadow-color: rgba(0, 0, 0, 0.3);
+$font-family: "Arial", sans-serif;
+$border-radius: 20px;
+$max-width: 1000px;
+
+.round-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: $background-color;
+  color: $primary-color;
+  text-align: center;
+  font-family: $font-family;
+  padding: 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 3rem 1rem 3rem;
+  margin: 1rem auto;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  flex-grow: 1;
+  overflow: hidden;
+}

@@ -14,7 +14,7 @@ const initialState = {
   selectedMap: null,
   settings: null,
   users: [],
-  status: "beforeRound", 
+  status: "beforeRound",
   currentLocation: null,
   currentRound: 1,
   totalRounds: 5,

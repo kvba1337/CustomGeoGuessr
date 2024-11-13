@@ -1,0 +1,96 @@
+:root {
+  --background-gradient: radial-gradient(circle, #1a1a1a, #000000);
+  --text-color: #fff;
+  --container-bg: rgba(255, 255, 255, 0.1);
+  --container-border: rgba(255, 255, 255, 0.2);
+  --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --h1-font-size: 3rem;
+  --h1-margin-bottom: 20px;
+  --p-font-size: 1.5rem;
+  --p-margin-bottom: 30px;
+  --link-bg: #ff4081;
+  --link-hover-bg: #c60055;
+  --link-padding: 15px 30px;
+  --link-border-radius: 30px;
+  --link-transition: background 0.3s ease, transform 0.3s ease;
+  --link-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.not-found-container {
+  background: var(--background-gradient);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--text-color);
+
+  .not-found {
+    text-align: center;
+    padding: 40px;
+    background: var(--container-bg);
+    border: 1px solid var(--container-border);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 1s ease-in-out, popIn 0.5s ease-in-out;
+
+    h1 {
+      font-size: var(--h1-font-size);
+      margin-bottom: var(--h1-margin-bottom);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: textFadeIn 1.5s ease-in-out;
+    }
+
+    p {
+      font-size: var(--p-font-size);
+      margin-bottom: var(--p-margin-bottom);
+      text-shadow: var(--link-box-shadow);
+      animation: textFadeIn 1.5s ease-in-out;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      background: var(--link-bg);
+      padding: var(--link-padding);
+      border-radius: var(--link-border-radius);
+      transition: var(--link-transition);
+      display: inline-block;
+
+      &:hover {
+        background: var(--link-hover-bg);
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

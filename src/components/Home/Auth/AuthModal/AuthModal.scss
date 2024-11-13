@@ -1,0 +1,147 @@
+.auth-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: auto;
+  border: 2px solid #4b4691;
+  background-color: #1c2833;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 2rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ecf0f1;
+  font-family: "Poppins", sans-serif;
+  z-index: 1000;
+}
+
+.auth-modal__tabs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  color: #5494be;
+}
+
+.auth-modal__tab {
+  background: none;
+  color: #5494be;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.auth-modal__tab.active {
+  border-bottom: 2px solid #5494be;
+  color: #5494be;
+}
+
+.auth-modal__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guest-form,
+.sign-in-form,
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sign-up-form .avatar-label::before {
+  content: "Upload Profile Photo";
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #5494be;
+  border-radius: 5px;
+  color: #5494be;
+  background: #1c2833;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sign-up-form .avatar-label::before:hover {
+  background: #5494be;
+  color: #1c2833;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+}
+
+.success-message {
+  color: #2ecc71;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(46, 204, 113, 0.1);
+  border: 1px solid #2ecc71;
+  border-radius: 5px;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4b4691;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin-top: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.guest-form button,
+.sign-in-form button,
+.sign-up-form button {
+  width: 30%;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  border: 2px solid #4b4691;
+  border-radius: 20px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.guest-form button:hover,
+.sign-in-form button:hover,
+.sign-up-form button:hover {
+  background: linear-gradient(135deg, #3a3571 0%, #4374a1 100%);
+  transform: scale(1.05);
+}
+
+.guest-form button:active,
+.sign-in-form button:active,
+.sign-up-form button:active {
+  transform: scale(0.95);
+}

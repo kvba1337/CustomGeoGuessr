@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchGameData } from "../redux/actions/gameActions";
-import { fetchOpponentData } from "../redux/actions/roomActions";
+
+import { fetchGameData } from "@redux/actions/gameActions";
+import { fetchOpponentData } from "@redux/actions/roomActions";
 
 const useFirebaseData = (roomId, userId) => {
   const dispatch = useDispatch();

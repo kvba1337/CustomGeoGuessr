@@ -1,32 +1,24 @@
 import {
-  auth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInAnonymously,
-  saveIdTokenToCookies,
-} from "../../firebaseConfig";
+  registerUser,
+  loginUser,
+  loginAnonymously,
+  logoutUser,
+} from "@redux/api/authApi";
+import { ref, set, get, remove } from "firebase/database";
+import { database, auth } from "@services/firebaseConfig";
+import { faker } from "@faker-js/faker";
 import {
   SET_USER_AS_GUEST,
   SET_USER,
   LOGOUT_USER,
   SET_AUTHENTICATED,
 } from "../constants/userConstants";
-import { ref, set, get, remove } from "firebase/database";
-import { database } from "../../firebaseConfig";
-import Cookies from "js-cookie";
-import { faker } from "@faker-js/faker";
 
-export const registerUser =
+export const registerNewUser =
   (username, password, avatar) => async (dispatch) => {
     try {
       const email = `${username}@customgeoguessr.com`;
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      await saveIdTokenToCookies(user);
+      const user = await registerUser(email, password);
 
       const userData = {
         userId: user.uid,
@@ -47,26 +39,14 @@ export const registerUser =
         payload: true,
       });
     } catch (error) {
-      if (error.code === "auth/weak-password") {
-        throw new Error("Password should be at least 6 characters");
-      } else if (error.code === "auth/email-already-in-use") {
-        throw new Error("Username already exists");
-      } else {
-        throw new Error("Error registering user");
-      }
+      throw new Error("Error registering user");
     }
   };
 
-export const loginUser = (username, password) => async (dispatch) => {
+export const loginExistingUser = (username, password) => async (dispatch) => {
   try {
     const email = `${username}@customgeoguessr.com`;
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    await saveIdTokenToCookies(user);
+    const user = await loginUser(email, password);
 
     const userRef = ref(database, `users/${user.uid}`);
     const userSnapshot = await get(userRef);
@@ -95,9 +75,7 @@ export const loginUser = (username, password) => async (dispatch) => {
 
 export const signInAsGuest = (avatar) => async (dispatch) => {
   try {
-    const userCredential = await signInAnonymously(auth);
-    const user = userCredential.user;
-    await saveIdTokenToCookies(user);
+    const user = await loginAnonymously();
 
     const username = faker.internet.userName();
 
@@ -124,15 +102,14 @@ export const signInAsGuest = (avatar) => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => async (dispatch, getState) => {
+export const logoutCurrentUser = () => async (dispatch, getState) => {
   try {
     const { user } = getState();
     if (user.isGuest) {
       await remove(ref(database, `users/${user.userId}`));
       await auth.currentUser.delete();
     }
-    await auth.signOut();
-    Cookies.remove("idToken");
+    await logoutUser();
 
     dispatch({
       type: LOGOUT_USER,

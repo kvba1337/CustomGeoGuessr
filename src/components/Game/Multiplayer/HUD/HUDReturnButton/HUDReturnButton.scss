@@ -1,0 +1,26 @@
+.return-button {
+  position: fixed;
+  bottom: 35px;
+  left: 14px;
+  background-color: var(--button-bg-color);
+  color: var(--button-color);
+  padding: var(--button-padding);
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-index-button);
+  transition: opacity var(--transition-ease);
+}
+
+.return-button i {
+  font-size: var(--button-font-size);
+  opacity: var(--button-opacity);
+  transition: opacity var(--transition-ease);
+}
+
+.return-button:hover {
+  opacity: var(--button-hover-opacity);
+}
+
+.return-button:hover i {
+  opacity: var(--button-hover-opacity);
+}

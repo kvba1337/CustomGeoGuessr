@@ -1,5 +1,6 @@
-import { database } from "../../firebaseConfig";
 import { ref, update } from "firebase/database";
+
+import { database } from "@services/firebaseConfig";
 import {
   FETCH_MAP_REQUEST,
   FETCH_MAP_SUCCESS,
@@ -11,10 +12,11 @@ export const fetchMap = (mapId) => async (dispatch) => {
   dispatch({ type: FETCH_MAP_REQUEST });
 
   try {
-    const data = await import(`../../assets/data/map${mapId}.json`);
+    const data = await import(`../../assets/data/maps/map${mapId}.json`);
     dispatch({ type: FETCH_MAP_SUCCESS, payload: data.default });
   } catch (error) {
     dispatch({ type: FETCH_MAP_FAIL, payload: error.message });
+    console.error("Error fetching map data:", error);
   }
 };
 

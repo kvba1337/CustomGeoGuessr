@@ -1,0 +1,29 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 250px;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 4px solid #fff;
+    object-fit: cover;
+  }
+
+  p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+  }
+}
