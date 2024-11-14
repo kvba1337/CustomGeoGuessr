@@ -26,5 +26,9 @@ export const validatePassword = (password) => {
 
 export const saveIdTokenToCookies = async (user) => {
   const idToken = await user.getIdToken();
-  Cookies.set("idToken", idToken);
+  Cookies.set("idToken", idToken, {
+    secure: true,
+    sameSite: "Strict",
+    httpOnly: true,
+  });
 };

@@ -77,7 +77,7 @@ export const signInAsGuest = (avatar) => async (dispatch) => {
   try {
     const user = await loginAnonymously();
 
-    const username = faker.internet.userName();
+    const username = faker.internet.username();
 
     const userData = {
       userId: user.uid,
@@ -105,11 +105,18 @@ export const signInAsGuest = (avatar) => async (dispatch) => {
 export const logoutCurrentUser = () => async (dispatch, getState) => {
   try {
     const { user } = getState();
-    if (user.isGuest) {
-      await remove(ref(database, `users/${user.userId}`));
-      await auth.currentUser.delete();
+    if (auth.currentUser && auth.currentUser.uid === user.userId) {
+      if (user.isGuest) {
+        const userRef = ref(database, `users/${user.userId}`);
+        await remove(userRef);
+        await auth.currentUser.delete();
+      }
     }
+
     await logoutUser();
+
+    sessionStorage.removeItem("hostedRoomId");
+    sessionStorage.removeItem("joinedRoomId");
 
     dispatch({
       type: LOGOUT_USER,

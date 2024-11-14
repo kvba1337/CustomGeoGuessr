@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInAnonymously,
 } from "@services/firebaseConfig";
+import { saveIdTokenToCookies } from "@utils/authUtils";
 import Cookies from "js-cookie";
 
 export const registerUser = async (email, password) => {
@@ -13,8 +14,7 @@ export const registerUser = async (email, password) => {
     password
   );
   const user = userCredential.user;
-  const idToken = await user.getIdToken();
-  Cookies.set("idToken", idToken);
+  saveIdTokenToCookies(user);
   return user;
 };
 
@@ -25,16 +25,14 @@ export const loginUser = async (email, password) => {
     password
   );
   const user = userCredential.user;
-  const idToken = await user.getIdToken();
-  Cookies.set("idToken", idToken);
+  saveIdTokenToCookies(user);
   return user;
 };
 
 export const loginAnonymously = async () => {
   const userCredential = await signInAnonymously(auth);
   const user = userCredential.user;
-  const idToken = await user.getIdToken();
-  Cookies.set("idToken", idToken);
+  saveIdTokenToCookies(user);
   return user;
 };
 

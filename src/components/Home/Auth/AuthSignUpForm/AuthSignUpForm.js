@@ -39,6 +39,11 @@ const AuthSignUpForm = () => {
       return;
     }
 
+    if (!selectedAvatar) {
+      setError("Avatar is required");
+      return;
+    }
+
     const sanitizedUsername = DOMPurify.sanitize(username);
     const sanitizedPassword = DOMPurify.sanitize(password);
 
