@@ -21,4 +21,16 @@
     ),
     #0d0d30;
   font-family: "Poppins", sans-serif;
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 60px);
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(100vh - 50px);
+  }
+
+  @media (max-width: 320px) {
+    min-height: calc(100vh - 40px);
+  }
 }

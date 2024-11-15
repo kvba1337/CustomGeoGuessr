@@ -15,12 +15,12 @@
   outline: none;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease;
-}
 
-.guest-form input[type="text"]:focus,
-.sign-in-form input[type="text"]:focus,
-.sign-in-form input[type="password"]:focus,
-.sign-up-form input[type="text"]:focus,
-.sign-up-form input[type="password"]:focus {
-  border-color: #5494be;
+  &:focus {
+    border-color: #5494be;
+  }
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 }

@@ -42,9 +42,23 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: #312c83;
+        background: radial-gradient(circle, #706aad 10%, #494283 40%, #352f70);
         cursor: pointer;
+        transition: background 0.3s ease;
+        border: 1px solid black;
       }
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.8rem;
     }
   }
 
@@ -72,10 +86,31 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
       }
 
       &.selected {
         background: rgba(255, 255, 255, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
       }
     }
 
@@ -104,6 +139,31 @@
         border-width: 10px;
         border-style: solid;
         border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+      }
+
+      @media (max-width: 1024px) {
+        top: 130%;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        &::after {
+          top: -50%;
+          left: 50%;
+          transform: translate(-50%, 0);
+          border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+        }
+      }
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.7rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 0.6rem;
       }
     }
 

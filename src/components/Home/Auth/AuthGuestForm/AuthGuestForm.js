@@ -51,7 +51,7 @@ const AuthGuestForm = () => {
       {error && <p className="error-message">{error}</p>}
       {loading && <div className="loading-spinner"></div>}
       {isAuthenticated && (
-        <p className="success-message">Successfully signed in as guest!</p>
+        <div className="success-message">Successfully signed in as guest!</div>
       )}
       <button onClick={handleContinue} disabled={loading}>
         Continue

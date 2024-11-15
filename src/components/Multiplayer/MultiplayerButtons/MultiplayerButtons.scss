@@ -1,6 +1,12 @@
 .buttons {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 .button {
@@ -26,6 +32,7 @@
   border: 1px solid black;
   font-family: "Knewave", system-ui;
   letter-spacing: 1px;
+
   &:hover {
     background: linear-gradient(
       135deg,
@@ -33,5 +40,24 @@
       rgba(255, 20, 147, 0.7) 100%
     );
     transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
   }
 }

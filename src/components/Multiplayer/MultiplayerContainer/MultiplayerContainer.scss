@@ -1,8 +1,23 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 60%;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 80%;
+  }
+
+  @media (max-width: 320px) {
+    max-width: 90%;
+  }
 }

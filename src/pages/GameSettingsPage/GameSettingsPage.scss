@@ -22,19 +22,17 @@
     #0d0d30;
   color: #fff;
   font-family: "Poppins", sans-serif;
-  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-  box-sizing: border-box;
-  text-align: center;
 
-  h1 {
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-    margin: 0;
+  @media (max-width: 768px) {
+    height: calc(100vh - 60px);
   }
 
-  p {
-    font-size: 1.2rem;
-    margin: 0 0 2rem 0;
+  @media (max-width: 480px) {
+    height: calc(100vh - 50px);
+  }
+
+  @media (max-width: 320px) {
+    height: calc(100vh - 40px);
   }
 
   .settings {
@@ -48,6 +46,22 @@
     width: 100%;
     max-width: 450px;
     margin-bottom: 1rem;
+    padding: 1rem 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+      max-width: 400px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 1rem;
+      max-width: 280px;
+    }
+
+    @media (max-width: 320px) {
+      padding: 0.5rem;
+      max-width: 280px;
+    }
   }
 
   .settings-btn {

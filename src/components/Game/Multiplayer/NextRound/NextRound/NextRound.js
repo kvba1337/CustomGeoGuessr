@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setGameStatus } from "@redux/actions/gameActions";
-import Header from "../NextRoundHeader/NextRoundHeader";
-import Players from "../NextRoundPlayers/NextRoundPlayers";
+import NextRoundHeader from "../NextRoundHeader/NextRoundHeader";
+import NextRoundPlayers from "../NextRoundPlayers/NextRoundPlayers";
 import NextRoundStart from "../NextRoundStart/NextRoundStart";
-import NoGoogling from "../NextRoundNoGoogling/NextRoundNoGoogling";
+import NextRoundNoGoogling from "../NextRoundNoGoogling/NextRoundNoGoogling";
 import "./NextRound.scss";
 
 const NextRound = () => {
@@ -33,15 +33,14 @@ const NextRound = () => {
 
   return (
     <div className="next-round-info">
-      <Header gameMode={gameMode} />
-      <Players
-        currentRound={currentRound}
+      <NextRoundHeader currentRound={currentRound} gameMode={gameMode} />
+      <NextRoundPlayers
         username={username}
         avatar={avatar}
         opponent={opponent}
       />
       <NextRoundStart countdown={countdown} />
-      <NoGoogling />
+      <NextRoundNoGoogling />
     </div>
   );
 };

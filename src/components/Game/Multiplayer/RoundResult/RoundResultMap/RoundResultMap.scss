@@ -1,19 +1,29 @@
 :root {
-    --border-radius: 20px;
-    --box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
-    --margin-bottom: 10px;
-    --height: 400px;
+  --border-radius: 20px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+  --height: 400px;
 }
 
 .round-result-map {
-    width: 100%;
-    height: var(--height);
-    margin-bottom: var(--margin-bottom);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
+  width: 100%;
+  height: var(--height);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
 
-    .gm-style {
-        border-radius: var(--border-radius);
-    }
+  .gm-style {
+    border-radius: var(--border-radius);
+  }
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+
+  @media (max-width: 480px) {
+    height: 250px;
+  }
+
+  @media (max-width: 320px) {
+    height: 200px;
+  }
 }

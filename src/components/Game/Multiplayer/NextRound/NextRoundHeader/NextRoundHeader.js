@@ -1,10 +1,15 @@
 import React from "react";
 import "./NextRoundHeader.scss";
 
-const Header = ({ gameMode }) => (
+const Header = ({ currentRound, gameMode }) => (
   <div className="next-round-info__header">
-    <h1>DUELS</h1>
-    <h2>{gameMode}</h2>
+    <div className="game-info">
+      <div className="game-info__content">
+        <h1>DUELS</h1>
+        <h2>{gameMode}</h2>
+      </div>
+    </div>
+    <div className="current-round">ROUND {currentRound}</div>
   </div>
 );
 

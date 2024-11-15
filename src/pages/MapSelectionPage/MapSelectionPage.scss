@@ -31,6 +31,18 @@
     #0d0d30;
   color: var(--primary-color);
   font-family: var(--font-family);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 60px);
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(100vh - 50px);
+  }
+
+  @media (max-width: 320px) {
+    min-height: calc(100vh - 40px);
+  }
 }
 
 .map-selection__content {
@@ -44,6 +56,24 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
+
+  @media (max-width: 1280px) {
+    width: 900px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 650px;
+  }
+
+  @media (max-width: 768px) {
+    width: 380px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 280px;
+    padding: 1rem;
+  }
 }
 
 .map-selection-grid {
@@ -52,4 +82,8 @@
   gap: 2rem;
   flex-grow: 1;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    gap: 2rem;
+  }
 }

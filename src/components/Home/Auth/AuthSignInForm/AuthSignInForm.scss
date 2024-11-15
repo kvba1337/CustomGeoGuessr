@@ -1,0 +1,97 @@
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  input[type="text"],
+  input[type="password"] {
+    width: 60%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #4b4691;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    font-size: 1rem;
+    text-align: left;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #5494be;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+      padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+  }
+
+  button {
+    width: 30%;
+    padding: 0.8rem;
+    margin-top: 1.5rem;
+    border: 2px solid #4b4691;
+    border-radius: 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, #3a3571 0%, #4374a1 100%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+  }
+
+  .error-message {
+    color: #e74c3c;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+  }
+
+  .success-message {
+    color: #2ecc71;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(46, 204, 113, 0.1);
+    border: 1px solid #2ecc71;
+    border-radius: 5px;
+  }
+
+  .loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4b4691;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin-top: 1rem;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

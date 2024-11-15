@@ -16,4 +16,28 @@
   .gm-style {
     border-radius: var(--border-radius);
   }
+
+  @media (max-width: 1280px) {
+    width: 90%;
+    height: 350px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 95%;
+    height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 250px;
+  }
+
+  @media (max-width: 480px) {
+    width: 95%;
+  }
+
+  @media (max-width: 320px) {
+    width: 100%;
+    height: 200px;
+  }
 }

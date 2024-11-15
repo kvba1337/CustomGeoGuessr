@@ -11,7 +11,7 @@ import "./StreetViewContainer.scss";
 
 const libraries = ["places"];
 
-const StreetViewContainer = () => {
+const StreetViewContainer = ({ closeMap }) => {
   const dispatch = useDispatch();
   const { currentLocation, settings, returnButtonStatus } = useSelector(
     (state) => state.game
@@ -93,6 +93,10 @@ const StreetViewContainer = () => {
     streetViewPanorama.setPosition(currentLocation);
   };
 
+  const handleStreetViewClick = () => {
+    closeMap();
+  };
+
   if (loadError) {
     console.error("Error loading Google Maps:", loadError);
     return <div>Error loading maps</div>;
@@ -104,7 +108,7 @@ const StreetViewContainer = () => {
   }
 
   return (
-    <div className="street-view-map">
+    <div className="street-view-map" onClick={handleStreetViewClick}>
       <GoogleMap mapContainerStyle={{ width: "100%", height: "100%" }}>
         <StreetViewPanorama
           onLoad={handleLoad}

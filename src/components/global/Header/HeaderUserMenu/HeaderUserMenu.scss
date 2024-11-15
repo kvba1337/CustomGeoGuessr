@@ -1,5 +1,6 @@
 .header__user {
   position: relative;
+  margin-left: auto;
   cursor: pointer;
   --bg-color: radial-gradient(circle, #2c3e50 0%, #19232e 50%, #090d11 100%);
   --text-color: white;
@@ -14,6 +15,21 @@
     height: 50px;
     border-radius: 50%;
     border: 2px solid white;
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (max-width: 320px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   .header__user-menu {
@@ -29,6 +45,21 @@
     width: 200px;
     animation: fadeIn 0.3s ease-in-out;
     cursor: default;
+
+    @media (max-width: 768px) {
+      top: 50px;
+      width: 180px;
+    }
+
+    @media (max-width: 480px) {
+      top: 45px;
+      width: 160px;
+    }
+
+    @media (max-width: 320px) {
+      top: 40px;
+      width: 140px;
+    }
   }
 
   .header__user-avatar-large {
@@ -36,6 +67,21 @@
     height: 80px;
     border-radius: 50%;
     border: 2px solid #5494be;
+
+    @media (max-width: 768px) {
+      width: 70px;
+      height: 70px;
+    }
+
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 60px;
+    }
+
+    @media (max-width: 320px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   .header__user-name {
@@ -44,6 +90,18 @@
     font-weight: bold;
     color: var(--text-color);
     margin: 0 0 1rem 0;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.8rem;
+    }
   }
 
   .header__logout-button {
@@ -66,6 +124,18 @@
     &:active {
       transform: scale(0.95);
     }
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.7rem;
+    }
   }
 }
 
@@ -74,7 +144,6 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

@@ -98,7 +98,7 @@ const AuthSignUpForm = () => {
       {error && <p className="error-message">{error}</p>}
       {loading && <div className="loading-spinner"></div>}
       {isAuthenticated && (
-        <p className="success-message">Successfully registered!</p>
+        <div className="success-message">Successfully registered!</div>
       )}
       <button onClick={handleSignUp} disabled={loading}>
         Sign Up

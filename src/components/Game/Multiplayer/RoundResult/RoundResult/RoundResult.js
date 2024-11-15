@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import RoundResultMap from "../RoundResultMap/RoundResultMap";
 import RoundResultHeader from "../RoundResultHeader/RoundResultHeader";
-import ProgressBars from "../RoundResultProgressBars/RoundResultProgressBars";
+import RoundResultProgressBars from "../RoundResultProgressBars/RoundResultProgressBars";
 import RoundResultPlayersResults from "../RoundResultPlayersResults/RoundResultPlayersResults";
 import { handleNextRound } from "@redux/actions/gameActions";
 import "./RoundResult.scss";
@@ -21,7 +21,7 @@ const RoundResult = () => {
   const startNextRoundTimer = useCallback(() => {
     const timer = setTimeout(() => {
       dispatch(handleNextRound());
-    }, 15000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [dispatch]);
@@ -35,7 +35,7 @@ const RoundResult = () => {
       <div className="map-container">
         <RoundResultHeader gameMode={gameMode} currentRound={currentRound} />
         <RoundResultMap />
-        <ProgressBars
+        <RoundResultProgressBars
           avatar={avatar}
           userResult={userResult}
           opponentResult={opponentResult}

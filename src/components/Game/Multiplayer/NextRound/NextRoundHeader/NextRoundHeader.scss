@@ -2,21 +2,57 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
+  margin-top: 1rem;
   letter-spacing: 0.8px;
   font-family: "Knewave", system-ui;
   text-transform: uppercase;
 
-  h1 {
-    font-size: 1.2rem;
-    color: #fff;
-    margin: 0;
+  .current-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    opacity: 0.8;
+    font-family: "Knewave", system-ui;
+    margin-top: 6rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
   }
 
-  h2 {
-    font-size: 2.5rem;
-    color: #fecd19;
-    line-height: 1.2;
-    margin: 0;
+  .game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .game-info__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin: 0;
+      text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #fecd19;
+      line-height: 1.2;
+      margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
   }
 }

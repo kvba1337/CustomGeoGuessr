@@ -6,11 +6,9 @@
   --logo-bg: radial-gradient(circle, #2c3e50 0%, #19232e 50%, #090d11 100%);
   --transition-duration: 0.3s;
   --title-hover-color: #f39c12;
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 
   .header__logo {
     display: flex;
@@ -23,6 +21,18 @@
     border: 1px solid black;
     transition: transform var(--transition-duration),
       color var(--transition-duration), text-shadow var(--transition-duration);
+
+    @media (max-width: 768px) {
+      height: 30px;
+    }
+
+    @media (max-width: 480px) {
+      height: 25px;
+    }
+
+    @media (max-width: 320px) {
+      height: 20px;
+    }
 
     &:hover {
       transform: scale(1.05);
@@ -40,9 +50,33 @@
     height: 40px;
     filter: drop-shadow(0 0 5px #000);
     margin-right: 0.5rem;
+
+    @media (max-width: 768px) {
+      height: 30px;
+    }
+
+    @media (max-width: 480px) {
+      height: 25px;
+    }
+
+    @media (max-width: 320px) {
+      height: 20px;
+    }
   }
 
   .header__title {
     font-size: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 1rem;
+    }
   }
 }

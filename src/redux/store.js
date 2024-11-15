@@ -6,13 +6,22 @@ import localStorageMiddleware from "./middleware/localStorageMiddleware";
 
 const loadStateFromLocalStorage = () => {
   try {
-    const serializedState = localStorage.getItem("userState");
-    if (serializedState === null) {
-      return undefined;
-    }
-    return { user: JSON.parse(serializedState) };
+    const serializedUserState = localStorage.getItem("userState");
+    const serializedRoomState = localStorage.getItem("roomState");
+
+    const userState = serializedUserState
+      ? JSON.parse(serializedUserState)
+      : undefined;
+    const roomState = serializedRoomState
+      ? JSON.parse(serializedRoomState)
+      : undefined;
+
+    return {
+      user: userState,
+      room: roomState,
+    };
   } catch (error) {
-    console.error("Error loading user state from localStorage:", error);
+    console.error("Error loading state from localStorage:", error);
     return undefined;
   }
 };

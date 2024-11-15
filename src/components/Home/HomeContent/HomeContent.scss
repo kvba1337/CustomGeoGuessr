@@ -1,0 +1,43 @@
+.home__content {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0.8rem;
+  }
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.5rem;
+  }
+}

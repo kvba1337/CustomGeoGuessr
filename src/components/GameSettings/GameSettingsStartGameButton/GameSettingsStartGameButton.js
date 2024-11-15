@@ -17,9 +17,11 @@ const GameSettingsStartGameButton = () => {
   }, [dispatch, navigate, roomId, settings]);
 
   return (
-    <button className="settings-btn" onClick={handleStartGame}>
-      Start Game
-    </button>
+    <div className="settings-btn-container">
+      <button className="settings-btn" onClick={handleStartGame}>
+        Start Game
+      </button>
+    </div>
   );
 };
 

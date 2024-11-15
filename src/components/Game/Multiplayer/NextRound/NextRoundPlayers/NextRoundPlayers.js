@@ -2,11 +2,10 @@ import React from "react";
 import NextRoundPlayer from "../NextRoundPlayer/NextRoundPlayer";
 import "./NextRoundPlayers.scss";
 
-const Players = ({ currentRound, username, avatar, opponent }) => (
+const Players = ({ username, avatar, opponent }) => (
   <div className="players">
-    <div className="current-round">ROUND {currentRound}</div>
     <NextRoundPlayer avatar={avatar} username={username} />
-    <p className="vs">VS</p>
+    <div className="vs">VS</div>
     <NextRoundPlayer avatar={opponent.avatar} username={opponent.username} />
   </div>
 );

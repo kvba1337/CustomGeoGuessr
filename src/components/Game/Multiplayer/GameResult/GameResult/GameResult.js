@@ -6,6 +6,7 @@ import useFetchGameResults from "@hooks/useFetchGameResults";
 import GameResultMap from "../GameResultMap/GameResultMap";
 import GameResultSummary from "../GameResultSummary/GameResultSummary";
 import GameResultScoreItem from "../GameResultScoreItem/GameResultScoreItem";
+import GameResultButtons from "../GameResultButtons/GameResultButtons";
 import "./GameResult.scss";
 
 const GameResult = () => {
@@ -91,14 +92,10 @@ const GameResult = () => {
           />
         </div>
 
-        <div className="game-result__buttons">
-          <button className="buttons__summary-btn" onClick={handleShowSummary}>
-            Game Summary
-          </button>
-          <button className="buttons__continue-btn" onClick={handleContinue}>
-            Continue
-          </button>
-        </div>
+        <GameResultButtons
+          onShowSummary={handleShowSummary}
+          onContinue={handleContinue}
+        />
       </div>
     </div>
   );

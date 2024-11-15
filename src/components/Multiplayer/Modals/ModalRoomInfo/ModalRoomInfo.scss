@@ -8,6 +8,18 @@ h2 {
   margin: 1rem 0;
   color: #fecd19;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1rem;
+  }
 }
 
 .host-modal__info {
@@ -23,6 +35,18 @@ h2 {
   &.waiting {
     color: #ff0808;
     animation: pulse 3s infinite;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.8rem;
   }
 }
 
@@ -55,17 +79,30 @@ h2 {
   &:hover:not(:disabled) {
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(1.05);
   }
-
   100% {
     transform: scale(1);
   }

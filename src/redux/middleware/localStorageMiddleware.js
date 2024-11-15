@@ -4,8 +4,11 @@ const localStorageMiddleware = (store) => (next) => (action) => {
   try {
     const userState = JSON.stringify(state.user);
     localStorage.setItem("userState", userState);
+
+    const roomState = JSON.stringify(state.room);
+    localStorage.setItem("roomState", roomState);
   } catch (error) {
-    console.error("Error saving user state to localStorage:", error);
+    console.error("Error saving state to localStorage:", error);
   }
   return result;
 };

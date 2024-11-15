@@ -1,20 +1,46 @@
 .map-selection__content {
-    display: flex;
-    flex-direction: column;
-    width: 1200px;
-    text-align: center;
-    background: var(--content-bg);
-    padding: var(--content-padding);
-    margin: 2rem auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  text-align: center;
+  background: var(--content-bg);
+  padding: var(--content-padding);
+  margin: 2rem auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+
+  @media (max-width: 1280px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 800px;
+  }
+
+  @media (max-width: 768px) {
+    width: 600px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0.5rem;
+  }
 }
 
 .map-selection-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    flex-grow: 1;
-    overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  flex-grow: 1;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.5rem;
+  }
 }

@@ -12,18 +12,21 @@ $max-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
   background: $background-color;
   color: $primary-color;
   text-align: center;
   font-family: $font-family;
-  padding: 1rem;
   margin: 0 auto;
+  padding: 0 2rem;
   box-sizing: border-box;
-  min-height: 100vh;
-  max-height: 100vh;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 }
 
 .map-container {
@@ -37,6 +40,9 @@ $max-width: 1000px;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  flex-grow: 1;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem 1rem 1rem;
+  }
 }

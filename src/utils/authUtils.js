@@ -29,6 +29,5 @@ export const saveIdTokenToCookies = async (user) => {
   Cookies.set("idToken", idToken, {
     secure: true,
     sameSite: "Strict",
-    httpOnly: true,
   });
 };

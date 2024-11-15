@@ -4,7 +4,6 @@
 
   .game-summary-btn {
     background: transparent;
-    /* Transparent background */
     color: white;
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -12,23 +11,43 @@
     font-weight: 400;
     text-transform: uppercase;
     border: 2px solid white;
-    /* White border */
     border-radius: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    /* Lighter shadow */
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.3s ease;
-    /* Added border transition */
     text-shadow: 0 0 3px #000000, 0 0 5px #000000;
 
     &:hover {
       transform: scale(1.05);
-      border-color: rgb(255, 255, 255, 0.8);
-      /* Slightly darker white border on hover */
     }
 
     &:active {
       transform: scale(0.975);
+    }
+
+    @media (max-width: 1280px) {
+      font-size: 1.1rem;
+      padding: 12px 25px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      padding: 12px 25px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.8rem;
+      padding: 8px 15px;
     }
   }
 
@@ -58,6 +77,31 @@
 
     &:active {
       transform: scale(0.975);
+    }
+
+    @media (max-width: 1280px) {
+      font-size: 1.1rem;
+      padding: 12px 25px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      padding: 12px 25px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.8rem;
+      padding: 8px 15px;
     }
   }
 }

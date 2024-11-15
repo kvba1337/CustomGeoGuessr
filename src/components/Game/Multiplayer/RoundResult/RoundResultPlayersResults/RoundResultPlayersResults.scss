@@ -9,7 +9,7 @@ $border-radius: 20px;
 $max-width: 1000px;
 
 .results {
-  width: 100%;
+  width: 80%;
   max-width: $max-width;
   font-weight: bold;
   color: $primary-color;
@@ -19,6 +19,20 @@ $max-width: 1000px;
   border-radius: $border-radius;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    width: 90%;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0.4rem;
+    width: 100%;
+  }
 
   &__distance,
   &__score {
@@ -33,13 +47,24 @@ $max-width: 1000px;
     font-weight: normal;
     font-family: "Knewave", system-ui;
     flex-wrap: wrap;
-    /* Allow wrapping on smaller screens */
 
     .player-result {
       font-size: 1rem;
       color: $primary-color;
       text-align: center;
       flex: 1;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 0.7rem;
+      }
     }
 
     .player-score {
@@ -50,6 +75,18 @@ $max-width: 1000px;
       margin: 0;
       text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
         0 4px 10px rgba(255, 99, 71, 0.8);
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 1.5rem;
+      }
     }
 
     .separator {
@@ -57,6 +94,18 @@ $max-width: 1000px;
       color: $quaternary-color;
       text-align: center;
       opacity: 0.9;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.6rem;
+      }
+
+      @media (max-width: 320px) {
+        font-size: 0.5rem;
+      }
     }
   }
 }

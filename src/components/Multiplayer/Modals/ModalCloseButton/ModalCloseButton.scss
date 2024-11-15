@@ -1,15 +1,27 @@
 .close-button {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 3rem;
-    cursor: pointer;
-    color: #fff;
-    transition: color 0.3s ease;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s ease;
 
-    &:hover {
-        color: #ff6f61;
-    }
+  &:hover {
+    color: #ff6f61;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.5rem;
+  }
 }
