@@ -97,6 +97,10 @@ const StreetViewContainer = ({ closeMap }) => {
     closeMap();
   };
 
+  const handleTouchStart = (event) => {
+    handleStreetViewClick();
+  };
+
   if (loadError) {
     console.error("Error loading Google Maps:", loadError);
     return <div>Error loading maps</div>;
@@ -108,7 +112,11 @@ const StreetViewContainer = ({ closeMap }) => {
   }
 
   return (
-    <div className="street-view-map" onClick={handleStreetViewClick}>
+    <div
+      className="street-view-map"
+      onClick={handleStreetViewClick}
+      onTouchStart={handleTouchStart}
+    >
       <GoogleMap mapContainerStyle={{ width: "100%", height: "100%" }}>
         <StreetViewPanorama
           onLoad={handleLoad}

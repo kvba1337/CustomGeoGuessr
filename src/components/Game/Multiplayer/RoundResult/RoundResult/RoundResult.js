@@ -21,7 +21,7 @@ const RoundResult = () => {
   const startNextRoundTimer = useCallback(() => {
     const timer = setTimeout(() => {
       dispatch(handleNextRound());
-    }, 1000);
+    }, 15000);
 
     return () => clearTimeout(timer);
   }, [dispatch]);

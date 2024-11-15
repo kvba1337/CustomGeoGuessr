@@ -78,6 +78,10 @@ const MiniMapContainerMobile = ({
     }
   };
 
+  useEffect(() => {
+    setIsMapVisible(false);
+  }, [setIsMapVisible]);
+
   if (loadError) {
     return <div>Error loading maps</div>;
   }
