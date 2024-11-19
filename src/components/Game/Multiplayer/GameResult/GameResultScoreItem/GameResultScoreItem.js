@@ -8,8 +8,9 @@ const GameResultScoreItem = ({
   score,
   maxScore,
   isWinner,
+  reverse,
 }) => (
-  <div className="score-container__item">
+  <div className={`score-container__item ${reverse ? "reverse" : ""}`}>
     <div className="avatar-container">
       <img
         src={avatar}

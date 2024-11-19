@@ -16,7 +16,7 @@ import RoundResult from "../RoundResult/RoundResult/RoundResult";
 const GameMultiplayer = () => {
   useGameStateUpdates();
   const { status } = useSelector((state) => state.game);
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 1130;
   const [isMapVisible, setIsMapVisible] = useState(false);
   const [isSlidingDown, setIsSlidingDown] = useState(false);
 

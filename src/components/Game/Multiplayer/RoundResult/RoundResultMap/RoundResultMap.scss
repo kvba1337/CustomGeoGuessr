@@ -6,24 +6,12 @@
 
 .round-result-map {
   width: 100%;
-  height: var(--height);
+  height: 40vh;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
 
   .gm-style {
     border-radius: var(--border-radius);
-  }
-
-  @media (max-width: 768px) {
-    height: 300px;
-  }
-
-  @media (max-width: 480px) {
-    height: 250px;
-  }
-
-  @media (max-width: 320px) {
-    height: 200px;
   }
 }

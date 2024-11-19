@@ -7,36 +7,12 @@
 
   .map-title {
     font-size: 2.5rem;
-    margin: 0 0 1rem 0;
     text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 1.2rem;
-    }
+    margin: 0;
   }
 
   .map-description {
     font-size: 1.2rem;
-    margin: 0 0 1rem 0;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 0.8rem;
-    }
+    margin: 0;
   }
 }

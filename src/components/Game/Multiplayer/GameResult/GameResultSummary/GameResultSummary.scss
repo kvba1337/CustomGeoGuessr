@@ -14,94 +14,49 @@
   --container-width: 80%;
   --max-container-width: 1200px;
   --map-height: 500px;
+  --border-radius: 20px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+  --height: 400px;
 }
 
 .game-result-summary {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: var(--container-width);
-  max-width: var(--max-container-width);
-  color: var(--primary-color);
-  font-family: var(--font-family);
-  text-shadow: var(--text-shadow);
-  margin: 0;
-  padding: 0;
-  height: calc(100vh - 50px);
+  width: 100%;
+  height: 100vh;
+  max-width: 1000px;
+  gap: 1rem;
+  box-sizing: border-box;
   overflow: hidden;
+  justify-content: center;
 
-  @media (max-width: 1280px) {
-    width: 90%;
-  }
-
-  @media (max-width: 1024px) {
-    width: 95%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
+  @media (max-width: 480px) {
+    gap: 0.5rem;
   }
 
   &__header {
     font-family: var(--font-family-secondary);
     font-size: 2.5rem;
-    margin-bottom: 3rem;
 
-    @media (max-width: 1280px) {
-      font-size: 2.2rem;
-    }
-
-    @media (max-width: 1024px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 1.8rem;
+    @media (min-height: 800px) {
       margin-bottom: 2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
     }
   }
 
   .summary-map {
     width: 100%;
-    height: var(--map-height);
-    margin-bottom: 1rem;
+    height: 40vh;
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--box-shadow);
 
-    @media (max-width: 1280px) {
-      height: 450px;
-    }
-
-    @media (max-width: 1024px) {
-      height: 400px;
-    }
-
-    @media (max-width: 768px) {
-      height: 350px;
-    }
-
     @media (max-width: 480px) {
-      height: 300px;
-    }
-
-    @media (max-width: 320px) {
-      height: 250px;
+      height: 60vh;
     }
   }
 
   .summary-table-container {
-    flex-grow: 1;
     width: 100%;
     overflow-y: auto;
 
@@ -125,7 +80,35 @@
     }
   }
 
+  .continue-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .continue-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    @media (min-height: 800px) {
+      margin-top: 2rem;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
     background: rgb(108, 185, 40);
     background-image: radial-gradient(
       150% 160% at 50% 15%,
@@ -133,50 +116,8 @@
       transparent 30%
     );
     color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-family: var(--font-family-secondary);
-    font-weight: 400;
-    text-transform: uppercase;
     border: 1px solid black;
-    border-radius: 25px;
     text-shadow: 0 0 10px #000000, 0 0 15px #000000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    margin-top: 1rem;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.975);
-    }
-
-    @media (max-width: 1280px) {
-      font-size: 1.1rem;
-      padding: 12px 25px;
-    }
-
-    @media (max-width: 1024px) {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      padding: 12px 25px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
-      padding: 10px 20px;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 0.8rem;
-      padding: 8px 15px;
-    }
   }
 }

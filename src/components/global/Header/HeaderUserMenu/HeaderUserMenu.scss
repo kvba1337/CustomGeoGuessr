@@ -34,7 +34,7 @@
 
   .header__user-menu {
     position: absolute;
-    top: 60px;
+    top: 70px;
     right: 0;
     background: #1c2833;
     padding: 1rem;
@@ -47,40 +47,40 @@
     cursor: default;
 
     @media (max-width: 768px) {
-      top: 50px;
+      top: 45px;
       width: 180px;
     }
 
     @media (max-width: 480px) {
-      top: 45px;
+      top: 40px;
       width: 160px;
     }
 
     @media (max-width: 320px) {
-      top: 40px;
+      top: 35px;
       width: 140px;
     }
   }
 
   .header__user-avatar-large {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 2px solid #5494be;
 
     @media (max-width: 768px) {
-      width: 70px;
-      height: 70px;
-    }
-
-    @media (max-width: 480px) {
       width: 60px;
       height: 60px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 480px) {
       width: 50px;
       height: 50px;
+    }
+
+    @media (max-width: 320px) {
+      width: 40px;
+      height: 40px;
     }
   }
 

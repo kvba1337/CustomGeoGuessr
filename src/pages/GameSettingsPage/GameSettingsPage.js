@@ -9,18 +9,20 @@ import "./GameSettingsPage.scss";
 
 const GameSettingsPage = () => {
   return (
-    <>
+    <div className="game-settings-container">
       <Header />
       <div className="game-settings">
-        <GameSettingsMapInfo />
-        <div className="settings">
-          <GameSettingsRounds />
-          <GameSettingsTime />
-          <GameSettingsGameMode />
+        <div className="game-settings__content">
+          <GameSettingsMapInfo />
+          <div className="settings">
+            <GameSettingsRounds />
+            <GameSettingsTime />
+            <GameSettingsGameMode />
+          </div>
+          <GameSettingsStartGameButton />
         </div>
-        <GameSettingsStartGameButton />
       </div>
-    </>
+    </div>
   );
 };
 

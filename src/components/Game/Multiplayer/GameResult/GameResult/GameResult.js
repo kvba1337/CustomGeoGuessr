@@ -89,6 +89,7 @@ const GameResult = () => {
             score={opponentTotalScore}
             maxScore={totalRounds * 5000}
             isWinner={!userIsWinner}
+            reverse
           />
         </div>
 

@@ -1,40 +1,37 @@
 .auth-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30vw;
-  height: auto;
   border: 2px solid #4b4691;
   background-color: #1c2833;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  padding: 2rem 0 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #ecf0f1;
   font-family: "Poppins", sans-serif;
+  margin: 0 auto;
   z-index: 1000;
+  overflow: hidden;
+  height: auto;
+  max-width: 90vw;
+}
 
-  @media (max-width: 1280px) {
-    width: 40vw;
-  }
-
-  @media (max-width: 1024px) {
-    width: 50vw;
-  }
+.auth-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  overflow: auto;
 
   @media (max-width: 768px) {
-    width: 70vw;
+    padding: 1.5rem;
   }
 
   @media (max-width: 480px) {
-    width: 90vw;
+    padding: 1rem;
   }
 
   @media (max-width: 320px) {
-    width: 95vw;
+    padding: 0.8rem;
   }
 }
 
@@ -79,6 +76,43 @@
   width: 100%;
 }
 
+.guest-form button,
+.sign-in-form button,
+.sign-up-form button {
+  width: 40%;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  border: 2px solid #4b4691;
+  border-radius: 20px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #3a3571 0%, #4374a1 100%);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.8rem;
+  }
+}
+
 .sign-up-form .avatar-label::before {
   content: "Upload Profile Photo";
   display: inline-block;
@@ -90,7 +124,6 @@
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
   font-size: 1rem;
-  margin-bottom: 1rem;
 
   &:hover {
     background: #5494be;
@@ -135,31 +168,6 @@
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-.guest-form button,
-.sign-in-form button,
-.sign-up-form button {
-  width: 30%;
-  padding: 0.8rem;
-  margin-top: 1.5rem;
-  border: 2px solid #4b4691;
-  border-radius: 20px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background: linear-gradient(135deg, #3a3571 0%, #4374a1 100%);
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
   }
 }
 

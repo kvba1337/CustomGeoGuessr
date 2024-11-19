@@ -3,9 +3,11 @@ import "./RoundResultHeader.scss";
 
 const RoundResultHeader = ({ gameMode, currentRound }) => (
   <div className="round-result-header">
-    <h1>DUELS</h1>
-    <h2>{gameMode}</h2>
-    <h3>ROUND {currentRound}</h3>
+    <div className="game-info">
+      <h1>DUELS</h1>
+      <h2>{gameMode}</h2>
+    </div>
+    <div className="current-round">ROUND {currentRound}</div>
   </div>
 );
 

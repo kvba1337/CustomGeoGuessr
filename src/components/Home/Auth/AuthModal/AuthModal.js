@@ -5,7 +5,7 @@ import AuthSignInForm from "../AuthSignInForm/AuthSignInForm";
 import AuthSignUpForm from "../AuthSignUpForm/AuthSignUpForm";
 import "./AuthModal.scss";
 
-const AuthAuthModal = () => {
+const AuthModal = () => {
   const [activeTab, setActiveTab] = useState("guest");
 
   const renderContent = useCallback(() => {
@@ -23,33 +23,37 @@ const AuthAuthModal = () => {
 
   return (
     <div className="auth-modal">
-      <div className="auth-modal__tabs">
-        <button
-          className={`auth-modal__tab ${activeTab === "guest" ? "active" : ""}`}
-          onClick={() => setActiveTab("guest")}
-        >
-          Guest
-        </button>
-        <button
-          className={`auth-modal__tab ${
-            activeTab === "signIn" ? "active" : ""
-          }`}
-          onClick={() => setActiveTab("signIn")}
-        >
-          Sign In
-        </button>
-        <button
-          className={`auth-modal__tab ${
-            activeTab === "signUp" ? "active" : ""
-          }`}
-          onClick={() => setActiveTab("signUp")}
-        >
-          Sign Up
-        </button>
+      <div className="auth-modal-content">
+        <div className="auth-modal__tabs">
+          <button
+            className={`auth-modal__tab ${
+              activeTab === "guest" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("guest")}
+          >
+            Guest
+          </button>
+          <button
+            className={`auth-modal__tab ${
+              activeTab === "signIn" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("signIn")}
+          >
+            Sign In
+          </button>
+          <button
+            className={`auth-modal__tab ${
+              activeTab === "signUp" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("signUp")}
+          >
+            Sign Up
+          </button>
+        </div>
+        <div className="auth-modal__content">{renderContent()}</div>
       </div>
-      <div className="auth-modal__content">{renderContent()}</div>
     </div>
   );
 };
 
-export default React.memo(AuthAuthModal);
+export default React.memo(AuthModal);

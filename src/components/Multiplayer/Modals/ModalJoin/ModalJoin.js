@@ -123,61 +123,63 @@ const ModalJoin = ({ onClose }) => {
   return (
     <div className="join-modal-overlay">
       <div className="join-modal">
-        {!roomId ? (
-          <>
+        <div className="join-modal__body">
+          {status !== "choosingGameSettings" && (
             <ModalCloseButton onClick={handleClose} />
-            <h2>Enter the code to join:</h2>
-            <input
-              type="text"
-              className="join-modal__input"
-              value={inputRoomId}
-              onChange={(e) => setInputRoomId(e.target.value.toUpperCase())}
-              onKeyPress={handleKeyPress}
-              maxLength="4"
-              placeholder="XYZA"
-              disabled={!!roomId}
-            />
-            <button
-              className={`join-modal__join ${!inputRoomId ? "disabled" : ""}`}
-              onClick={handleJoin}
-              disabled={!inputRoomId || !!roomId}
-            >
-              Join
-            </button>
-          </>
-        ) : (
-          <>
-            {status === "choosingGameSettings" ? (
-              <p className="join-modal__message success">
-                Host is choosing game settings... <br />
-                Game starts soon
-              </p>
-            ) : (
-              <>
-                <ModalCloseButton onClick={handleClose} />
+          )}
+          {!roomId ? (
+            <>
+              <h2>Enter the code to join:</h2>
+              <input
+                type="text"
+                className="join-modal__input"
+                value={inputRoomId}
+                onChange={(e) => setInputRoomId(e.target.value.toUpperCase())}
+                onKeyPress={handleKeyPress}
+                maxLength="4"
+                placeholder="XYZA"
+                disabled={!!roomId}
+              />
+              <button
+                className={`join-modal__join ${!inputRoomId ? "disabled" : ""}`}
+                onClick={handleJoin}
+                disabled={!inputRoomId || !!roomId}
+              >
+                Join
+              </button>
+            </>
+          ) : (
+            <>
+              {status === "choosingGameSettings" ? (
+                <p className="join-modal__message success">
+                  Host is choosing game settings... <br />
+                  Game starts soon
+                </p>
+              ) : (
+                <>
+                  {hostedRoomError ? (
+                    <ModalErrorMessage />
+                  ) : (
+                    <p className="join-modal__message success">
+                      Successfully connected to the room:
+                      <br />
+                      <span>{roomId}</span>
+                    </p>
+                  )}
+                  <ModalLeaveButton handleLeave={handleLeave} />
+                </>
+              )}
+            </>
+          )}
 
-                {hostedRoomError ? (
-                  <ModalErrorMessage />
-                ) : (
-                  <p className="join-modal__message success">
-                    Successfully connected to the room:
-                    <br />
-                    <span>{roomId}</span>
-                  </p>
-                )}
-                <ModalLeaveButton handleLeave={handleLeave} />
-              </>
-            )}
-          </>
-        )}
-
-        {error && (
-          <p className="join-modal__message error">
-            Failed to connect to the room:
-            <br />
-            <span>{inputRoomId}</span>
-          </p>
-        )}
+          {error && (
+            <p className="join-modal__message error">
+              Failed to connect to the room:
+              <br />
+              <span>{inputRoomId}</span>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

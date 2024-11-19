@@ -4,21 +4,11 @@
   font-family: "Knewave", system-ui;
   letter-spacing: 1px;
   text-align: center;
-  margin-top: 3rem;
 
   .countdown {
     font-size: 3.5rem;
     color: #fecd19;
     font-weight: bold;
     letter-spacing: 5px;
-
-    @media (max-width: 768px) {
-      font-size: 3rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.4rem;
-    margin-top: 2rem;
   }
 }

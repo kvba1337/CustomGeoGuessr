@@ -22,7 +22,6 @@ const RoundResult = () => {
     const timer = setTimeout(() => {
       dispatch(handleNextRound());
     }, 15000);
-
     return () => clearTimeout(timer);
   }, [dispatch]);
 
@@ -32,20 +31,22 @@ const RoundResult = () => {
 
   return (
     <div className="round-result">
-      <div className="map-container">
-        <RoundResultHeader gameMode={gameMode} currentRound={currentRound} />
-        <RoundResultMap />
-        <RoundResultProgressBars
-          avatar={avatar}
+      <div className="round-result__content">
+        <div className="map-container">
+          <RoundResultHeader gameMode={gameMode} currentRound={currentRound} />
+          <RoundResultMap />
+          <RoundResultProgressBars
+            avatar={avatar}
+            userResult={userResult}
+            opponentResult={opponentResult}
+            opponentAvatar={opponent.avatar}
+          />
+        </div>
+        <RoundResultPlayersResults
           userResult={userResult}
           opponentResult={opponentResult}
-          opponentAvatar={opponent.avatar}
         />
       </div>
-      <RoundResultPlayersResults
-        userResult={userResult}
-        opponentResult={opponentResult}
-      />
     </div>
   );
 };

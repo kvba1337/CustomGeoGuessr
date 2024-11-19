@@ -2,22 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
   max-width: 1200px;
   margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    max-width: 60%;
     margin-bottom: 2rem;
-    gap: 1rem;
   }
 
   @media (max-width: 480px) {
-    max-width: 80%;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 320px) {
-    max-width: 90%;
+    margin-bottom: 0.5rem;
   }
 }

@@ -6,19 +6,23 @@
   text-shadow: 0 0 3px #000000, 0 0 5px #000000;
 
   @media (max-width: 768px) {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   @media (max-width: 480px) {
-    gap: 0.5rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    gap: 0.8rem;
   }
 }
 
 .home__button {
   background: linear-gradient(135deg, #4b4691 0%, #5494be 100%);
   color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1.5rem;
+  padding: 1.2rem 3rem;
+  font-size: 1.8rem;
   font-weight: bold;
   border: 2px solid black;
   border-radius: 30px;
@@ -80,17 +84,17 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
   }
 
   @media (max-width: 480px) {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
   }
 
   @media (max-width: 320px) {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 1.2rem;
   }
 }

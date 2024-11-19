@@ -1,31 +1,32 @@
-h2 {
-  color: #fff;
+.host-modal__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    color: #fff;
+    margin: 0.5rem;
+  }
 }
 
 .host-modal__code {
   font-size: 2rem;
   font-weight: bold;
-  margin: 1rem 0;
+  margin: 0;
   color: #fecd19;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 320px) {
-    font-size: 1rem;
-  }
+.host-modal__info-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .host-modal__info {
   color: #fff;
-  font-size: 1.2rem;
-  margin: 1rem 0;
+  font-size: 1.5rem;
+  margin: 0;
   font-weight: bold;
 
   &.joined {
@@ -35,64 +36,6 @@ h2 {
   &.waiting {
     color: #ff0808;
     animation: pulse 3s infinite;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 320px) {
-    font-size: 0.8rem;
-  }
-}
-
-.host-modal__continue {
-  margin-top: 1rem;
-  padding: 1rem 2rem;
-  background: rgb(108, 185, 40);
-  background-image: radial-gradient(
-    150% 160% at 50% 15%,
-    hsla(0, 0%, 100%, 0.6) 0,
-    transparent 30%
-  );
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: background 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-  font-family: "Knewave", system-ui;
-  letter-spacing: 1px;
-  border: 1px solid black;
-
-  &:disabled {
-    background: linear-gradient(135deg, #555 0%, #888 100%);
-    cursor: not-allowed;
-  }
-
-  &:hover:not(:disabled) {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-  }
-
-  @media (max-width: 320px) {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
   }
 }
 

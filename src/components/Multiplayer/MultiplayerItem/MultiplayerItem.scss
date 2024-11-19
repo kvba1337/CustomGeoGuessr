@@ -1,6 +1,6 @@
 .item {
   flex: 1;
-  margin: 0 1rem;
+  margin: 0.5rem;
   padding: 2rem;
   background: linear-gradient(
     135deg,
@@ -11,6 +11,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
 
   &:hover {
     transform: translateY(-10px);
@@ -26,7 +27,7 @@
   }
 
   @media (max-width: 320px) {
-    padding: 0.5rem;
+    padding: 0.8rem;
   }
 
   h2 {
@@ -36,15 +37,15 @@
     font-weight: 600;
 
     @media (max-width: 768px) {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     @media (max-width: 480px) {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
 
     @media (max-width: 320px) {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 

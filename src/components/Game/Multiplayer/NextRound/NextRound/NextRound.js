@@ -33,14 +33,16 @@ const NextRound = () => {
 
   return (
     <div className="next-round-info">
-      <NextRoundHeader currentRound={currentRound} gameMode={gameMode} />
-      <NextRoundPlayers
-        username={username}
-        avatar={avatar}
-        opponent={opponent}
-      />
-      <NextRoundStart countdown={countdown} />
-      <NextRoundNoGoogling />
+      <div className="next-round-info__content">
+        <NextRoundHeader currentRound={currentRound} gameMode={gameMode} />
+        <NextRoundPlayers
+          username={username}
+          avatar={avatar}
+          opponent={opponent}
+        />
+        <NextRoundStart countdown={countdown} />
+        <NextRoundNoGoogling />
+      </div>
     </div>
   );
 };

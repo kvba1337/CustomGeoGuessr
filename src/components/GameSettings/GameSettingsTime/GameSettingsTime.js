@@ -25,19 +25,21 @@ const GameSettingsTime = () => {
 
   return (
     <div className="time-limit">
-      <label>
-        Time Limit:
-        <input
-          type="range"
-          min="10"
-          max="240"
-          step="10"
-          value={timeLimit}
-          onChange={handleTimeLimitChange}
-          className="time-slider"
-        />
-        <span>{timeLimit === 0 ? "No Limit" : `${timeLimit} seconds`}</span>
-      </label>
+      <div className="time-limit__label">
+        <label>
+          <h3>Time Limit: </h3>
+          <input
+            type="range"
+            min="10"
+            max="240"
+            step="10"
+            value={timeLimit}
+            onChange={handleTimeLimitChange}
+            className="time-slider"
+          />
+          <p>{timeLimit === 0 ? "No Limit" : `${timeLimit} seconds`}</p>
+        </label>
+      </div>
       <div className="no-limit-container">
         <button
           className={`no-limit-btn ${noLimitSelected ? "selected" : ""}`}

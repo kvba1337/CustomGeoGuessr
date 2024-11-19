@@ -2,13 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 10rem;
   margin: 0;
 
   .vs {
     text-align: center;
     font-size: 3.5rem;
-    margin: 0 3rem;
     color: #fff;
     font-weight: bold;
     text-shadow: 0 0 5px #00a2fe, 0 0 10px #367aa1, 0 0 15px #7f36a1,
@@ -16,17 +15,14 @@
     animation: pulse 1s infinite;
     font-family: "Knewave", system-ui;
     letter-spacing: 1.5px;
-
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-      margin: 0;
-    }
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0rem;
-    margin-top: 2rem;
+    gap: 4rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 3rem;
   }
 }
 

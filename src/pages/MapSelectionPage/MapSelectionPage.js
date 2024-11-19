@@ -6,12 +6,12 @@ import "./MapSelectionPage.scss";
 
 const MapSelectionPage = () => {
   return (
-    <>
+    <div className="map-selection-container">
       <Header />
       <div className="map-selection">
         <MapSelectionGrid />
       </div>
-    </>
+    </div>
   );
 };
 

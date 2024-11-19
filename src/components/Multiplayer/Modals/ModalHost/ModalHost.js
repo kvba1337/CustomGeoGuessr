@@ -88,16 +88,30 @@ const ModalHost = ({ onClose }) => {
     <div className="host-modal-overlay">
       <div className="host-modal">
         <ModalCloseButton onClick={onClose} />
-        {joinedRoomError ? (
-          <ModalErrorMessage />
-        ) : (
-          <ModalRoomInfo
-            roomId={roomId}
-            status={status}
-            handleContinue={handleContinue}
-          />
-        )}
-        <ModalLeaveButton handleLeave={handleLeave} />
+        <div className="host-modal__body">
+          {joinedRoomError ? (
+            <>
+              <ModalErrorMessage />
+              <ModalLeaveButton handleLeave={handleLeave} />
+            </>
+          ) : (
+            <>
+              <ModalRoomInfo roomId={roomId} status={status} />
+              <div className="host-modal__buttons">
+                <div className="host-modal__continue-container">
+                  <button
+                    className="host-modal__continue"
+                    disabled={status === "waiting"}
+                    onClick={handleContinue}
+                  >
+                    Continue
+                  </button>
+                </div>
+                <ModalLeaveButton handleLeave={handleLeave} />
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

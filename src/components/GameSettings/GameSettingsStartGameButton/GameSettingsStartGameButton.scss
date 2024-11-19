@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .settings-btn {
@@ -32,20 +31,5 @@
 
   &:active {
     transform: scale(0.975);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-  }
-
-  @media (max-width: 320px) {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
   }
 }

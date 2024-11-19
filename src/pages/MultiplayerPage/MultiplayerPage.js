@@ -12,9 +12,9 @@ const MultiplayerPage = () => {
   const [showJoinModal, setShowJoinModal] = useState(false);
 
   return (
-    <>
+    <div className="multiplayer-container">
       <Header />
-      <div className="multiplayer">
+      <div className="multiplayer-content">
         <MultiplayerContainer />
         <MultiplayerButtons
           onHostClick={() => setShowHostModal(true)}
@@ -23,7 +23,7 @@ const MultiplayerPage = () => {
         {showHostModal && <ModalHost onClose={() => setShowHostModal(false)} />}
         {showJoinModal && <ModalJoin onClose={() => setShowJoinModal(false)} />}
       </div>
-    </>
+    </div>
   );
 };
 

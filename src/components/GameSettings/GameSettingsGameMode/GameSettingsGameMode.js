@@ -18,16 +18,18 @@ const GameSettingsGameMode = () => {
   return (
     <div className="game-mode">
       <h3>Game Mode:</h3>
-      {["Move", "NoMove", "NMPZ"].map((mode) => (
-        <label
-          key={mode}
-          className={gameMode === mode ? "active" : ""}
-          onClick={() => handleGameModeChange(mode)}
-        >
-          {mode}
-          <input type="radio" name="gameMode" value={mode} />
-        </label>
-      ))}
+      <div className="game-mode__labels">
+        {["Move", "NoMove", "NMPZ"].map((mode) => (
+          <label
+            key={mode}
+            className={gameMode === mode ? "active" : ""}
+            onClick={() => handleGameModeChange(mode)}
+          >
+            {mode}
+            <input type="radio" name="gameMode" value={mode} />
+          </label>
+        ))}
+      </div>
     </div>
   );
 };

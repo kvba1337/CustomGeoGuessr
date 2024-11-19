@@ -23,18 +23,20 @@ const Header = () => {
 
   return (
     <header className="header">
-      <HeaderLogo />
-      {idToken && (
-        <HeaderUserMenu
-          avatar={avatar}
-          username={username}
-          showUserMenu={showUserMenu}
-          toggleUserMenu={toggleUserMenu}
-          handleLogout={handleLogout}
-        />
-      )}
+      <div className="header__content">
+        <HeaderLogo />
+        {idToken && (
+          <HeaderUserMenu
+            avatar={avatar}
+            username={username}
+            showUserMenu={showUserMenu}
+            toggleUserMenu={toggleUserMenu}
+            handleLogout={handleLogout}
+          />
+        )}
+      </div>
     </header>
   );
 };
 
-export default React.memo(Header);
+export default Header;
