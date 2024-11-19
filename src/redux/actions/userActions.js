@@ -6,7 +6,7 @@ import {
 } from "@redux/api/authApi";
 import { ref, set, get, remove } from "firebase/database";
 import { database, auth } from "@services/firebaseConfig";
-import { faker } from "@faker-js/faker";
+import { generateUsername } from "@utils/authUtils";
 import {
   SET_USER_AS_GUEST,
   SET_USER,
@@ -77,7 +77,7 @@ export const signInAsGuest = (avatar) => async (dispatch) => {
   try {
     const user = await loginAnonymously();
 
-    const username = faker.internet.username();
+    const username = generateUsername(10);
 
     const userData = {
       userId: user.uid,

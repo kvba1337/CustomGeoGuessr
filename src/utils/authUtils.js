@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { faker } from "@faker-js/faker";
 
 export const validateUsername = (username) => {
   if (!username) {
@@ -6,8 +7,8 @@ export const validateUsername = (username) => {
   }
   if (username.length < 3) {
     return "Username should be at least 3 characters";
-  } else if (username.length > 15) {
-    return "Username should be at most 15 characters";
+  } else if (username.length > 10) {
+    return "Username should be at most 10 characters";
   }
   return null;
 };
@@ -30,4 +31,12 @@ export const saveIdTokenToCookies = async (user) => {
     secure: true,
     sameSite: "Strict",
   });
+};
+
+export const generateUsername = (maxLength) => {
+  let username = faker.internet.userName();
+  while (username.length > maxLength) {
+    username = faker.internet.userName();
+  }
+  return username;
 };

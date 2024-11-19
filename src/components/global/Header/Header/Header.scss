@@ -16,17 +16,21 @@
   text-shadow: var(--text-shadow);
   font-family: "Knewave", cursive;
   position: relative;
+  height: 70px;
 
   @media (max-width: 768px) {
     max-height: 20vh;
+    height: 60px;
   }
 
   @media (max-width: 480px) {
     max-height: 20vh;
+    height: 50px;
   }
 
   @media (max-width: 320px) {
     max-height: 20vh;
+    height: 40px;
   }
 }
 
