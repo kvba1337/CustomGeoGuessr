@@ -37,6 +37,10 @@ $max-width: 1000px;
       text-align: center;
       margin: 0;
       padding: 1rem 0;
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
     }
 
     .player-score {
@@ -46,6 +50,10 @@ $max-width: 1000px;
       margin: 0;
       text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
         0 4px 10px rgba(255, 99, 71, 0.8);
+
+      @media (max-width: 480px) {
+        font-size: 2rem;
+      }
     }
 
     .separator {
@@ -54,6 +62,10 @@ $max-width: 1000px;
       text-align: center;
       margin: 0;
       opacity: 0.9;
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
     }
   }
 }
