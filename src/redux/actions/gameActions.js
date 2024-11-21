@@ -121,15 +121,19 @@ export const roundOver = () => async (dispatch, getState) => {
     const opponentResult = opponentSnapshot.val();
 
     if (settings.gameType === "battle") {
-      let userHp, opponentHp;
+      let userHp, opponentHp, userPrevHp, opponentPrevHp;
 
       if (currentRound === 1) {
         userHp = 6000;
+        userPrevHp = userHp;
         opponentHp = 6000;
+        opponentPrevHp = opponentHp;
       } else {
         userHp = users[userId].roundsResults[currentRound - 2]?.remainingHp;
+        userPrevHp = userHp;
         opponentHp =
           users[opponentId].roundsResults[currentRound - 2]?.remainingHp;
+        opponentPrevHp = opponentHp;
       }
 
       if (userResult.score > opponentResult?.score) {
@@ -139,7 +143,6 @@ export const roundOver = () => async (dispatch, getState) => {
           currentRound
         );
         opponentHp = Math.max(0, opponentHp - damage);
-        console.log(`Opponent takes ${damage} damage, HP left: ${opponentHp}`);
       } else if (opponentResult?.score > userResult.score) {
         const damage = calculateDamage(
           opponentResult.score,
@@ -147,7 +150,6 @@ export const roundOver = () => async (dispatch, getState) => {
           currentRound
         );
         userHp = Math.max(0, userHp - damage);
-        console.log(`User takes ${damage} damage, HP left: ${userHp}`);
       }
 
       const updates = {
@@ -162,7 +164,9 @@ export const roundOver = () => async (dispatch, getState) => {
       await update(ref(database), updates);
 
       userResult.remainingHp = userHp;
+      userResult.prevHp = userPrevHp;
       opponentResult.remainingHp = opponentHp;
+      opponentResult.prevHp = opponentPrevHp;
     }
 
     dispatch(setRoundResults({ userResult, opponentResult }));

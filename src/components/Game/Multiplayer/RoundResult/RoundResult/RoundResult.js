@@ -21,7 +21,7 @@ const RoundResult = () => {
   const startNextRoundTimer = useCallback(() => {
     const timer = setTimeout(() => {
       dispatch(handleNextRound());
-    }, 15000);
+    }, 10000);
     return () => clearTimeout(timer);
   }, [dispatch]);
 
@@ -46,6 +46,7 @@ const RoundResult = () => {
         <RoundResultPlayersResults
           userResult={userResult}
           opponentResult={opponentResult}
+          currentRound={currentRound}
         />
       </div>
     </div>

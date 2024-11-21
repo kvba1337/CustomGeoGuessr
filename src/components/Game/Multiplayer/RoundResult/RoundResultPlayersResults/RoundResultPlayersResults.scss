@@ -13,15 +13,17 @@ $max-width: 1000px;
   flex-direction: column;
   font-weight: bold;
   color: $primary-color;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0);
   border-radius: $border-radius;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
   gap: 0.5rem;
   padding: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: 1.5s;
 
-  &__distance,
-  &__score {
+  &__distance {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -31,6 +33,9 @@ $max-width: 1000px;
     font-weight: normal;
     font-family: "Knewave", system-ui;
     min-height: 70px;
+    transform: translateY(300%);
+    animation: slideInFromBottom 0.5s ease-in-out forwards;
+    animation-delay: 1.5s;
 
     @media (max-width: 480px) {
       min-height: 60px;
@@ -48,6 +53,37 @@ $max-width: 1000px;
       }
     }
 
+    .separator {
+      font-size: 1rem;
+      color: $quaternary-color;
+      text-align: center;
+      margin: 0;
+      opacity: 0.9;
+      width: 33%;
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  &__score {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 6px $box-shadow-color;
+    font-weight: normal;
+    font-family: "Knewave", system-ui;
+    min-height: 70px;
+    transform: translateY(300%);
+    animation: slideInFromBottom 0.5s ease-in-out forwards;
+    animation-delay: 2s;
+    @media (max-width: 480px) {
+      min-height: 60px;
+    }
+
     .player-score {
       font-size: 3rem;
       color: $primary-color;
@@ -56,6 +92,39 @@ $max-width: 1000px;
       text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
         0 4px 10px rgba(255, 99, 71, 0.8);
       width: 33%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      animation: fadeInScore 0.5s ease-in-out forwards;
+      animation-delay: 2.5s;
+
+      &.winner {
+        animation: scaleUp 0.5s ease-in-out forwards;
+        animation-delay: 0.5s;
+        opacity: 1;
+      }
+
+      &.loser {
+        animation: fadeOut 0.1s ease-in-out forwards,
+          explosionEffect 0.5s ease-in-out forwards;
+        animation-delay: 4.5s;
+        opacity: 1;
+      }
+
+      &.hit-right {
+        animation: moveToRight 0.2s ease-in-out forwards,
+          moveUpRight ease-in-out forwards,
+          fadeOutScaleRight 0.3s ease-in-out forwards;
+        animation-delay: 0.8s, 2s, 2s;
+        opacity: 1;
+      }
+
+      &.hit-left {
+        animation: moveToLeft 0.2s ease-in-out forwards,
+          moveUpLeft ease-in-out forwards,
+          fadeOutScaleLeft 0.3s ease-in-out forwards;
+        animation-delay: 0.8s, 2s, 2s;
+        opacity: 1;
+      }
 
       @media (max-width: 480px) {
         font-size: 2rem;
@@ -74,5 +143,119 @@ $max-width: 1000px;
         font-size: 0.8rem;
       }
     }
+  }
+}
+
+@keyframes slideInFromBottom {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInScore {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.17);
+  }
+}
+
+@keyframes moveToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes explosionEffect {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7), 0 0 0 0 rgba(255, 165, 0, 0.5),
+      0 0 0 0 rgba(255, 255, 0, 0.3);
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 0, 0, 0), 0 0 0 10px rgba(255, 165, 0, 0.3),
+      0 0 0 15px rgba(255, 255, 0, 0.2);
+    transform: scale(0.5);
+    opacity: 0.6;
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0), 0 0 0 20px rgba(255, 165, 0, 0),
+      0 0 0 30px rgba(255, 255, 0, 0);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes moveUpRight {
+  0% {
+    transform: translateX(200%) translateY(0);
+  }
+  100% {
+    transform: translateX(160%) translateY(-270%);
+  }
+}
+
+@keyframes moveUpLeft {
+  0% {
+    transform: translateX(-200%) translateY(0);
+  }
+  100% {
+    transform: translateX(-160%) translateY(-270%);
+  }
+}
+
+@keyframes fadeOutScaleLeft {
+  0% {
+    transform: translateX(-160%) translateY(-270%) scale(1.17);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-160%) translateY(-270%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutScaleRight {
+  0% {
+    transform: translateX(160%) translateY(-270%) scale(1.17);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(160%) translateY(-270%) scale(1.5);
+    opacity: 0;
   }
 }

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "./ProgressBar.scss";
 
 const getProgressBarModifier = (value, max) => {
@@ -13,12 +13,38 @@ const getProgressBarModifier = (value, max) => {
 };
 
 const ProgressBar = ({ value, max, showValue }) => {
-  const progressBarModifier = getProgressBarModifier(value, max);
+  const [progressValue, setProgressValue] = useState(value);
+  const progressBarModifier = getProgressBarModifier(progressValue, max);
+
+  useEffect(() => {
+    const animateProgress = (start, end, duration) => {
+      let startTime = null;
+
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const current = Math.max(
+          start + (end - start) * (progress / duration),
+          end
+        );
+        setProgressValue(current);
+        if (progress < duration) {
+          requestAnimationFrame(step);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    animateProgress(progressValue, value, 300);
+  }, [value]);
 
   return (
     <div className={`progress-bar ${progressBarModifier}`}>
-      <progress value={value} max={max}></progress>
-      {showValue && <span className="progress-value">{value}</span>}
+      <progress value={progressValue} max={max}></progress>
+      {showValue && (
+        <span className="progress-value">{Math.floor(progressValue)}</span>
+      )}
     </div>
   );
 };

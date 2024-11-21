@@ -12,6 +12,9 @@ $max-width: 1000px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: 0.5s;
 
   .progress-bar-container {
     display: flex;
@@ -21,6 +24,15 @@ $max-width: 1000px;
     width: 40%;
     gap: 0.5rem;
     padding: 0 0.5rem;
+    transform: translateX(-100%);
+    animation: slideInFromLeft 0.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+
+    &:nth-child(2) {
+      transform: translateX(100%);
+      animation: slideInFromRight 0.5s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
 
     .avatar {
       width: 50px;
@@ -35,5 +47,23 @@ $max-width: 1000px;
         height: 30px;
       }
     }
+  }
+}
+
+@keyframes slideInFromLeft {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
