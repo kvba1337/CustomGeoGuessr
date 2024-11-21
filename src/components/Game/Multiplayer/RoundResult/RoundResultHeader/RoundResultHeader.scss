@@ -15,7 +15,7 @@
     opacity: 0.8;
     font-family: "Knewave", system-ui;
 
-    @media (max-width: 480px) {
+    @media (max-width: 1280px) {
       font-size: 2rem;
     }
   }
@@ -31,7 +31,7 @@
       margin: 0;
       text-shadow: 0 0 10px #000000, 0 0 15px #000000;
 
-      @media (max-width: 480px) {
+      @media (max-width: 1280px) {
         font-size: 0.7rem;
       }
     }
@@ -42,7 +42,7 @@
       line-height: 1.2;
       margin: 0;
 
-      @media (max-width: 480px) {
+      @media (max-width: 1280px) {
         font-size: 1rem;
       }
     }

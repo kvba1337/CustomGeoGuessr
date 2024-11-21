@@ -33,6 +33,11 @@ $max-width: 1000px;
     overflow: hidden;
     justify-content: center;
 
+    @media (max-width: 1280px) {
+      gap: 0rem;
+      padding: 0 2rem;
+    }
+
     @media (max-width: 1024px) {
       gap: 1rem;
       padding: 0 2rem;
