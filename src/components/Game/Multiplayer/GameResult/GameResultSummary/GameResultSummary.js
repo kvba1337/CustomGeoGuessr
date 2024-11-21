@@ -18,7 +18,7 @@ const GameResultSummary = ({
   const { avatar } = useSelector((state) => state.user);
   const { opponent } = useSelector((state) => state.room);
   const { selectedMap } = useSelector((state) => state.game);
-  const [selectedRound, setSelectedRound] = useState(gameLocations.length - 1);
+  const [selectedRound, setSelectedRound] = useState(1);
   const mapRef = useRef(null);
 
   const fitBounds = useCallback(() => {

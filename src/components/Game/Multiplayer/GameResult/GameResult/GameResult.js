@@ -82,6 +82,7 @@ const GameResult = () => {
             score={userTotalScore}
             maxScore={totalRounds * 5000}
             isWinner={userIsWinner}
+            remainingHp={userResults[userResults.length - 1]?.remainingHp || 0}
           />
           <GameResultScoreItem
             avatar={opponent.avatar}
@@ -89,6 +90,9 @@ const GameResult = () => {
             score={opponentTotalScore}
             maxScore={totalRounds * 5000}
             isWinner={!userIsWinner}
+            remainingHp={
+              opponentResults[opponentResults.length - 1]?.remainingHp || 0
+            }
             reverse
           />
         </div>

@@ -15,6 +15,7 @@ import {
   calculateDistance,
   calculateScore,
   formatDistance,
+  calculateDamage,
 } from "@utils/gameUtils";
 
 export const fetchGameData = (roomId) => async (dispatch) => {
@@ -74,7 +75,7 @@ export const resetGameState = () => ({
 export const roundOver = () => async (dispatch, getState) => {
   const { roomId } = getState().room;
   const { userId } = getState().user;
-  const { markerLocation, gameLocations, currentRound, selectedMap } =
+  const { markerLocation, gameLocations, currentRound, selectedMap, settings } =
     getState().game;
 
   let userResult;
@@ -99,17 +100,19 @@ export const roundOver = () => async (dispatch, getState) => {
   }
 
   try {
-    const userRef = ref(
-      database,
-      `rooms/${roomId}/users/${userId}/roundsResults/${currentRound - 1}`
-    );
-    await update(userRef, userResult);
-
     const usersRef = ref(database, `rooms/${roomId}/users`);
     const usersSnapshot = await get(usersRef);
     const users = usersSnapshot.val();
-
     const opponentId = Object.keys(users).find((id) => id !== userId);
+
+    await update(
+      ref(
+        database,
+        `rooms/${roomId}/users/${userId}/roundsResults/${currentRound - 1}`
+      ),
+      userResult
+    );
+
     const opponentRef = ref(
       database,
       `rooms/${roomId}/users/${opponentId}/roundsResults/${currentRound - 1}`
@@ -117,16 +120,61 @@ export const roundOver = () => async (dispatch, getState) => {
     const opponentSnapshot = await get(opponentRef);
     const opponentResult = opponentSnapshot.val();
 
-    await dispatch(setRoundResults({ userResult, opponentResult }));
+    if (settings.gameType === "battle") {
+      let userHp, opponentHp;
 
+      if (currentRound === 1) {
+        userHp = 6000;
+        opponentHp = 6000;
+      } else {
+        userHp = users[userId].roundsResults[currentRound - 2]?.remainingHp;
+        opponentHp =
+          users[opponentId].roundsResults[currentRound - 2]?.remainingHp;
+      }
+
+      if (userResult.score > opponentResult?.score) {
+        const damage = calculateDamage(
+          userResult.score,
+          opponentResult.score,
+          currentRound
+        );
+        opponentHp = Math.max(0, opponentHp - damage);
+        console.log(`Opponent takes ${damage} damage, HP left: ${opponentHp}`);
+      } else if (opponentResult?.score > userResult.score) {
+        const damage = calculateDamage(
+          opponentResult.score,
+          userResult.score,
+          currentRound
+        );
+        userHp = Math.max(0, userHp - damage);
+        console.log(`User takes ${damage} damage, HP left: ${userHp}`);
+      }
+
+      const updates = {
+        [`rooms/${roomId}/users/${userId}/roundsResults/${
+          currentRound - 1
+        }/remainingHp`]: userHp,
+        [`rooms/${roomId}/users/${opponentId}/roundsResults/${
+          currentRound - 1
+        }/remainingHp`]: opponentHp,
+      };
+
+      await update(ref(database), updates);
+
+      userResult.remainingHp = userHp;
+      opponentResult.remainingHp = opponentHp;
+    }
+
+    dispatch(setRoundResults({ userResult, opponentResult }));
     dispatch(setGameStatus("roundOver"));
   } catch (error) {
-    console.error("Error ending round:", error);
+    console.error("Error in roundOver:", error);
   }
 };
 
 export const handleNextRound = () => async (dispatch, getState) => {
-  const { currentRound, totalRounds, gameLocations } = getState().game;
+  const { currentRound, totalRounds, gameLocations, settings } =
+    getState().game;
   const { roomId } = getState().room;
   const usersRef = ref(database, `rooms/${roomId}/users`);
   const usersSnapshot = await get(usersRef);
@@ -142,15 +190,38 @@ export const handleNextRound = () => async (dispatch, getState) => {
   dispatch(setCurrentLocation(gameLocations[currentRound]));
   dispatch(setMarkerLocation(null));
 
-  if (currentRound < totalRounds) {
-    await dispatch(setGameStatus("beforeRound"));
+  if (settings.gameType === "battle") {
+    const userId = Object.keys(users)[0];
+    const opponentId = Object.keys(users)[1];
+
+    const userHp = users[userId].roundsResults[currentRound - 1]?.remainingHp;
+    const opponentHp =
+      users[opponentId].roundsResults[currentRound - 1]?.remainingHp;
+
+    console.log("userHp", userHp);
+    console.log("opponenthp", opponentHp);
+
+    if (userHp === 0 || opponentHp === 0 || currentRound === 10) {
+      await dispatch(setGameStatus("gameOver"));
+      const updates = {};
+      Object.keys(users).forEach((userId) => {
+        updates[`rooms/${roomId}/users/${userId}/isCurrent`] = false;
+      });
+      await update(ref(database), updates);
+    } else {
+      await dispatch(setGameStatus("beforeRound"));
+    }
   } else {
-    await dispatch(setGameStatus("gameOver"));
-    const updates = {};
-    Object.keys(users).forEach((userId) => {
-      updates[`rooms/${roomId}/users/${userId}/isCurrent`] = false;
-    });
-    await update(ref(database), updates);
+    if (currentRound < totalRounds) {
+      await dispatch(setGameStatus("beforeRound"));
+    } else {
+      await dispatch(setGameStatus("gameOver"));
+      const updates = {};
+      Object.keys(users).forEach((userId) => {
+        updates[`rooms/${roomId}/users/${userId}/isCurrent`] = false;
+      });
+      await update(ref(database), updates);
+    }
   }
 };
 

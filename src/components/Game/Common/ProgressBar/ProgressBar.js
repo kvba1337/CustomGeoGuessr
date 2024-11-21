@@ -12,12 +12,13 @@ const getProgressBarModifier = (value, max) => {
   }
 };
 
-const ProgressBar = ({ value, max }) => {
+const ProgressBar = ({ value, max, showValue }) => {
   const progressBarModifier = getProgressBarModifier(value, max);
 
   return (
     <div className={`progress-bar ${progressBarModifier}`}>
       <progress value={value} max={max}></progress>
+      {showValue && <span className="progress-value">{value}</span>}
     </div>
   );
 };

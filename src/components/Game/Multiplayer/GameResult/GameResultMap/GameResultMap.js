@@ -9,22 +9,30 @@ import { extendMapBounds, getMapOptions } from "@utils/mapUtils";
 import "./GameResultMap.scss";
 
 const GameResultMap = ({ userResults, opponentResults }) => {
-  const { gameLocations, selectedMap } = useSelector((state) => state.game);
+  const { gameLocations, selectedMap, settings } = useSelector(
+    (state) => state.game
+  );
+  const { gameType } = settings;
   const { avatar } = useSelector((state) => state.user);
   const { opponent } = useSelector((state) => state.room);
   const mapRef = useRef(null);
+
+  const completedLocations =
+    gameType === "battle"
+      ? gameLocations.slice(0, userResults.length)
+      : gameLocations;
 
   useEffect(() => {
     if (mapRef.current) {
       extendMapBounds(
         mapRef.current,
-        gameLocations,
+        completedLocations,
         userResults,
         opponentResults,
         selectedMap
       );
     }
-  }, [gameLocations, userResults, opponentResults, selectedMap]);
+  }, [completedLocations, userResults, opponentResults, selectedMap]);
 
   return (
     <div className="game-result-map">
@@ -34,7 +42,7 @@ const GameResultMap = ({ userResults, opponentResults }) => {
         options={getMapOptions()}
         onLoad={(map) => (mapRef.current = map)}
       >
-        {gameLocations.map((location, index) => (
+        {completedLocations.map((location, index) => (
           <React.Fragment key={index}>
             <CustomMarker location={location} icon={correctLocation} />
             {userResults[index]?.guessedLocation && (

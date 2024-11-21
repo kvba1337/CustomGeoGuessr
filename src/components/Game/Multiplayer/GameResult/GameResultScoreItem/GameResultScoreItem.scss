@@ -32,6 +32,10 @@ $font-family-secondary: "Knewave", system-ui;
     width: 30%;
     gap: 0.5rem;
 
+    &.battle-mode {
+      width: 100%;
+    }
+
     .avatar {
       width: 100px;
       height: 100px;
@@ -92,22 +96,18 @@ $font-family-secondary: "Knewave", system-ui;
     }
 
     .score {
-      font-size: 3.5rem;
-      color: $text-color;
-      font-weight: normal;
-      font-family: $font-family-secondary;
+      font-size: 3rem;
+      color: #fff;
       text-align: center;
       margin: 0;
-      text-shadow: 0 2px 5px $primary-shadow-color,
-        0 4px 10px $primary-shadow-color, 0 6px 15px $secondary-shadow-color,
-        0 8px 25px $secondary-shadow-color, 0 10px 30px rgba(0, 0, 0, 0.6);
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
+      text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
+        0 4px 10px rgba(255, 99, 71, 0.8);
+      font-weight: normal;
+      font-family: "Knewave", system-ui;
+      -webkit-text-stroke: 1px #000;
 
       @media (max-width: 480px) {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
     }
   }

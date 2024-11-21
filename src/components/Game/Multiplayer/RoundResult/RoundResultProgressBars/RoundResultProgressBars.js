@@ -7,21 +7,41 @@ const RoundResultProgressBars = ({
   userResult,
   opponentResult,
   opponentAvatar,
-}) => (
-  <div className="progress-bars">
-    <div className="progress-bar-container progress-bar-container--left">
-      <img src={avatar} alt="User Avatar" className="avatar" />
-      <ProgressBar value={userResult?.score || 0} max={5000} player="user" />
+  settings,
+}) => {
+  const { gameType } = settings;
+  const maxValue = gameType === "battle" ? 6000 : 5000;
+
+  return (
+    <div className="progress-bars">
+      <div className="progress-bar-container ">
+        <img src={avatar} alt="User Avatar" className="avatar" />
+        <ProgressBar
+          value={
+            gameType === "battle"
+              ? userResult?.remainingHp
+              : userResult?.score || 0
+          }
+          max={maxValue}
+          player="user"
+          showValue={gameType === "battle"}
+        />
+      </div>
+      <div className="progress-bar-container">
+        <ProgressBar
+          value={
+            gameType === "battle"
+              ? opponentResult?.remainingHp
+              : opponentResult?.score || 0
+          }
+          max={maxValue}
+          player="opponent"
+          showValue={gameType === "battle"}
+        />
+        <img src={opponentAvatar} alt="Opponent Avatar" className="avatar" />
+      </div>
     </div>
-    <div className="progress-bar-container progress-bar-container--right">
-      <ProgressBar
-        value={opponentResult?.score || 0}
-        max={5000}
-        player="opponent"
-      />
-      <img src={opponentAvatar} alt="Opponent Avatar" className="avatar" />
-    </div>
-  </div>
-);
+  );
+};
 
 export default React.memo(RoundResultProgressBars);

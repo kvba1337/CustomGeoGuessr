@@ -32,3 +32,11 @@ export const formatDistance = (distance) => {
   }
   return `${parseInt(formattedDistance)} M`;
 };
+
+export const calculateDamage = (winnerScore, loserScore, currentRound) => {
+  const scoreDifference = winnerScore - loserScore;
+
+  const multiplier = 1.0 + Math.max(0, Math.floor(currentRound - 4)) * 0.5;
+
+  return Math.floor(scoreDifference * multiplier);
+};

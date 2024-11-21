@@ -40,6 +40,7 @@ const RoundResult = () => {
             userResult={userResult}
             opponentResult={opponentResult}
             opponentAvatar={opponent.avatar}
+            settings={settings}
           />
         </div>
         <RoundResultPlayersResults
