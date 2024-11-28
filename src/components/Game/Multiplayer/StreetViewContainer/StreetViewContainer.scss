@@ -1,11 +1,11 @@
 :root {
-  --control-bottom: 240px;
-  --control-left: 0px;
+  --control-bottom: 15rem;
+  --control-left: 0;
 }
 
 .street-view-map {
-  width: 100vw;
-  height: 100dvh;
+  inline-size: 100vw;
+  block-size: 100dvh;
   position: relative;
 }
 
@@ -14,17 +14,16 @@
 }
 
 .gm-style .gm-bundled-control {
-  bottom: var(--control-bottom) !important;
-  left: var(--control-left) !important;
-  right: unset !important;
+  inset-block-end: var(--control-bottom) !important;
+  inset-inline-start: var(--control-left) !important;
+  inset-inline-end: unset !important;
 }
 
 .transparent-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
+  inset: 0;
+  inline-size: 100vw;
+  block-size: 100dvh;
   z-index: 3;
   background: rgba(0, 0, 0, 0);
 }

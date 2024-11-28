@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
-  width: 100vw;
+  block-size: 100dvh;
+  inline-size: 100vw;
   background: radial-gradient(
       65% 200% at 135% -50%,
       rgba(0, 162, 254, 0.6) 0,
@@ -21,5 +21,4 @@
     ),
     #0d0d30;
   color: #fff;
-  font-family: "Poppins", sans-serif;
 }

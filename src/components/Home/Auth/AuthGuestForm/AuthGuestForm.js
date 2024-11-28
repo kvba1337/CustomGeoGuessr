@@ -5,6 +5,7 @@ import { signInAsGuest } from "@redux/actions/userActions";
 import AuthAvatarOptions from "../AuthAvatarOptions/AuthAvatarOptions";
 import AuthSelectedAvatar from "../AuthSelectedAvatar/AuthSelectedAvatar";
 import "../AuthModal/AuthModal.scss";
+import "./AuthGuestForm.scss";
 
 const AuthGuestForm = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const AuthGuestForm = () => {
 
   return (
     <div className="guest-form">
+      <p className="select-avatar-info">Select an avatar</p>
       <AuthAvatarOptions
         selectedAvatar={selectedAvatar}
         handleAvatarClick={handleAvatarClick}
@@ -53,8 +55,14 @@ const AuthGuestForm = () => {
       {isAuthenticated && (
         <div className="success-message">Successfully signed in as guest!</div>
       )}
-      <button onClick={handleContinue} disabled={loading}>
-        Continue
+      <button
+        className="button button-primary button-lg"
+        onClick={handleContinue}
+        disabled={loading}
+      >
+        <div className="button-wrapper">
+          <span className="button-label">Continue</span>
+        </div>
       </button>
     </div>
   );

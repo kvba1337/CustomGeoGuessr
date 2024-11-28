@@ -100,8 +100,14 @@ const AuthSignUpForm = () => {
       {isAuthenticated && (
         <div className="success-message">Successfully registered!</div>
       )}
-      <button onClick={handleSignUp} disabled={loading}>
-        Sign Up
+      <button
+        className="button button-primary button-lg"
+        onClick={handleSignUp}
+        disabled={loading}
+      >
+        <div className="button-wrapper">
+          <span className="button-label">Sign Up</span>
+        </div>
       </button>
     </div>
   );

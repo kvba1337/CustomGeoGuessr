@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
@@ -10,16 +10,11 @@ import "./Header.scss";
 const Header = () => {
   const dispatch = useDispatch();
   const idToken = Cookies.get("idToken");
-  const [showUserMenu, setShowUserMenu] = useState(false);
   const { username, avatar } = useSelector((state) => state.user);
 
   const handleLogout = useCallback(() => {
     dispatch(logoutCurrentUser());
   }, [dispatch]);
-
-  const toggleUserMenu = useCallback(() => {
-    setShowUserMenu((prev) => !prev);
-  }, []);
 
   return (
     <header className="header">
@@ -29,8 +24,6 @@ const Header = () => {
           <HeaderUserMenu
             avatar={avatar}
             username={username}
-            showUserMenu={showUserMenu}
-            toggleUserMenu={toggleUserMenu}
             handleLogout={handleLogout}
           />
         )}

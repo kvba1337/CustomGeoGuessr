@@ -1,69 +1,48 @@
 .item {
   flex: 1;
-  margin: 0.5rem;
-  padding: 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: calc(var(--multiplayer-spacing) * 0.25);
+  padding: var(--item-padding);
+  border-radius: var(--item-border-radius);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%;
+  transition: transform var(--item-transition),
+    box-shadow var(--item-transition);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.625rem);
+    box-shadow: var(--item-hover-shadow);
   }
 
-  @media (max-width: 768px) {
-    padding: 1.5rem;
+  &__icon {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ds-color-orange-80);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+
+    i {
+      text-shadow: 0 0 10px rgba(191, 123, 46, 0.5),
+        0 0 20px rgba(191, 123, 46, 0.3);
+    }
   }
 
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
-
-  @media (max-width: 320px) {
-    padding: 0.8rem;
+  &:hover &__icon {
+    transform: scale(1.1);
   }
 
   h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: #fecd19;
+    margin-block-end: 0.5rem;
+    font-size: clamp(1.3rem, 2vw, 1.5rem);
+    color: var(--ds-color-yellow-50);
     font-weight: 600;
-
-    @media (max-width: 768px) {
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1rem;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 0.9rem;
-    }
   }
 
   p {
-    font-size: 1rem;
-    color: #fff;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--ds-color-white);
     font-weight: 600;
-
-    @media (max-width: 768px) {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
-    }
-
-    @media (max-width: 320px) {
-      font-size: 0.7rem;
-    }
+    opacity: 0.9;
+    line-height: 1.5;
   }
 }

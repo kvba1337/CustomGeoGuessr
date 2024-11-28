@@ -4,15 +4,17 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+  gap: var(--gs-map-spacing);
 
   .map-title {
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+    font-size: var(--gs-map-title-size);
+    text-shadow: var(--gs-text-shadow);
     margin: 0;
   }
 
   .map-description {
-    font-size: 1.2rem;
-    margin: 0 1rem;
+    font-size: var(--gs-map-text-size);
+    margin: 0;
+    padding-inline: var(--gs-padding);
   }
 }

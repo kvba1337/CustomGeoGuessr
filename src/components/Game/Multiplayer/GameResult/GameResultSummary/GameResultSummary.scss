@@ -1,105 +1,107 @@
 :root {
-  --primary-color: #fff;
-  --secondary-color: #fecd19;
-  --background-color: rgba(0, 0, 0, 0.7);
-  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --border-radius: 15px;
-  --font-family: "Poppins", sans-serif;
-  --font-family-secondary: "Knewave", system-ui;
-  --font-family-td: "Roboto", sans-serif;
-  --text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+  /* Game Result Summary */
+  --game-result-summary-max-width: clamp(20rem, 100%, 75rem);
+  --game-result-summary-spacing: 0.5rem;
+  --game-result-summary-padding: 1rem clamp(0.5rem, 1vh, 2rem);
+
+  /* Game Result Summary Colors & Effects */
+  --game-result-summary-bg: rgba(0, 0, 0, 0.7);
+  --game-result-summary-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.5);
+  --game-result-summary-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
+  --game-result-summary-border-radius: 1.25rem;
+
+  /* Table */
   --table-header-bg: rgb(32, 32, 41);
   --table-row-hover-bg: rgba(255, 255, 255, 0.2);
-  --table-border: 1px solid rgba(255, 255, 255, 0.3);
-  --container-width: 80%;
-  --max-container-width: 1200px;
-  --map-height: 500px;
-  --border-radius: 20px;
-  --box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
-  --height: 400px;
+  --table-border: 0.0625rem solid rgba(255, 255, 255, 0.3);
+  --table-font-size: clamp(0.8rem, 1.5vw, 1rem);
+  --table-font-size-small: clamp(0.7rem, 1.2vw, 0.9rem);
+  --table-font-size-large: clamp(0.8rem, 2vw, 1.2rem);
 }
 
 .game-result-summary {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100dvh;
-  max-width: 1000px;
-  gap: 1rem;
+  inline-size: 100%;
+  block-size: 100dvh;
+  max-inline-size: var(--game-result-summary-max-width);
+  gap: var(--game-result-summary-spacing);
+  padding: var(--game-result-summary-padding);
   box-sizing: border-box;
   overflow: hidden;
-  justify-content: center;
-
-  @media (max-width: 480px) {
-    gap: 0.5rem;
-  }
+  justify-content: flex-start; // Zmiana z center na flex-start
+  background: var(--game-result-summary-bg);
+  box-shadow: var(--game-result-summary-shadow);
+  text-shadow: var(--game-result-summary-text-shadow);
+  color: var(--ds-color-white);
+  border-radius: var(--game-result-summary-border-radius);
 
   &__header {
-    font-family: var(--font-family-secondary);
-    font-size: 2.5rem;
-
-    @media (min-height: 800px) {
-      margin-bottom: 2rem;
-    }
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    text-align: center;
+    margin: 0.5rem;
   }
 
   .summary-map {
-    width: 100%;
-    min-height: 40vh;
-    border-radius: var(--border-radius);
+    inline-size: 100%;
+    block-size: 45vh; // Zmniejszamy wysokość mapy
+    border-radius: var(--game-result-summary-border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
-
-    @media (max-width: 480px) {
-      height: 60vh;
-    }
+    box-shadow: var(--game-result-summary-shadow);
   }
 
   .summary-table-container {
-    width: 100%;
-    overflow-y: auto;
+    inline-size: 100%;
+    flex: 1; // Dodajemy flex: 1 aby wypełnić pozostałą przestrzeń
+    overflow-y: auto; // Tylko kontener tabeli ma scroll
+    margin-block: var(--game-result-summary-spacing);
 
+    // Style dla scrollbara
     &::-webkit-scrollbar {
-      width: 12px;
+      inline-size: 0.75rem;
     }
 
     &::-webkit-scrollbar-track {
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
+      border-radius: 0.625rem;
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
-      border: 3px solid rgba(0, 0, 0, 0.7);
-    }
+      border-radius: 0.625rem;
+      border: 0.1875rem solid rgba(0, 0, 0, 0.7);
 
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: rgba(255, 255, 255, 0.5);
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
     }
   }
 
   .continue-btn-container {
-    width: 100%;
+    margin-block-start: auto; // Przycisk na dole
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .continue-btn {
-    padding: 15px 30px;
+    padding: 1rem 1.5rem;
     font-size: 1.2rem;
-    font-family: "Knewave", system-ui;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     cursor: pointer;
     transition: transform 0.2s ease;
-
-    @media (min-height: 800px) {
-      margin-top: 2rem;
-    }
+    background: rgb(108, 185, 40);
+    background-image: radial-gradient(
+      150% 160% at 50% 15%,
+      hsla(0, 0%, 100%, 0.6) 0,
+      transparent 30%
+    );
+    color: white;
+    border: 0.0625rem solid black;
+    text-shadow: 0 0 0.625rem #000000, 0 0 0.9375rem #000000;
 
     &:hover {
       transform: scale(1.05);
@@ -108,16 +110,5 @@
     &:active {
       transform: scale(0.95);
     }
-
-    background: rgb(108, 185, 40);
-    background-image: radial-gradient(
-      150% 160% at 50% 15%,
-      hsla(0, 0%, 100%, 0.6) 0,
-      transparent 30%
-    );
-    color: white;
-    border: 1px solid black;
-    text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
   }
 }

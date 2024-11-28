@@ -18,7 +18,7 @@ const GameSettingsRounds = () => {
   return (
     <div className="rounds">
       <h3>Number Of Rounds:</h3>
-      <div className="rounds-options">
+      <div className="rounds__options">
         {[1, 3, 5, 10].map((round) => (
           <label
             key={round}

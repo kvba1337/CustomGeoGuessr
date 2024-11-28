@@ -7,9 +7,9 @@ import "./index.css";
 
 try {
   ReactDOM.createRoot(document.getElementById("root")).render(
-      <BrowserRouter>
-        <AppContainer />
-      </BrowserRouter>
+    <BrowserRouter>
+      <AppContainer />
+    </BrowserRouter>
   );
 } catch (error) {
   console.error("Error during application rendering:", error);

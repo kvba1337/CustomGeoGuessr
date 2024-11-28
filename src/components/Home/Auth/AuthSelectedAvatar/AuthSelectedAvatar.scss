@@ -1,9 +1,14 @@
 .selected-avatar {
-  margin-top: 1rem;
-
   img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    inline-size: var(--avatar-selected-size);
+    block-size: var(--avatar-selected-size);
+    border-radius: var(--avatar-border-radius);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    transition: transform var(--avatar-transition);
+    margin: 0;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

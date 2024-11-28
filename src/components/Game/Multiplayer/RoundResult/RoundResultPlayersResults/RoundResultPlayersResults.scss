@@ -1,97 +1,60 @@
-$primary-color: #ffffff;
-$secondary-color: #fecd19;
-$tertiary-color: #ff6347;
-$quaternary-color: #66cdaa;
-$background-color: rgba(0, 0, 0, 0.7);
-$box-shadow-color: rgba(0, 0, 0, 0.3);
-$font-family: "Arial", sans-serif;
-$border-radius: 20px;
-$max-width: 1000px;
-
 .results {
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  color: $primary-color;
-  background: rgba(0, 0, 0, 0);
-  border-radius: $border-radius;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  gap: 0.5rem;
-  padding: 1rem;
+  color: var(--ds-color-white);
+  background: transparent;
+  border-radius: var(--round-result-border-radius);
+  box-shadow: var(--round-result-shadow);
+  inline-size: 100%;
+  gap: var(--round-result-spacing);
+  padding: var(--round-result-padding);
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
   animation-delay: 1.5s;
 
-  &__distance {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: inset 0px 0px 6px $box-shadow-color;
-    font-weight: normal;
-    font-family: "Knewave", system-ui;
-    min-height: 70px;
-    transform: translateY(300%);
-    animation: slideInFromBottom 0.5s ease-in-out forwards;
-    animation-delay: 1.5s;
-
-    @media (max-width: 1280px) {
-      min-height: 60px;
-    }
-
-    .player-result {
-      font-size: 1rem;
-      color: $primary-color;
-      text-align: center;
-      margin: 0;
-      width: 33%;
-
-      @media (max-width: 1280px) {
-        font-size: 0.8rem;
-      }
-    }
-
-    .separator {
-      font-size: 1rem;
-      color: $quaternary-color;
-      text-align: center;
-      margin: 0;
-      opacity: 0.9;
-      width: 33%;
-
-      @media (max-width: 1280px) {
-        font-size: 0.8rem;
-      }
-    }
-  }
-
+  &__distance,
   &__score {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: inset 0px 0px 6px $box-shadow-color;
-    font-weight: normal;
-    font-family: "Knewave", system-ui;
-    min-height: 70px;
+    background: var(--ds-color-white-10);
+    border-radius: var(--round-result-border-radius);
+    box-shadow: inset 0 0 0.375rem rgba(0, 0, 0, 0.3);
+    min-block-size: clamp(3.75rem, 5vh, 4.375rem);
     transform: translateY(300%);
-    animation: slideInFromBottom 0.5s ease-in-out forwards;
-    animation-delay: 2s;
-    @media (max-width: 1280px) {
-      min-height: 60px;
-    }
 
+    .player-result,
     .player-score {
-      font-size: 3rem;
-      color: $primary-color;
+      font-size: var(--round-result-font-size-medium);
       text-align: center;
       margin: 0;
-      text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
-        0 4px 10px rgba(255, 99, 71, 0.8);
-      width: 33%;
+      inline-size: 33%;
+    }
+
+    .separator {
+      font-size: var(--round-result-font-size-small);
+      color: var(--ds-color-turquoise);
+      text-align: center;
+      margin: 0;
+      opacity: 0.9;
+      inline-size: 33%;
+    }
+  }
+
+  &__distance {
+    animation: slideInFromBottom 0.5s ease-in-out forwards;
+    animation-delay: 1.5s;
+  }
+
+  &__score {
+    animation: slideInFromBottom 0.5s ease-in-out forwards;
+    animation-delay: 2s;
+
+    .player-score {
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-shadow: 0 0.125rem 0.3125rem rgba(254, 205, 25, 0.8),
+        0 0.25rem 0.625rem rgba(255, 99, 71, 0.8);
       opacity: 0;
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
       animation: fadeInScore 0.5s ease-in-out forwards;
@@ -112,35 +75,18 @@ $max-width: 1000px;
 
       &.hit-right {
         animation: moveToRight 0.2s ease-in-out forwards,
-          moveUpRight ease-in-out forwards,
+          moveUpRight 0.1s ease-in-out forwards,
           fadeOutScaleRight 0.3s ease-in-out forwards;
-        animation-delay: 0.8s, 2s, 2s;
+        animation-delay: 0.8s, 2s, 2.1s;
         opacity: 1;
       }
 
       &.hit-left {
         animation: moveToLeft 0.2s ease-in-out forwards,
-          moveUpLeft ease-in-out forwards,
+          moveUpLeft 0.1s ease-in-out forwards,
           fadeOutScaleLeft 0.3s ease-in-out forwards;
-        animation-delay: 0.8s, 2s, 2s;
+        animation-delay: 0.8s, 2s, 2.1s;
         opacity: 1;
-      }
-
-      @media (max-width: 1280px) {
-        font-size: 2rem;
-      }
-    }
-
-    .separator {
-      font-size: 1rem;
-      color: $quaternary-color;
-      text-align: center;
-      margin: 0;
-      opacity: 0.9;
-      width: 33%;
-
-      @media (max-width: 1280px) {
-        font-size: 0.8rem;
       }
     }
   }
@@ -157,6 +103,7 @@ $max-width: 1000px;
     opacity: 1;
   }
 }
+
 @keyframes fadeInScore {
   to {
     opacity: 1;
@@ -207,14 +154,15 @@ $max-width: 1000px;
     opacity: 1;
   }
   50% {
-    box-shadow: 0 0 0 5px rgba(255, 0, 0, 0), 0 0 0 10px rgba(255, 165, 0, 0.3),
-      0 0 0 15px rgba(255, 255, 0, 0.2);
+    box-shadow: 0 0 0 0.3125rem rgba(255, 0, 0, 0),
+      0 0 0 0.625rem rgba(255, 165, 0, 0.3),
+      0 0 0 0.9375rem rgba(255, 255, 0, 0.2);
     transform: scale(0.5);
     opacity: 0.6;
   }
   100% {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0), 0 0 0 20px rgba(255, 165, 0, 0),
-      0 0 0 30px rgba(255, 255, 0, 0);
+    box-shadow: 0 0 0 0.625rem rgba(255, 0, 0, 0),
+      0 0 0 1.25rem rgba(255, 165, 0, 0), 0 0 0 1.875rem rgba(255, 255, 0, 0);
     transform: scale(1);
     opacity: 0;
   }

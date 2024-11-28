@@ -1,23 +1,27 @@
-$primary-shadow-color: rgba(254, 205, 25, 0.8);
-$secondary-shadow-color: rgba(255, 99, 71, 0.85);
-$background-color: rgba(0, 0, 0, 0.7);
-$container-background-color: rgba(255, 255, 255, 0.1);
-$border-color: rgba(255, 255, 255, 0.3);
-$text-color: #fff;
-$font-family-primary: "Poppins", sans-serif;
-$font-family-secondary: "Knewave", system-ui;
+:root {
+  /* Game Result Layout */
+  --game-result-max-width: clamp(20rem, 100%, 75rem);
+  --game-result-spacing: clamp(1.5rem, 2vh, 2rem);
+  --game-result-padding: clamp(0.5rem, 1vh, 2rem);
 
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px $secondary-shadow-color;
-  }
+  /* Game Result Colors & Effects */
+  --game-result-bg: rgba(0, 0, 0, 0.7);
+  --game-result-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.5);
+  --game-result-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
+  --game-result-border-radius: 1.25rem;
 
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px $primary-shadow-color;
-  }
+  /* Score Item */
+  --score-item-bg: rgba(138, 43, 226, 0.1);
+  --score-item-border: 0.125rem solid var(--ds-color-turquoise);
+  --score-avatar-size: clamp(3.125rem, 10vh, 6.25rem);
+  --score-shadow-color: rgba(254, 205, 25, 0.8);
+  --score-item-padding: clamp(0.5rem, 2vh, 2rem) clamp(1rem, 3vh, 3rem);
+
+  /* Buttons */
+  --result-button-padding: clamp(0.8rem, 2vh, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  --result-button-font-size: clamp(1rem, 2vw, 1.2rem);
+  --result-button-border-radius: 1.25rem;
+  --result-button-transition-ease: 0.3s ease;
 }
 
 .game-result {
@@ -25,45 +29,33 @@ $font-family-secondary: "Knewave", system-ui;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100dvh;
-  background: $background-color;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 0 10px #000, 0 0 15px #000;
-  color: $text-color;
-  font-family: $font-family-primary;
+  block-size: 100dvh;
+  inline-size: 100%;
+  background: var(--game-result-bg);
+  box-shadow: var(--game-result-shadow);
+  text-shadow: var(--game-result-text-shadow);
+  color: var(--ds-color-white);
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100dvh;
-    max-width: 1000px;
-    gap: 2rem;
-    padding: 1rem 3rem;
+    inline-size: 100%;
+    block-size: 100dvh;
+    max-inline-size: var(--game-result-max-width);
+    gap: var(--game-result-spacing);
+    padding: clamp(0rem, 1vw, 2rem);
     box-sizing: border-box;
     overflow: hidden;
     justify-content: center;
-
-    @media (max-width: 1024px) {
-      gap: 1rem;
-      padding: 0.5rem 2rem;
-    }
-
-    @media (max-width: 480px) {
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-    }
   }
 
   &__header {
-    letter-spacing: 0.8px;
-    font-family: $font-family-secondary;
+    letter-spacing: 0.05em;
 
     h1 {
-      font-size: 3rem;
-      color: $text-color;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--ds-color-white);
       text-transform: uppercase;
       margin: 0;
       font-weight: normal;
@@ -72,7 +64,7 @@ $font-family-secondary: "Knewave", system-ui;
 
   &__score-container {
     display: flex;
-    width: 100%;
+    inline-size: 100%;
     justify-content: space-around;
   }
 }

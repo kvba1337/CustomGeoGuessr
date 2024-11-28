@@ -25,6 +25,9 @@
             ],
             "@constants/*": [
                 "constants/*"
+            ],
+            "@styles/*": [
+                "styles/*"
             ]
         }
     },

@@ -1,0 +1,152 @@
+:root {
+  --welcome-padding-block: clamp(4rem, calc(13vh + 5vw), 15rem);
+  --welcome-gap: clamp(1rem, 2vh, 2rem);
+  --welcome-horizontal-padding: clamp(1rem, 3vw, 2rem);
+
+  --welcome-title-size: clamp(2.5rem, 6vw, 4.5rem);
+  --welcome-subtitle-size: clamp(1rem, 2vw, 1.25rem);
+  --welcome-feature-text-size: clamp(0.875rem, 1.5vw, 1rem);
+  --welcome-feature-icon-size: clamp(1.5rem, 2.5vw, 2rem);
+
+  --welcome-blur-bg-title: var(--ds-color-black-60);
+  --welcome-blur-bg-subtitle: var(--ds-color-black-40);
+  --welcome-features-bg: var(--ds-color-black-70);
+  --welcome-text-shadow: 0 0.125rem 0.5rem var(--ds-color-black);
+
+  --welcome-blur-radius-title: 2rem;
+  --welcome-blur-radius-subtitle: 1rem;
+  --welcome-border-radius: 1rem;
+  --welcome-features-gap: clamp(1rem, 3vw, 3rem);
+  --welcome-features-padding: clamp(1rem, 2vw, 2rem);
+  --welcome-features-margin: clamp(1rem, 5vw, 6rem);
+
+  --welcome-button-margin: clamp(1rem, 3vh, 2rem);
+  --welcome-button-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.home-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--welcome-horizontal-padding);
+  padding-block-start: var(--welcome-padding-block);
+  gap: var(--welcome-gap);
+  color: var(--ds-color-white);
+
+  @media (max-width: 1500px) {
+    padding-block-start: clamp(3rem, calc(8vh + 3vw), 8rem);
+  }
+
+  &__title {
+    color: var(--ds-color-white);
+    font-size: var(--welcome-title-size);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.125;
+    position: relative;
+    text-align: center;
+    text-shadow: var(--welcome-text-shadow);
+    text-transform: uppercase;
+    max-width: 90%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -2rem;
+      background: var(--welcome-blur-bg-title);
+      filter: blur(var(--welcome-blur-radius-title));
+      z-index: -1;
+      border-radius: var(--welcome-border-radius);
+    }
+  }
+
+  &__subtitle {
+    color: var(--ds-color-white);
+    font-size: var(--welcome-subtitle-size);
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    text-align: center;
+    text-shadow: var(--welcome-text-shadow);
+    max-width: min(40rem, 90%);
+    margin: 0 auto;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -1rem;
+      background: var(--welcome-blur-bg-subtitle);
+      filter: blur(var(--welcome-blur-radius-subtitle));
+      z-index: -1;
+      border-radius: var(--welcome-border-radius);
+    }
+  }
+
+  .button {
+    margin-block-start: var(--welcome-button-margin);
+    font-style: italic;
+    --box-shadow: var(--welcome-button-shadow);
+    animation: buttonPulse 2s infinite;
+  }
+
+  &__features {
+    display: flex;
+    gap: var(--welcome-features-gap);
+    margin-block-start: var(--welcome-features-margin);
+    padding: var(--welcome-features-padding);
+    background: var(--welcome-features-bg);
+    border-radius: var(--welcome-border-radius);
+    width: fit-content;
+    max-width: 90%;
+    z-index: 2;
+
+    @media (max-width: 1500px) {
+      margin-block-start: var(--welcome-features-margin);
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: calc(var(--welcome-features-gap) * 0.5);
+      padding: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--ds-color-white);
+      font-size: var(--welcome-feature-text-size);
+      font-weight: 600;
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+        justify-content: left;
+        gap: 1rem;
+      }
+
+      i {
+        font-size: var(--welcome-feature-icon-size);
+        color: var(--ds-color-yellow-50);
+      }
+
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: var(--box-shadow), 0 0 0 0 var(--button-bg);
+  }
+  70% {
+    box-shadow: var(--box-shadow), 0 0 0 0.5rem transparent;
+  }
+  100% {
+    box-shadow: var(--box-shadow), 0 0 0 0 transparent;
+  }
+}

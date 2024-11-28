@@ -2,39 +2,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: var(--modal-button-font-size);
 
   h2 {
-    color: #fff;
-    margin: 0.5rem;
+    color: var(--ds-color-white);
+    margin-block: 0.5rem;
   }
 }
 
 .host-modal__code {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin: 0;
-  color: #fecd19;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-block-start: 0.5rem;
+  color: var(--modal-accent-color);
+  text-shadow: var(--modal-text-shadow);
 }
 
 .host-modal__info-container {
-  width: 100%;
+  inline-size: 100%;
   display: flex;
   justify-content: center;
 }
 
 .host-modal__info {
-  color: #fff;
-  font-size: 1.5rem;
+  color: var(--ds-color-white);
+  font-size: clamp(1.75rem, 3vw, 2rem);
   margin: 0;
   font-weight: bold;
 
   &.joined {
-    color: #00ff00;
+    color: var(--modal-success-color);
   }
 
   &.waiting {
-    color: #ff0808;
+    color: var(--modal-warning-color);
     animation: pulse 3s infinite;
   }
 }

@@ -2,38 +2,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rem;
+  gap: clamp(3rem, 10vw, 10rem);
   margin: 0;
 
   .vs {
     text-align: center;
-    font-size: 3.5rem;
-    color: #fff;
+    font-size: var(--next-round-font-size-large);
+    color: var(--ds-color-white);
     font-weight: bold;
-    text-shadow: 0 0 5px #00a2fe, 0 0 10px #367aa1, 0 0 15px #7f36a1,
-      0 0 20px #56246d;
-    animation: pulse 1s infinite;
-    font-family: "Knewave", system-ui;
-    letter-spacing: 1.5px;
-  }
-
-  @media (max-width: 768px) {
-    gap: 4rem;
-  }
-
-  @media (max-width: 480px) {
-    gap: 3rem;
+    text-shadow: var(--next-round-vs-shadow);
+    animation: pulse var(--next-round-transition) infinite;
+    letter-spacing: 0.0938em;
   }
 }
 
 @keyframes pulse {
-  0% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
     transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
   }
 }

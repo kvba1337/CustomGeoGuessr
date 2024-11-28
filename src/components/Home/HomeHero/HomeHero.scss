@@ -1,51 +1,91 @@
+:root {
+  --hero-bg: rgba(0, 0, 0, 0.6);
+  --hero-border: 0.125rem solid rgba(121, 80, 229, 0.3);
+  --hero-border-radius: 1rem;
+  --hero-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3),
+    0 0 2rem rgba(121, 80, 229, 0.2);
+  --hero-text-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.8),
+    0 0 1.5rem rgba(121, 80, 229, 0.5);
+  --hero-backdrop-blur: 0.5rem;
+  --hero-animation-duration: 2s;
+}
+
 .home__hero {
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: var(--hero-bg);
+  border-radius: var(--hero-border-radius);
+  box-shadow: var(--hero-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
-  max-width: 90vw;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  margin: 0 auto;
+  block-size: auto;
+  inline-size: clamp(18.75rem, 90vw, 40rem);
+  border: var(--hero-border);
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+  animation: heroAppear var(--hero-animation-duration) ease-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(121, 80, 229, 0.1),
+      transparent 70%
+    );
+    z-index: 1;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(2rem, 5vh, 4rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-block-end: clamp(1.5rem, 4vh, 3rem);
+    color: var(--ds-color-white);
+    margin-block-start: 0;
+    text-shadow: var(--hero-text-shadow);
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    animation: titleSlideIn calc(var(--hero-animation-duration) * 0.8) ease-out;
+  }
 }
 
-.home__hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
+@keyframes heroAppear {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
   }
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
-
-  @media (max-width: 320px) {
-    padding: 0.8rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  margin-top: 0;
-  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-
-  @media (max-width: 768px) {
-    font-size: 3rem;
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
   }
-
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  @media (max-width: 320px) {
-    font-size: 2rem;
+@media (max-width: 768px) {
+  .home__hero {
+    margin-block-start: 2rem;
+    inline-size: min(90%, 25rem);
   }
 }

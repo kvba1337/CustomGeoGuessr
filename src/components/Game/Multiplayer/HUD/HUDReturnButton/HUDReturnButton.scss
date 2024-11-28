@@ -1,7 +1,18 @@
+:root {
+  --button-bg-color: #4b4b4b;
+  --button-color: white;
+  --button-padding: 10px 12px;
+  --button-font-size: 17px;
+  --button-opacity: 0.8;
+  --button-hover-opacity: 1;
+  --transition-ease: ease;
+  --z-index-button: 2;
+}
+
 .return-button {
   position: absolute;
-  bottom: 35px;
-  left: 14px;
+  inset-block-end: 2.1875rem; // 35px
+  inset-inline-start: 0.875rem; // 14px
   background-color: var(--button-bg-color);
   color: var(--button-color);
   padding: var(--button-padding);
@@ -9,18 +20,18 @@
   cursor: pointer;
   z-index: var(--z-index-button);
   transition: opacity var(--transition-ease);
-}
 
-.return-button i {
-  font-size: var(--button-font-size);
-  opacity: var(--button-opacity);
-  transition: opacity var(--transition-ease);
-}
+  i {
+    font-size: var(--button-font-size);
+    opacity: var(--button-opacity);
+    transition: opacity var(--transition-ease);
+  }
 
-.return-button:hover {
-  opacity: var(--button-hover-opacity);
-}
+  &:hover {
+    opacity: var(--button-hover-opacity);
 
-.return-button:hover i {
-  opacity: var(--button-hover-opacity);
+    i {
+      opacity: var(--button-hover-opacity);
+    }
+  }
 }

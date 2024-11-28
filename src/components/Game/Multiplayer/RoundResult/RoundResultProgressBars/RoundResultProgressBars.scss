@@ -1,64 +1,32 @@
-$primary-color: #ffffff;
-$secondary-color: #fecd19;
-$tertiary-color: #ff6347;
-$quaternary-color: #66cdaa;
-$background-color: rgba(0, 0, 0, 0.7);
-$box-shadow-color: rgba(0, 0, 0, 0.3);
-$font-family: "Arial", sans-serif;
-$border-radius: 20px;
-$max-width: 1000px;
-
 .progress-bars {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  inline-size: 100%;
+  gap: var(--round-result-spacing);
   opacity: 0;
-  animation: fadeIn 0.5s ease-in-out forwards;
-  animation-delay: 0.5s;
+  animation: fadeIn var(--round-result-transition) forwards;
 
   .progress-bar-container {
     display: flex;
     align-items: center;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 40%;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
-    transform: translateX(-100%);
-    animation: slideInFromLeft 0.5s ease-in-out forwards;
-    animation-delay: 0.5s;
-
-    &:nth-child(2) {
-      transform: translateX(100%);
-      animation: slideInFromRight 0.5s ease-in-out forwards;
-      animation-delay: 0.5s;
-    }
+    border-radius: var(--round-result-border-radius);
+    background: var(--ds-color-white-10);
+    inline-size: 40%;
+    gap: calc(var(--round-result-spacing) * 0.5);
+    padding: calc(var(--round-result-padding) * 0.5);
 
     .avatar {
-      width: 50px;
-      height: 50px;
+      inline-size: clamp(2rem, 5vw, 3.125rem);
+      aspect-ratio: 1;
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      border: 3px solid $primary-color;
-      margin: 0;
-
-      @media (max-width: 480px) {
-        width: 30px;
-        height: 30px;
-      }
+      box-shadow: var(--round-result-shadow);
+      border: 0.1875rem solid var(--ds-color-white);
     }
-  }
-}
 
-@keyframes slideInFromLeft {
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromRight {
-  to {
-    transform: translateX(0);
+    .progress-bar {
+      flex: 1;
+    }
   }
 }
 

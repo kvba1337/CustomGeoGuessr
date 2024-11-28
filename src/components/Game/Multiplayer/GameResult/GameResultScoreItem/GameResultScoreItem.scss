@@ -1,24 +1,15 @@
-$primary-shadow-color: rgba(254, 205, 25, 0.8);
-$secondary-shadow-color: rgba(255, 99, 71, 0.85);
-$background-color: rgba(0, 0, 0, 0.7);
-$container-background-color: rgba(255, 255, 255, 0.1);
-$border-color: rgba(255, 255, 255, 0.3);
-$text-color: #fff;
-$font-family-primary: "Poppins", sans-serif;
-$font-family-secondary: "Knewave", system-ui;
-
 .score-container__item {
   display: flex;
   align-items: center;
   position: relative;
-  background-color: rgba(138, 43, 226, 0.1);
-  border: 2px solid #66cdaa;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  width: 40%;
+  background: var(--score-item-bg);
+  border: var(--score-item-border);
+  border-radius: var(--game-result-border-radius);
+  box-shadow: var(--game-result-shadow);
+  inline-size: 40%;
   justify-content: space-between;
-  padding: 1rem;
-  gap: 1rem;
+  padding: var(--score-item-padding);
+  gap: var(--game-result-spacing);
 
   &.reverse {
     flex-direction: row-reverse;
@@ -28,87 +19,43 @@ $font-family-secondary: "Knewave", system-ui;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 30%;
-    gap: 0.5rem;
+    gap: calc(var(--game-result-spacing) * 0.5);
+    inline-size: 30%;
 
     &.battle-mode {
-      width: 100%;
+      inline-size: 100%;
     }
 
     .avatar {
-      width: 100px;
-      height: 100px;
+      inline-size: var(--score-avatar-size);
+      aspect-ratio: 1;
       border-radius: 50%;
-      border: 3px solid black;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-
-      @media (max-width: 768px) {
-        width: 70px;
-        height: 70px;
-      }
-
-      @media (max-width: 480px) {
-        width: 50px;
-        height: 50px;
-      }
+      border: 0.1875rem solid var(--ds-color-black);
+      box-shadow: var(--game-result-shadow);
     }
 
     .username {
-      font-size: 1.2rem;
-      font-family: $font-family-primary;
-      color: #ffffff;
+      font-size: var(--result-button-font-size);
+      color: var(--ds-color-white);
       text-align: center;
       font-weight: bold;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      text-shadow: var(--game-result-text-shadow);
       margin: 0;
-
-      @media (max-width: 768px) {
-        font-size: 0.8rem;
-      }
-
-      @media (max-width: 480px) {
-        font-size: 0.6rem;
-      }
     }
 
     .winner {
-      box-shadow: 0 6px 25px $primary-shadow-color;
+      box-shadow: 0 6px 25px var(--score-shadow-color);
     }
   }
 
-  .score-container__progress {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-
-    .progress-bar {
-      margin: 0;
-      padding: 0.5rem;
-      width: 90%;
-
-      progress {
-        width: 100%;
-        display: block;
-        margin: 0 auto;
-      }
-    }
-
-    .score {
-      font-size: 3rem;
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      text-shadow: 0 2px 5px rgba(254, 205, 25, 0.8),
-        0 4px 10px rgba(255, 99, 71, 0.8);
-      font-weight: normal;
-      font-family: "Knewave", system-ui;
-      -webkit-text-stroke: 1px #000;
-
-      @media (max-width: 480px) {
-        font-size: 2rem;
-      }
-    }
+  .score {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--ds-color-white);
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0.125rem 0.3125rem var(--ds-color-yellow-50),
+      0 0.25rem 0.625rem var(--ds-color-red-50);
+    font-weight: normal;
+    -webkit-text-stroke: 0.0625rem var(--ds-color-black);
   }
 }

@@ -1,35 +1,7 @@
-.map-selection__content {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  max-width: 1200px;
-  text-align: center;
-  background: var(--content-bg);
-  padding: 2rem;
-  margin: 2rem auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    margin: 1.5rem auto;
-  }
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-    margin: 1rem auto;
-  }
-}
-
 .map-selection-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--map-selection-grid-gap);
   flex-grow: 1;
   overflow-y: auto;
-
-  @media (max-width: 768px) {
-    gap: 1rem;
-  }
 }

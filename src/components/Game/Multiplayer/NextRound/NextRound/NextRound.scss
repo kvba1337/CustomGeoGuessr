@@ -1,16 +1,39 @@
+:root {
+  /* NextRound Layout */
+  --next-round-max-width: 50rem;
+  --next-round-gap: clamp(1rem, 3vh, 2rem);
+  --next-round-bg: rgba(0, 0, 0, 0.7);
+
+  /* Typography */
+  --next-round-font-size-small: clamp(1rem, 2vw, 1.2rem);
+  --next-round-font-size-medium: clamp(1.3rem, 3vw, 1.6rem);
+  --next-round-font-size-large: clamp(2rem, 5vw, 3.5rem);
+
+  /* Colors & Effects */
+  --next-round-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
+  --next-round-accent-color: #fecd19;
+  --next-round-vs-shadow: 0 0 0.3125rem #00a2fe, 0 0 0.625rem #367aa1,
+    0 0 0.9375rem #7f36a1, 0 0 1.25rem #56246d;
+  --next-round-box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.5);
+  --next-round-avatar-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.4);
+
+  /* Transitions */
+  --next-round-transition: 1s ease;
+}
+
 .next-round-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100dvh;
-  width: 100vw;
+  justify-content: space-between; // Dodajemy space-between, aby rozdzielić elementy
+  block-size: 100dvh;
+  inline-size: 100%;
   text-align: center;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.5s ease-in-out;
+  color: var(--ds-color-white);
+  text-shadow: var(--next-round-text-shadow);
+  background: var(--next-round-bg);
+  box-shadow: var(--next-round-box-shadow);
+  animation: fadeIn var(--next-round-transition);
   position: relative;
   justify-content: center;
 
@@ -18,26 +41,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100dvh;
-    max-width: 800px;
-    gap: 2rem;
-    margin: 2rem;
-
-    @media (max-width: 1280px) {
-      gap: 1rem;
-    }
-
-    @media (max-width: 480px) {
-      gap: 3rem;
-    }
+    justify-content: center;
+    inline-size: min(100%, var(--next-round-max-width));
+    block-size: 100dvh;
+    gap: var(--next-round-gap);
+    margin: var(--next-round-gap);
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-1.25rem);
   }
   to {
     opacity: 1;

@@ -1,29 +1,36 @@
 .avatar-options {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--avatar-option-size), 1fr)
+  );
+  max-inline-size: calc(
+    var(--avatar-option-size) * 4 + var(--avatar-grid-gap) * 3
+  );
+  gap: var(--avatar-grid-gap);
   justify-content: center;
-
-  .avatar-option {
-    width: 50px;
-    height: 50px;
-  }
+  padding: 0.5rem;
 }
 
 .avatar-option {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  inline-size: var(--avatar-option-size);
+  block-size: var(--avatar-option-size);
+  border-radius: var(--avatar-border-radius);
   cursor: pointer;
-  transition: transform 0.3s ease;
-  border: 2px solid transparent;
+  transition: all var(--avatar-transition);
+  border: var(--avatar-border-width) solid var(--avatar-border-transparent);
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(var(--avatar-hover-scale));
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   &.selected {
-    border-color: #5494be;
+    border-color: var(--ds-color-orange-50);
+    box-shadow: 0 0 0.75rem var(--ds-color-orange-50);
   }
 }

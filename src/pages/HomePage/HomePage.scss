@@ -1,7 +1,16 @@
+:root {
+  --container-padding: 2rem;
+  --content-max-width: 90%;
+
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  --shadow-overlay: 0 0 2rem rgba(0, 0, 0, 0.3);
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  min-block-size: 100vh;
 }
 
 .home-content {
@@ -9,23 +18,70 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../assets/images/backgrounds/background.jpg");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  padding: 2rem 0;
-  overflow: auto;
-  height: auto;
-  align-items: center;
+  position: relative;
+  inline-size: 100%;
+
+  &:has(.home-welcome) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("../../assets/images/backgrounds/background.jpg");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      inline-size: 100vw;
+      block-size: 100%;
+      background: linear-gradient(
+        0deg,
+        var(--ds-color-purple-100) 4%,
+        rgba(26, 26, 46, 0) 25%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  &:has(.auth-modal) {
+    background: radial-gradient(
+        66.5% 221.21% at 136.03% -61.44%,
+        rgba(58, 232, 189, 0.5) 0%,
+        rgba(58, 232, 189, 0) 92.09%
+      ),
+      radial-gradient(
+        93.54% 126.91% at 29.15% -56.29%,
+        rgba(58, 232, 189, 0.8) 0%,
+        rgba(58, 232, 189, 0) 92.09%
+      ),
+      radial-gradient(
+        86.19% 101.84% at -17.13% -24.8%,
+        #7950e5 0%,
+        rgba(121, 80, 229, 0) 92.09%
+      ),
+      var(--ds-color-purple-100);
+  }
+
+  &:has(.home__hero) {
+    background-image: url("../../assets/images/backgrounds/background-star.webp");
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
-.home-content > * {
-  max-width: 90%;
-  max-height: 100%;
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }

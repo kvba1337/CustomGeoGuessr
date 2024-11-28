@@ -1,0 +1,125 @@
+:root {
+  /* Layout & Sizing */
+  --modal-width: clamp(20rem, 90%, 31.25rem);
+  --modal-padding-block: clamp(1.5rem, 4vh, 2.5rem);
+  --modal-padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+  --modal-border-radius: 1rem;
+  --modal-gap: 2rem;
+
+  /* Colors & Effects */
+  --modal-overlay-bg: rgba(26, 26, 46, 0.95);
+  --modal-bg: var(--ds-color-purple-100);
+  --modal-gradient: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.95) 0%,
+    rgba(16, 16, 28, 0.98) 100%
+  );
+  --modal-border: 1px solid var(--ds-color-white-10);
+  --modal-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--ds-color-white-10);
+
+  /* Input Styles */
+  --modal-input-height: 3.5rem;
+  --modal-input-font-size: 2rem;
+  --modal-input-bg: var(--ds-color-white-5);
+  --modal-input-border: 2px solid var(--ds-color-purple-50);
+  --modal-input-radius: 0.75rem;
+  --modal-input-shadow: 0 0 1rem rgba(121, 80, 229, 0.1);
+
+  /* Status Colors */
+  --modal-error-bg: rgba(233, 69, 96, 0.1);
+  --modal-error-color: var(--ds-color-red-50);
+  --modal-success-bg: rgba(108, 185, 40, 0.1);
+  --modal-success-color: var(--ds-color-green-50);
+  --modal-warning-bg: rgba(254, 205, 25, 0.1);
+  --modal-warning-color: var(--ds-color-red-50);
+  --modal-accent-color: var(--ds-color-yellow-50);
+
+  /* Animation & Effects */
+  --modal-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --modal-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Close Button */
+  --modal-close-size: 2rem;
+  --modal-close-offset: 1rem;
+}
+
+%modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ds-color-black-80);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  padding: var(--modal-padding-block) var(--modal-padding-inline);
+  animation: modalFadeIn var(--modal-transition);
+}
+
+%modal-body {
+  position: relative;
+  inline-size: var(--modal-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--modal-gap);
+  background: var(--modal-gradient);
+  border: var(--modal-border);
+  padding: var(--modal-padding-block) var(--modal-padding-inline);
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-shadow);
+  animation: modalSlideIn var(--modal-transition);
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--ds-color-white);
+    text-shadow: var(--modal-text-shadow);
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+%modal-input {
+  inline-size: 100%;
+  max-inline-size: 25rem;
+  block-size: var(--modal-input-height);
+  padding: 0.75rem 1rem;
+  font-size: var(--modal-input-font-size);
+  text-align: center;
+  background: var(--modal-input-bg);
+  color: var(--ds-color-white);
+  border: var(--modal-input-border);
+  border-radius: var(--modal-input-radius);
+  transition: all var(--modal-transition);
+  box-shadow: var(--modal-input-shadow);
+
+  &:focus {
+    outline: none;
+    border-color: var(--modal-accent-color);
+    box-shadow: 0 0 0 2px var(--modal-accent-color);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

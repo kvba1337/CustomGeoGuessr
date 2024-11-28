@@ -1,16 +1,16 @@
 .no-googling {
-  font-size: 1.2rem;
-  color: #ff0000;
+  font-size: var(--next-round-font-size-medium);
+  color: var(--ds-color-red-50);
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
-  text-shadow: 0 0 10px #000000, 0 0 15px #000000;
+  text-shadow: var(--next-round-text-shadow);
   text-align: center;
   display: flex;
   align-items: flex-end;
   flex-grow: 1;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.0375em;
+  margin-top: auto; // Dodajemy margin-top: auto, aby przesunąć element w dół
 
-  @media (max-width: 1024px) {
+  @supports (height: 100dvh) {
     align-items: center;
     flex-grow: unset;
   }

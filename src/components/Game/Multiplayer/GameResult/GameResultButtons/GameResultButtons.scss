@@ -2,12 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  gap: 2rem;
-
-  @media (max-width: 480px) {
-    margin-top: 1rem;
-  }
+  inline-size: 50%;
+  gap: var(--game-result-spacing);
 
   .game-summary-btn-container {
     width: 50%;
@@ -21,14 +17,13 @@
 
   .game-summary-btn,
   .continue-btn {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-family: "Knewave", system-ui;
+    padding: var(--result-button-padding);
+    font-size: var(--result-button-font-size);
     font-weight: 400;
     text-transform: uppercase;
-    border-radius: 25px;
+    border-radius: var(--game-result-border-radius);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform var(--result-button-transition-ease);
 
     &:hover {
       transform: scale(1.05);
@@ -41,23 +36,16 @@
 
   .game-summary-btn {
     background: transparent;
-    color: white;
-    border: 2px solid white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
-    transition: transform 0.2s ease, border-color 0.3s ease;
+    color: var(--ds-color-white);
+    border: 0.125rem solid var(--ds-color-white);
   }
 
   .continue-btn {
-    background: rgb(108, 185, 40);
-    background-image: radial-gradient(
-      150% 160% at 50% 15%,
-      hsla(0, 0%, 100%, 0.6) 0,
-      transparent 30%
-    );
-    color: white;
-    border: 1px solid black;
-    text-shadow: 0 0 10px #000000, 0 0 15px #000000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    background: var(--ds-color-green-80);
+    background-image: var(--button-success-gradient);
+    color: var(--ds-color-white);
+    border: 0.0625rem solid var(--ds-color-black);
+    text-shadow: var(--game-result-text-shadow);
+    box-shadow: var(--game-result-shadow);
   }
 }

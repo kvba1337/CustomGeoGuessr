@@ -2,21 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  max-width: 1200px;
-  margin-bottom: 4rem;
+  inline-size: min(var(--multiplayer-container-width), calc(100% - 2rem));
+  margin-inline: auto;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--multiplayer-spacing);
 
-  @media (max-width: 768px) {
-    margin-bottom: 2rem;
-  }
+  @media (max-width: 48rem) {
+    // 768px
+    flex-direction: column;
+    gap: calc(var(--multiplayer-spacing) * 0.75);
 
-  @media (max-width: 480px) {
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 320px) {
-    margin-bottom: 0.5rem;
+    > * {
+      inline-size: min(20rem, calc(100% - 5rem));
+    }
   }
 }

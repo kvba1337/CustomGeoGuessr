@@ -77,8 +77,14 @@ const AuthSignInForm = () => {
       {isAuthenticated && (
         <div className="success-message">Successfully registered!</div>
       )}
-      <button onClick={handleSignIn} disabled={loading}>
-        Sign In
+      <button
+        className="button button-primary button-lg"
+        onClick={handleSignIn}
+        disabled={loading}
+      >
+        <div className="button-wrapper">
+          <span className="button-label">Sign In</span>
+        </div>
       </button>
     </div>
   );

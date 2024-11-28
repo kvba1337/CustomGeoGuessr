@@ -141,11 +141,13 @@ const ModalJoin = ({ onClose }) => {
                 disabled={!!roomId}
               />
               <button
-                className={`join-modal__join ${!inputRoomId ? "disabled" : ""}`}
+                className="button button-primary button-lg"
                 onClick={handleJoin}
                 disabled={!inputRoomId || !!roomId}
               >
-                Join
+                <div className="button-wrapper">
+                  <span className="button-label">Join</span>
+                </div>
               </button>
             </>
           ) : (

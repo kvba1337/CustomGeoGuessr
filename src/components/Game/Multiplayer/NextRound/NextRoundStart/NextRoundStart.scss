@@ -1,14 +1,12 @@
 .next-round-start {
-  font-size: 1.6rem;
-  color: #fff;
-  font-family: "Knewave", system-ui;
-  letter-spacing: 1px;
+  font-size: var(--next-round-font-size-medium);
+  color: var(--ds-color-white);
   text-align: center;
+  margin-top: auto;
 
   .countdown {
-    font-size: 3.5rem;
-    color: #fecd19;
+    font-size: var(--next-round-font-size-large);
+    color: var(--next-round-accent-color);
     font-weight: bold;
-    letter-spacing: 5px;
   }
 }
