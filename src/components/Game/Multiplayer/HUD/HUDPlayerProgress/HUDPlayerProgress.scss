@@ -1,0 +1,96 @@
+:root {
+  /* Layout */
+  --player-progress-width: 20%;
+  --player-progress-width-mobile: 35%;
+  --player-progress-gap: 0.1rem;
+  --player-name-margin-top: 0.5rem;
+  --player-name-margin-side: 0.5rem;
+
+  /* Avatar */
+  --player-avatar-size: clamp(3rem, 5vw, 5rem);
+  --player-avatar-border-width: 0.1875rem;
+  --player-avatar-transform: -10%;
+  --player-avatar-transform-mobile: -25%;
+
+  /* Typography */
+  --player-name-font-size: 0.875rem;
+  --player-name-font-weight: 600;
+
+  /* Effects */
+  --player-avatar-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  --player-progress-shadow: 1px 7px 10px rgba(0, 0, 0, 0.4);
+  --player-name-text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.8),
+    0 0.25rem 0.5rem rgba(0, 0, 0, 0.6);
+  --player-avatar-z-index: 6;
+}
+
+.player-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--player-progress-gap);
+  inline-size: var(--player-progress-width);
+
+  @media (max-width: 768px) {
+    inline-size: var(--player-progress-width-mobile);
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .player-avatar {
+    inline-size: var(--player-avatar-size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: var(--player-avatar-shadow);
+    border: var(--player-avatar-border-width) solid var(--ds-color-turquoise);
+    z-index: var(--player-avatar-z-index);
+    transform: translateY(var(--player-avatar-transform));
+    position: relative;
+
+    @media (max-width: 768px) {
+      transform: translateY(var(--player-avatar-transform-mobile));
+    }
+  }
+
+  .progress-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .progress-bar {
+      filter: drop-shadow(var(--player-progress-shadow));
+    }
+
+    .player-name {
+      color: var(--ds-color-white);
+      font-size: var(--player-name-font-size);
+      font-weight: var(--player-name-font-weight);
+      margin-top: var(--player-name-margin-top);
+      text-transform: uppercase;
+      text-shadow: var(--player-name-text-shadow);
+      margin-left: var(--player-name-margin-side);
+
+      @media (max-width: 768px) {
+        font-size: calc(var(--player-name-font-size) * 0.8);
+        margin-left: 0;
+      }
+    }
+  }
+
+  &.reverse {
+    .progress-wrapper {
+      align-items: flex-end;
+
+      .player-name {
+        margin-left: 0;
+        margin-right: var(--player-name-margin-side);
+
+        @media (max-width: 768px) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
