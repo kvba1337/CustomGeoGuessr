@@ -13,6 +13,7 @@ const HUDTimer = () => {
   const { userId } = useSelector((state) => state.user);
   const [remainingTime, setRemainingTime] = useState(timeLimit);
   const [isTimerActive, setIsTimerActive] = useState(gameType !== "battle");
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const handleTimeUpdate = useCallback(() => {
     setRemainingTime((prevTime) => {
@@ -27,20 +28,30 @@ const HUDTimer = () => {
   }, [roomId, userId]);
 
   useEffect(() => {
-    if (gameType === "battle") {
-      const usersRef = ref(database, `rooms/${roomId}/users`);
-      const unsubscribe = onValue(usersRef, (snapshot) => {
-        const users = snapshot.val();
-        const opponentId = Object.keys(users).find((id) => id !== userId);
+    if (gameType !== "battle") return;
 
-        if (users[opponentId]?.hasGuessed || users[userId]?.hasGuessed) {
+    const usersRef = ref(database, `rooms/${roomId}/users`);
+    const unsubscribe = onValue(usersRef, (snapshot) => {
+      const users = snapshot.val();
+      const opponentId = Object.keys(users).find((id) => id !== userId);
+
+      const user = users[userId];
+      const opponent = users[opponentId];
+
+      if (!user?.hasGuessed || !opponent?.hasGuessed) {
+        if (user?.hasGuessed || opponent?.hasGuessed) {
           setRemainingTime(15);
           setIsTimerActive(true);
         }
-      });
 
-      return () => unsubscribe();
-    }
+        if (opponent?.hasGuessed) {
+          setShowOverlay(true);
+          setTimeout(() => setShowOverlay(false), 3500);
+        }
+      }
+    });
+
+    return () => unsubscribe();
   }, [roomId, userId, gameType]);
 
   useEffect(() => {
@@ -62,33 +73,43 @@ const HUDTimer = () => {
     return null;
   }
 
-  const timerClass = remainingTime <= 10 ? "timer warning" : "timer";
+  const timerClass = `timer animation-scaleIn ${
+    remainingTime <= 10 ? "warning" : ""
+  }`;
 
   return (
-    <div className={timerClass}>
-      <svg width="100%" height="100%" viewBox="0 0 200 80">
-        <path
-          d="M38.56,4C19.55,4,4,20.2,4,40c0,19.8,15.55,36,34.56,36h122.88C180.45,76,196,59.8,196,40 
+    <>
+      {showOverlay && <div className="time-warning-overlay" />}
+      <div
+        className={`${timerClass} ${
+          gameType === "battle" ? "battle-timer" : ""
+        }`}
+      >
+        {" "}
+        <svg width="100%" height="100%" viewBox="0 0 200 80">
+          <path
+            d="M38.56,4C19.55,4,4,20.2,4,40c0,19.8,15.55,36,34.56,36h122.88C180.45,76,196,59.8,196,40 
              c0-19.8-15.55-36-34.56-36H38.56z"
-          fill="none"
-          stroke="#8a2be2"
-          strokeWidth="8"
-          strokeDasharray={dashArray}
-          strokeDashoffset={dashOffset}
-          className="timer-path"
-        />
-        <text
-          x="100"
-          y="45"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize="40"
-          fill="#fff"
-        >
-          {formatTime(remainingTime)}
-        </text>
-      </svg>
-    </div>
+            fill="none"
+            stroke="#8a2be2"
+            strokeWidth="8"
+            strokeDasharray={dashArray}
+            strokeDashoffset={dashOffset}
+            className="timer-path"
+          />
+          <text
+            x="100"
+            y="45"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize="40"
+            fill="#fff"
+          >
+            {formatTime(remainingTime)}
+          </text>
+        </svg>
+      </div>
+    </>
   );
 };
 

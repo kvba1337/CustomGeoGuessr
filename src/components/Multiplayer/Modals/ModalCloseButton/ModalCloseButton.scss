@@ -1,28 +1,43 @@
+:root {
+  /* Layout */
+  --close-button-size: 2rem;
+  --close-button-spacing: 0.5rem;
+  --close-button-font-size: 4.5rem;
+
+  /* Effects */
+  --close-button-transition: 0.2s ease;
+  --close-button-scale-hover: 1.1;
+  --close-button-scale-active: 0.95;
+
+  /* Z-index */
+  --close-button-z-index: 10;
+}
+
 .close-button {
   position: absolute;
-  inset-block-start: 0.5rem;
-  inset-inline-end: 0.5rem;
+  inset-block-start: var(--close-button-spacing);
+  inset-inline-end: var(--close-button-spacing);
   background: none;
   border: none;
   padding: 0;
-  inline-size: 2rem;
-  block-size: 2rem;
+  inline-size: var(--close-button-size);
+  block-size: var(--close-button-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4.5rem;
+  font-size: var(--close-button-font-size);
   line-height: 1;
   cursor: pointer;
   color: var(--ds-color-white-60);
-  transition: all 0.2s ease;
-  z-index: 10;
+  transition: all var(--close-button-transition);
+  z-index: var(--close-button-z-index);
 
   &:hover {
     color: var(--ds-color-white);
-    transform: scale(1.1);
+    transform: scale(var(--close-button-scale-hover));
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(var(--close-button-scale-active));
   }
 }

@@ -202,9 +202,6 @@ export const handleNextRound = () => async (dispatch, getState) => {
     const opponentHp =
       users[opponentId].roundsResults[currentRound - 1]?.remainingHp;
 
-    console.log("userHp", userHp);
-    console.log("opponenthp", opponentHp);
-
     if (userHp === 0 || opponentHp === 0 || currentRound === 10) {
       await dispatch(setGameStatus("gameOver"));
       const updates = {};

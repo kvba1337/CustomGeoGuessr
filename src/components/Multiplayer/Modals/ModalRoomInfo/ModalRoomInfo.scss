@@ -1,19 +1,32 @@
+:root {
+  /* Typography */
+  --modal-room-code-size: 3rem;
+  --modal-room-info-size: clamp(1.75rem, 3vw, 2rem);
+
+  /* Spacing */
+  --modal-room-spacing: 0.5rem;
+
+  /* Animation */
+  --modal-room-pulse-duration: 3s;
+  --modal-room-pulse-scale: 1.05;
+}
+
 .host-modal__header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: var(--modal-button-font-size);
 
   h2 {
     color: var(--ds-color-white);
-    margin-block: 0.5rem;
+    margin-block: var(--modal-room-spacing);
   }
 }
 
 .host-modal__code {
-  font-size: 3rem;
+  letter-spacing: 5px;
+  font-size: var(--modal-room-code-size);
   font-weight: bold;
-  margin-block-start: 0.5rem;
+  margin-block-start: var(--modal-room-spacing);
   color: var(--modal-accent-color);
   text-shadow: var(--modal-text-shadow);
 }
@@ -24,9 +37,14 @@
   justify-content: center;
 }
 
+.host-modal__username {
+  color: var(--ds-color-turquoise);
+  font-weight: 700;
+}
+
 .host-modal__info {
   color: var(--ds-color-white);
-  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-size: var(--modal-room-info-size);
   margin: 0;
   font-weight: bold;
 
@@ -36,7 +54,7 @@
 
   &.waiting {
     color: var(--modal-warning-color);
-    animation: pulse 3s infinite;
+    animation: pulse var(--modal-room-pulse-duration) infinite;
   }
 }
 
@@ -45,7 +63,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(var(--modal-room-pulse-scale));
   }
   100% {
     transform: scale(1);

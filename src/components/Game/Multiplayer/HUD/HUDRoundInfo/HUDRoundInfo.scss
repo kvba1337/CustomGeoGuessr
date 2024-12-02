@@ -1,27 +1,48 @@
+:root {
+  /* Layout */
+  --hud-round-padding: 0.625rem 1.25rem;
+  --hud-round-spacing: 0.5rem;
+  --hud-round-border-radius: 0.625rem;
+
+  /* Typography */
+  --hud-round-title-size: 0.625rem;
+  --hud-round-info-size: 1.125rem;
+  --hud-round-letter-spacing: 0.0625rem;
+
+  /* Colors */
+  --hud-round-bg: rgba(0, 0, 0, 0.8);
+  --hud-round-text: #fff;
+  --hud-round-title-text: #a0a0a0;
+
+  /* Effects */
+  --hud-round-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+    0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+  --hud-round-z-index: 2;
+}
+
 .round-hud {
   position: absolute;
-  inset-block-start: 0.5rem;
-  inset-inline-end: 0.625rem;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.625rem;
+  inset-block-start: var(--hud-round-spacing);
+  inset-inline-end: var(--hud-round-spacing);
+  background: var(--hud-round-bg);
+  color: var(--hud-round-text);
+  padding: var(--hud-round-padding);
+  border-radius: var(--hud-round-border-radius);
   text-align: center;
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4),
-    0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
-  z-index: 2;
+  box-shadow: var(--hud-round-shadow);
+  z-index: var(--hud-round-z-index);
 
   &__title {
-    letter-spacing: 0.0625rem;
-    font-size: 0.625rem;
-    color: #a0a0a0;
+    letter-spacing: var(--hud-round-letter-spacing);
+    font-size: var(--hud-round-title-size);
+    color: var(--hud-round-title-text);
   }
 
   &__info {
-    font-size: 1.125rem;
+    font-size: var(--hud-round-info-size);
     font-weight: bold;
   }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { calculateDamage } from "@utils/gameUtils";
 import "./RoundResultPlayersResults.scss";
 
@@ -7,13 +8,15 @@ const RoundResultPlayersResults = ({
   opponentResult,
   currentRound,
 }) => {
+  const { settings } = useSelector((state) => state.game);
+  const { gameType } = settings;
   const [userScore, setUserScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
   const [isUserWinner, setIsUserWinner] = useState(false);
   const [isOpponentWinner, setIsOpponentWinner] = useState(false);
   const [userHitDirection, setUserHitDirection] = useState("");
   const [opponentHitDirection, setOpponentHitDirection] = useState("");
-  const [damage, setDamage] = useState(null);
+  const [showParticles, setShowParticles] = useState(false);
 
   useEffect(() => {
     const animateScore = (start, end, duration, setScore) => {
@@ -35,43 +38,60 @@ const RoundResultPlayersResults = ({
       requestAnimationFrame(step);
     };
 
-    const userScoreTimeout = setTimeout(() => {
+    const animateScoreTimeout = setTimeout(() => {
       animateScore(0, userResult?.score || 0, 1000, setUserScore);
-    }, 2500);
-
-    const opponentScoreTimeout = setTimeout(() => {
       animateScore(0, opponentResult?.score || 0, 1000, setOpponentScore);
     }, 2500);
 
-    const winnerTimeout = setTimeout(() => {
-      if (userResult?.score > opponentResult?.score) {
-        setIsUserWinner(true);
-        setUserHitDirection("hit-right");
-        setDamage(
-          calculateDamage(userResult.score, opponentResult.score, currentRound)
-        );
-      } else if (opponentResult?.score > userResult?.score) {
-        setIsOpponentWinner(true);
-        setOpponentHitDirection("hit-left");
-        setDamage(
-          calculateDamage(opponentResult.score, userResult.score, currentRound)
-        );
+    let damage;
+    if (userResult?.score > opponentResult?.score && gameType === "battle") {
+      setIsUserWinner(true);
+      setUserHitDirection("hit-right");
+      damage = calculateDamage(
+        userResult.score,
+        opponentResult.score,
+        currentRound
+      );
+      setTimeout(() => {
+        setUserScore(damage);
+      }, 4900);
+    } else if (
+      opponentResult?.score > userResult?.score &&
+      gameType === "battle"
+    ) {
+      setIsOpponentWinner(true);
+      setOpponentHitDirection("hit-left");
+      damage = calculateDamage(
+        opponentResult.score,
+        userResult.score,
+        currentRound
+      );
+      setTimeout(() => {
+        setOpponentScore(damage);
+      }, 4900);
+    }
+
+    const particlesTimeout = setTimeout(() => {
+      if (gameType === "battle") {
+        setShowParticles(true);
       }
-    }, 3500);
+    }, 4880);
 
     return () => {
-      clearTimeout(userScoreTimeout);
-      clearTimeout(opponentScoreTimeout);
-      clearTimeout(winnerTimeout);
+      clearTimeout(animateScoreTimeout);
+      clearTimeout(particlesTimeout);
     };
-  }, [userResult, opponentResult, currentRound]);
+  }, [userResult, opponentResult, currentRound, gameType]);
 
-  const handleAnimationEnd = (winner) => {
-    if (winner === "user") {
-      setUserScore(damage);
-    } else if (winner === "opponent") {
-      setOpponentScore(damage);
-    }
+  const renderParticles = () => {
+    return Array.from({ length: 20 }).map((_, index) => (
+      <span key={index} className="explosion-particle" />
+    ));
+  };
+
+  const multiplier = 1.0 + Math.max(0, Math.floor(currentRound - 4)) * 0.5;
+  const formatMultiplier = (value) => {
+    return Number.isInteger(value) ? value.toString() : value.toFixed(1);
   };
 
   return (
@@ -83,21 +103,27 @@ const RoundResultPlayersResults = ({
       </div>
       <div className="results__score">
         <p
-          className={`player-score ${
-            isUserWinner ? "winner" : "loser"
-          } ${userHitDirection}`}
-          onAnimationEnd={() => handleAnimationEnd("user")}
+          className={`player-score 
+            ${gameType === "battle" ? "battle-mode" : ""} 
+            ${isUserWinner ? "winner" : "loser"} 
+            ${userHitDirection}`}
         >
           {userScore}
+          {isUserWinner && showParticles && renderParticles()}
         </p>
-        <p className="separator">ROUND SCORE</p>
+        <p className="separator">
+          ROUND RESULT
+          {gameType === "battle" && currentRound > 1 && (
+            <span className="multiplier">x{formatMultiplier(multiplier)}</span>
+          )}
+        </p>
         <p
-          className={`player-score ${
-            isOpponentWinner ? "winner" : "loser"
-          } ${opponentHitDirection}`}
-          onAnimationEnd={() => handleAnimationEnd("opponent")}
+          className={`player-score 
+            ${gameType === "battle" ? "battle-mode" : ""} 
+            ${isOpponentWinner ? "winner" : "loser"} ${opponentHitDirection}`}
         >
           {opponentScore}
+          {isOpponentWinner && showParticles && renderParticles()}
         </p>
       </div>
     </div>

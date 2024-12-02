@@ -94,16 +94,23 @@ ul {
   --ds-color-red-80: #740914;
   --ds-color-blue-70: #00344a;
   --ds-color-blue-50: #00a2fe;
-  --ds-color-turqoise-80: #1f9c7d;
+  --ds-color-turquoise-80: #1f9c7d;
+  --ds-color-turquoise: #3ae8bd;
   --ds-color-orange-50: #ffa43d;
   --ds-color-orange-80: #bf7b2e;
   --ds-color-white-5: hsla(0, 0%, 100%, 0.05);
   --ds-color-white-10: hsla(0, 0%, 100%, 0.1);
   --ds-color-white-20: hsla(0, 0%, 100%, 0.2);
+  --ds-color-white-30: hsla(0, 0%, 100%, 0.3);
   --ds-color-white-40: hsla(0, 0%, 100%, 0.4);
+  --ds-color-white-50: hsla(0, 0%, 100%, 0.5);
   --ds-color-white-60: hsla(0, 0%, 100%, 0.6);
+  --ds-color-white-70: hsla(0, 0%, 100%, 0.7);
   --ds-color-white-80: hsla(0, 0%, 100%, 0.8);
+  --ds-color-white-90: hsla(0, 0%, 100%, 0.9);
   --ds-color-white: #fff;
+  --ds-color-black-5: rgba(16, 16, 28, 0.05);
+  --ds-color-black-10: rgba(16, 16, 28, 0.1);
   --ds-color-black-20: rgba(16, 16, 28, 0.2);
   --ds-color-black-30: rgba(16, 16, 28, 0.3);
   --ds-color-black-40: rgba(16, 16, 28, 0.4);
@@ -113,9 +120,12 @@ ul {
   --ds-color-black-80: rgba(16, 16, 28, 0.8);
   --ds-color-black-90: rgba(16, 16, 28, 0.9);
   --ds-color-black: #10101c;
-  --ds-color-turquoise: #3ae8bd;
   --ds-color-casual-20: #a39bd9;
+}
+
+:root {
   --default-font: ggFont, sans-serif;
+  font-family: var(--default-font);
   --font-size-9: 0.5625rem;
   --line-height-9: 0.6875rem;
   --font-size-10: 0.625rem;
@@ -156,7 +166,6 @@ ul {
   --line-height-72: 4.5rem;
   --font-size-96: 6rem;
   --line-height-96: 6rem;
-  font-family: var(--default-font);
 }
 
 :root {
@@ -167,7 +176,6 @@ ul {
 }
 
 :root {
-  /* Button base variables */
   --button-font-size: var(--font-size-14, 0.875rem);
   --button-padding-y: 0.75rem;
   --button-padding-x: 1.5rem;
@@ -179,7 +187,6 @@ ul {
   --button-text-shadow: 0 0.0625rem 0.125rem var(--ds-color-purple-100);
 }
 
-/* Base button styles */
 .button {
   display: inline-flex;
   align-items: center;
@@ -280,7 +287,6 @@ ul {
   );
 }
 
-/* Button states */
 .button:hover:not(:disabled) {
   transform: scale(1.05);
 }
@@ -301,7 +307,6 @@ ul {
   pointer-events: none;
 }
 
-/* Button wrapper */
 .button-wrapper {
   display: flex;
   align-items: center;
@@ -309,7 +314,6 @@ ul {
   gap: 0.5rem;
 }
 
-/* Button label */
 .button-label {
   white-space: nowrap;
   overflow: hidden;
@@ -326,7 +330,14 @@ ul {
 .button-sm {
   --button-font-size: var(--font-size-12);
   --vertical-padding: 0.5rem;
-  --horizontal-padding: 0.875rem;
+  --horizontal-padding: 1.5rem;
+  padding: var(--vertical-padding) var(--horizontal-padding);
+}
+
+.button-sm-wide {
+  --button-font-size: var(--font-size-18);
+  --vertical-padding: 0.5rem;
+  --horizontal-padding: 1.5rem;
   padding: var(--vertical-padding) var(--horizontal-padding);
 }
 
@@ -350,6 +361,90 @@ ul {
   padding: var(--vertical-padding) var(--horizontal-padding);
   border-radius: 50%;
   aspect-ratio: 1;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  --spinner-size: 2.5rem;
+  --spinner-border-width: 0.25rem;
+  --spinner-animation-duration: 0.8s;
+  --spinner-color: var(--ds-color-purple-50);
+
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--spinner-border-width) solid var(--ds-color-white-20);
+  border-top-color: var(--spinner-color);
+  border-radius: 50%;
+  margin: 0;
+  animation: spinner var(--spinner-animation-duration) linear infinite;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animation-scaleIn {
+  animation: 2000ms cubic-bezier(0, 1.09, 0.09, 0.97) 0ms 1 normal forwards
+    running scaleIn;
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animation-scaleOut {
+  animation: scaleOut 2s cubic-bezier(0, 1.09, 0.09, 0.97) forwards;
+  transform: scale(1.1);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-0.5rem);
+  }
+  75% {
+    transform: translateX(0.5rem);
+  }
+}
+
+.animation-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-slideIn {
+  animation: slideIn 0.3s ease-out;
 }
 
 #__next,

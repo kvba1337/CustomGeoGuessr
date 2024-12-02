@@ -19,7 +19,7 @@ const GameSettingsRounds = () => {
     <div className="rounds">
       <h3>Number Of Rounds:</h3>
       <div className="rounds__options">
-        {[1, 3, 5, 10].map((round) => (
+        {[3, 5, 10, 15].map((round) => (
           <label
             key={round}
             className={rounds === round ? "active" : ""}

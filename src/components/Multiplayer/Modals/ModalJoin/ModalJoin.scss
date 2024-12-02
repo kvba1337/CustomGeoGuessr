@@ -1,5 +1,23 @@
 @import "../../../../styles/mixins/modal";
 
+:root {
+  /* Layout */
+  --modal-join-width: 80%;
+  --modal-join-message-width: 85%;
+  --modal-join-message-padding: 1rem;
+
+  /* Typography */
+  --modal-join-message-font-size: 1.5rem;
+  --modal-join-message-code-size: 2rem;
+  --modal-join-message-font-weight: 500;
+  --modal-join-message-code-weight: 700;
+
+  /* Effects */
+  --modal-join-message-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --modal-join-message-letter-spacing: 0.02em;
+  --modal-join-message-margin: 0.75rem;
+}
+
 .join-modal {
   display: flex;
   align-items: center;
@@ -14,7 +32,7 @@
     @extend %modal-body;
 
     h2 {
-      width: 80%;
+      width: var(--modal-join-width);
     }
   }
 
@@ -23,23 +41,22 @@
   }
 
   &__message {
-    padding: 1rem;
+    padding: var(--modal-join-message-padding);
     border-radius: var(--modal-border-radius);
-    font-size: 1.5rem;
-    font-weight: 500;
-    transition: all var(--modal-transition);
+    font-size: var(--modal-join-message-font-size);
+    font-weight: var(--modal-join-message-font-weight);
+    letter-spacing: var(--modal-join-message-letter-spacing);
+    width: var(--modal-join-message-width);
     margin: 0 auto;
+    transition: all var(--modal-transition);
     box-shadow: var(--modal-shadow);
-    letter-spacing: 0.02em;
-    width: 70%;
 
     span {
       display: block;
-      margin-block-start: 0.75rem;
       color: var(--modal-accent-color);
-      font-size: 2rem;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-size: var(--modal-join-message-code-size);
+      font-weight: var(--modal-join-message-code-weight);
+      text-shadow: var(--modal-join-message-shadow);
     }
 
     &.success {
@@ -50,7 +67,10 @@
       );
       color: var(--modal-success-color);
       border: 1px solid var(--modal-success-color);
-      animation: messageSlideIn 0.3s ease-out;
+
+      .join-modal__player-info {
+        margin-block-start: var(--modal-join-message-margin);
+      }
     }
 
     &.error {
@@ -61,31 +81,10 @@
       );
       color: var(--modal-error-color);
       border: 1px solid var(--modal-error-color);
-      animation: messageShake 0.5s ease-in-out;
     }
-  }
-}
 
-@keyframes messageSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes messageShake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-0.5rem);
-  }
-  75% {
-    transform: translateX(0.5rem);
+    .host-modal__username {
+      color: var(--ds-color-turquoise);
+    }
   }
 }

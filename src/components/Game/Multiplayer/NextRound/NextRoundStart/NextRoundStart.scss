@@ -1,12 +1,31 @@
+:root {
+  /* Typography */
+  --next-round-start-font-size: var(--next-round-font-size-medium);
+  --next-round-countdown-font-size: var(--next-round-font-size-large);
+
+  /* Colors */
+  --next-round-text-color: var(--ds-color-white);
+  --next-round-countdown-color: var(--next-round-accent-color);
+
+  /* Layout */
+  --next-round-spacing: clamp(0.5rem, 2vh, 1rem);
+}
+
 .next-round-start {
-  font-size: var(--next-round-font-size-medium);
-  color: var(--ds-color-white);
+  font-size: var(--next-round-start-font-size);
+  color: var(--next-round-text-color);
   text-align: center;
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 0.01rem;
 
   .countdown {
-    font-size: var(--next-round-font-size-large);
-    color: var(--next-round-accent-color);
+    font-size: var(--next-round-countdown-font-size);
+    color: var(--next-round-countdown-color);
     font-weight: bold;
+    letter-spacing: 0.3rem;
   }
 }

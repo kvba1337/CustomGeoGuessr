@@ -1,39 +1,21 @@
+:root {
+  /* Layout */
+  --guess-button-margin-top: 0.625rem;
+  --guess-button-width: 100%;
+
+  /* Effects */
+  --guess-button-disabled-opacity: 0.7;
+  --guess-button-disabled-bg: #999;
+}
+
 .submit-guess-btn {
-  margin-block-start: 0.625rem;
-  inline-size: 100%;
-  background: rgb(108, 185, 40);
-  background-image: radial-gradient(
-    150% 160% at 50% 15%,
-    hsla(0, 0%, 100%, 0.6) 0,
-    transparent 30%
-  );
-  font-weight: 400;
-  font-style: normal;
-  text-transform: uppercase;
-  color: white;
-  padding: 0.625rem;
-  font-size: 1rem;
-  text-shadow: 0 0 0.625rem #000000, 0 0 0.9375rem #000000;
-  border: 0.0625rem solid black;
-  border-radius: 1.5625rem;
-  cursor: pointer;
-  transition: transform var(--transition-duration) ease;
-  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 1);
-  opacity: 0.8;
-  z-index: 5;
-
-  &:hover {
-    transform: scale(1.03);
-  }
-
-  &:active {
-    transform: scale(0.975);
-  }
+  margin-block-start: var(--guess-button-margin-top);
+  inline-size: var(--guess-button-width);
 
   &.disabled {
     transform: none;
-    background: #999;
+    background: var(--guess-button-disabled-bg);
     cursor: default;
-    opacity: 0.7;
+    opacity: var(--guess-button-disabled-opacity);
   }
 }

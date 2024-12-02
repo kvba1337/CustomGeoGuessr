@@ -25,10 +25,10 @@ export const calculateScore = (distanceToTarget, mapFactor) => {
 export const formatDistance = (distance) => {
   const formattedDistance = parseFloat(distance).toFixed(1);
   if (formattedDistance > 10000) {
-    return `${parseInt(formattedDistance / 1000)} KM`;
+    return `${parseInt(formattedDistance / 1000)} km`;
   }
   if (formattedDistance > 2000) {
-    return `${(formattedDistance / 1000).toFixed(1)} KM`;
+    return `${(formattedDistance / 1000).toFixed(1)} km`;
   }
   return `${parseInt(formattedDistance)} M`;
 };

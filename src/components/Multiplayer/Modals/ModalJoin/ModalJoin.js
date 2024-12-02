@@ -20,8 +20,11 @@ const ModalJoin = ({ onClose }) => {
   const navigate = useNavigate();
   const [inputRoomId, setInputRoomId] = useState("");
   const [hostedRoomError, setHostedRoomError] = useState(false);
-  const { roomId, status, error } = useSelector((state) => state.room);
+  const { roomId, status, error, opponent } = useSelector(
+    (state) => state.room
+  );
   const { userId } = useSelector((state) => state.user);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const joinedRoomId = sessionStorage.getItem("joinedRoomId");
@@ -88,8 +91,15 @@ const ModalJoin = ({ onClose }) => {
     };
   }, [roomId, userId]);
 
+  useEffect(() => {
+    if (roomId || error) {
+      setIsLoading(false);
+    }
+  }, [roomId, error]);
+
   const handleJoin = useCallback(() => {
     if (inputRoomId && userId) {
+      setIsLoading(true);
       dispatch(joinRoom(inputRoomId, userId));
     }
   }, [dispatch, inputRoomId, userId]);
@@ -140,6 +150,7 @@ const ModalJoin = ({ onClose }) => {
                 placeholder="XYZA"
                 disabled={!!roomId}
               />
+              {isLoading && <div className="loading-spinner"></div>}
               <button
                 className="button button-primary button-lg"
                 onClick={handleJoin}
@@ -154,7 +165,10 @@ const ModalJoin = ({ onClose }) => {
             <>
               {status === "choosingGameSettings" ? (
                 <p className="join-modal__message success">
-                  Host is choosing game settings... <br />
+                  <span className="host-modal__username">
+                    {opponent.username}
+                  </span>{" "}
+                  is choosing game settings... <br />
                   Game starts soon
                 </p>
               ) : (
@@ -162,10 +176,18 @@ const ModalJoin = ({ onClose }) => {
                   {hostedRoomError ? (
                     <ModalErrorMessage />
                   ) : (
-                    <p className="join-modal__message success">
+                    <p className="join-modal__message success animation-slideIn">
                       Successfully connected to the room:
                       <br />
                       <span>{roomId}</span>
+                      {opponent && opponent.username && (
+                        <p className="join-modal__player-info">
+                          Playing with:{" "}
+                          <span className="host-modal__username">
+                            {opponent.username}
+                          </span>
+                        </p>
+                      )}
                     </p>
                   )}
                   <ModalLeaveButton handleLeave={handleLeave} />
@@ -175,7 +197,7 @@ const ModalJoin = ({ onClose }) => {
           )}
 
           {error && (
-            <p className="join-modal__message error">
+            <p className="join-modal__message error animation-shake">
               Failed to connect to the room:
               <br />
               <span>{inputRoomId}</span>

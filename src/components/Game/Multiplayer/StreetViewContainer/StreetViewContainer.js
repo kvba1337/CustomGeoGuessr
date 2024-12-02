@@ -7,17 +7,19 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { setReturnButtonStatus } from "@redux/actions/gameActions";
+import HUDCompass from "../HUD/HUDCompass/HUDCompass";
 import "./StreetViewContainer.scss";
 
 const libraries = ["places"];
 
-const StreetViewContainer = ({ closeMap }) => {
+const StreetViewContainer = ({ closeMap, isMobile }) => {
   const dispatch = useDispatch();
   const { currentLocation, settings, returnButtonStatus } = useSelector(
     (state) => state.game
   );
   const [options, setOptions] = useState({});
   const streetViewRef = useRef(null);
+  const [panorama, setPanorama] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -90,6 +92,7 @@ const StreetViewContainer = ({ closeMap }) => {
 
   const handleLoad = (streetViewPanorama) => {
     streetViewRef.current = streetViewPanorama;
+    setPanorama(streetViewPanorama);
     streetViewPanorama.setPosition(currentLocation);
   };
 
@@ -107,8 +110,12 @@ const StreetViewContainer = ({ closeMap }) => {
   }
 
   if (!isLoaded) {
-    console.log("Google Maps is loading...");
-    return <div>Loading maps...</div>;
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>Loading maps...</p>
+      </div>
+    );
   }
 
   return (
@@ -117,6 +124,7 @@ const StreetViewContainer = ({ closeMap }) => {
       onClick={handleStreetViewClick}
       onTouchStart={handleTouchStart}
     >
+      {!isMobile && <HUDCompass panorama={panorama} />}
       <GoogleMap mapContainerStyle={{ width: "100%", height: "100%" }}>
         <StreetViewPanorama
           onLoad={handleLoad}

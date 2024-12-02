@@ -6,11 +6,9 @@
   --round-result-padding: clamp(0.5rem, 1vh, 1rem);
 
   /* Colors & Effects */
-  --round-result-bg: rgba(0, 0, 0, 0.7);
   --round-result-accent: #fecd19;
   --round-result-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.5);
   --round-result-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
-  --round-result-border-radius: 1rem;
 
   /* Typography */
   --round-result-font-size-small: clamp(0.8rem, 1.5vw, 1rem);
@@ -28,7 +26,7 @@
   justify-content: center;
   block-size: 100dvh;
   inline-size: 100%;
-  background: var(--round-result-bg);
+  background: transparent;
   color: var(--ds-color-white);
   text-align: center;
 
@@ -37,10 +35,9 @@
     flex-direction: column;
     align-items: center;
     inline-size: 100%;
-    block-size: 100dvh;
+    block-size: 95dvh;
     max-inline-size: var(--round-result-max-width);
     gap: var(--round-result-spacing);
-    padding: var(--round-result-padding);
     box-sizing: border-box;
     overflow: hidden;
     justify-content: center;
@@ -51,9 +48,4 @@
   display: flex;
   flex-direction: column;
   inline-size: 100%;
-  padding: var(--round-result-padding);
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: var(--round-result-border-radius);
-  box-shadow: var(--round-result-shadow);
-  gap: var(--round-result-spacing);
 }

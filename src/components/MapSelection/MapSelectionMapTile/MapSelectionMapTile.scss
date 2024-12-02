@@ -1,61 +1,94 @@
+:root {
+  /* Layout & Shape */
+  --tile-border-radius: 1rem;
+  --tile-padding-bottom: 1rem;
+  --tile-border-width: 2px;
+
+  /* Typography */
+  --tile-letter-spacing: 0.094rem;
+  --tile-heading-font-size: clamp(1.2rem, 3vw, 1.5rem);
+
+  /* Shadow Effects */
+  --tile-shadow-default: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --tile-shadow-hover: 0 4px 8px rgba(121, 80, 229, 0.3);
+
+  /* Animations */
+  --tile-scale-hover: 1.03;
+  --tile-img-scale-hover: 1.05;
+
+  /* Visual Effects */
+  --tile-gradient: linear-gradient(180deg, rgba(16, 16, 28, 0), #10101c 80%);
+
+  /* Transition */
+  --tile-transition: 0.3s ease;
+
+  /* Gap */
+  --map-selection-gap: 1rem;
+
+  /* Additional Variables */
+  --tile-image-height: clamp(6rem, 20vh, 11rem);
+  --tile-text-shadow: 0 0 0.9375rem #7f36a1, 0 0 1.25rem #56246d;
+}
+
 .tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--map-tile-bg);
+  background: var(--ds-color-black-40);
   border-radius: var(--tile-border-radius);
   overflow: hidden;
-  transition: background var(--tile-transition);
+  border: var(--tile-border-width) solid var(--ds-color-white-20);
+  transition: all var(--tile-transition);
   gap: var(--map-selection-gap);
-  padding-block-end: 0.75rem;
+  padding-block-end: var(--tile-padding-bottom);
+  box-shadow: var(--tile-shadow-default);
+  position: relative;
+
+  &::after {
+    background: var(--tile-gradient);
+    content: "";
+    inset: 0;
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
 
   &:hover {
-    background: var(--map-tile-hover-bg);
+    border-color: var(--ds-color-purple-50);
+    box-shadow: var(--tile-shadow-hover);
+    transform: scale(var(--tile-scale-hover));
+
+    img {
+      transition: transform 300ms cubic-bezier(0, 0, 0.25, 1);
+      transform: scale(var(--tile-img-scale-hover));
+      object-fit: cover;
+    }
   }
 
   img {
     inline-size: 100%;
     block-size: var(--tile-image-height);
     object-fit: cover;
-    transition: opacity var(--tile-transition);
-    opacity: 0.8;
-    border-radius: var(--tile-border-radius);
+    transition: all var(--tile-transition);
+  }
 
-    &:hover {
-      opacity: 1;
-    }
+  h1,
+  button {
+    position: relative;
+    z-index: 2;
   }
 
   h1 {
     margin: 0;
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-size: var(--tile-heading-font-size);
     text-transform: uppercase;
-    letter-spacing: 0.094rem;
+    letter-spacing: var(--tile-letter-spacing);
+    font-style: italic;
     text-shadow: var(--tile-text-shadow);
+    color: var(--ds-color-white-80);
   }
 
   button {
-    background: none;
-    color: var(--ds-color-white);
-    padding: 0.5rem 1.5rem;
-    border: 0.0625rem solid var(--ds-color-white);
-    border-radius: 1.563rem;
-    font-size: var(--tile-font-size);
-    font-weight: bold;
-    letter-spacing: 0.094rem;
-    cursor: pointer;
-    transition: all var(--tile-transition);
-    text-transform: uppercase;
-    text-shadow: var(--tile-text-shadow);
-
-    &:hover {
-      background: var(--map-tile-bg);
-      box-shadow: var(--tile-shadow);
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    letter-spacing: var(--tile-letter-spacing);
   }
 }

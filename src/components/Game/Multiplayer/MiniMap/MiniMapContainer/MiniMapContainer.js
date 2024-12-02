@@ -20,6 +20,7 @@ const MiniMapContainer = () => {
   const [isGuessMade, setIsGuessMade] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [mapSize, setMapSize] = useState({ width: 520, height: 370 });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const mapRef = useRef(null);
   const timeoutRef = useRef(null);
 
@@ -27,6 +28,27 @@ const MiniMapContainer = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+
+  const MAP_SIZES = [
+    { breakpoint: 100, max: 600, min: 320 },
+    { breakpoint: 1130, max: 800, min: 320 },
+    { breakpoint: Infinity, max: 1020, min: 320 },
+  ];
+
+  const getMapSizeLimits = (width) => {
+    const { max, min } = MAP_SIZES.find((size) => width < size.breakpoint);
+    return { max, min };
+  };
+
+  const { max: maxMapWidth, min: minMapWidth } = getMapSizeLimits(windowWidth);
+  const isMaxSize = mapSize.width >= maxMapWidth;
+  const isMinSize = mapSize.width <= minMapWidth;
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (mapRef.current && selectedMap) {
@@ -93,15 +115,12 @@ const MiniMapContainer = () => {
     }));
   }, []);
 
-  const isMaxSize = mapSize.width >= 1020;
-  const isMinSize = mapSize.width <= 320;
-
   if (loadError) {
     return <div>Error loading maps</div>;
   }
 
   if (!isLoaded) {
-    return <div>Loading maps...</div>;
+    return <div></div>;
   }
 
   return (

@@ -43,7 +43,7 @@ const useFetchGameResults = (
       ).reduce((acc, round) => acc + round.score, 0);
 
       setGameStatus(
-        userTotalScore > opponentTotalScore ? "YOU WON" : "YOU LOST"
+        userTotalScore > opponentTotalScore ? "YOU WON!" : "YOU LOST!"
       );
     };
 

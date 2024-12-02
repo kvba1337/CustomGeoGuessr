@@ -1,3 +1,16 @@
+:root {
+  /* Layout */
+  --avatar-option-size: 3.25rem;
+  --avatar-grid-gap: 0.5rem;
+
+  /* Effects */
+  --avatar-transition: 0.3s ease;
+  --avatar-hover-scale: 1.05;
+  --avatar-border-radius: 50%;
+  --avatar-border-width: 0.125rem;
+  --avatar-border-transparent: transparent;
+}
+
 .avatar-options {
   display: grid;
   grid-template-columns: repeat(

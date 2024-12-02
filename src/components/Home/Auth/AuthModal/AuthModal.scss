@@ -1,5 +1,17 @@
 @import "../../../../styles/mixins/auth";
 
+:root {
+  /* Layout */
+  --auth-border-radius: 0.9375rem;
+  --auth-modal-width: min(25rem, 90%);
+  --auth-modal-spacing: 1.5rem;
+  --auth-modal-padding: clamp(1rem, 3vw, 2rem);
+
+  /* Typography */
+  --auth-tab-font-size: 1.3rem;
+  --auth-tab-font-weight: 600;
+}
+
 .auth-modal {
   border: 0.125rem solid var(--auth-primary);
   border-radius: var(--auth-border-radius);
@@ -7,19 +19,27 @@
   color: var(--auth-text);
   z-index: 1000;
   overflow: hidden;
-  width: min(25rem, 90%);
+  width: var(--auth-modal-width);
   margin: 1rem 0;
   align-items: center;
 
-  &-content {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--auth-modal-spacing);
+    padding: var(--auth-modal-padding);
+    width: 100%;
+  }
+
+  &__content {
     @include auth-form;
-    padding: clamp(1rem, 3vw, 2rem);
   }
 
   &__tabs {
     display: flex;
     justify-content: center;
     gap: clamp(0.5rem, 2vw, 1rem);
+    width: 100%;
   }
 
   &__tab {
@@ -28,8 +48,8 @@
     padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: var(--auth-tab-font-size);
+    font-weight: var(--auth-tab-font-weight);
     transition: all var(--auth-transition);
     position: relative;
 

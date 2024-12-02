@@ -108,11 +108,11 @@ const GameResultSummary = ({
           onRowClick={handleRowClick}
         />
       </div>
-      <div className="continue-btn-container">
-        <button className="continue-btn" onClick={onContinue}>
-          Continue
-        </button>
-      </div>
+      <button className="button button-primary button-lg" onClick={onContinue}>
+        <div className="button-wrapper">
+          <span className="button-label">Continue</span>
+        </div>
+      </button>
     </div>
   );
 };

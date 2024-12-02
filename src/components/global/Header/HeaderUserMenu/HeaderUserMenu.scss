@@ -1,3 +1,14 @@
+:root {
+  /* Layout */
+  --header-avatar-size: clamp(2rem, 10vw, 2.5rem);
+  --header-menu-width: 12.5rem;
+
+  /* Effects */
+  --header-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  --header-animation-duration: 600ms;
+  --header-animation-timing: ease;
+}
+
 .header__user {
   position: relative;
   margin-inline-start: auto;
@@ -35,23 +46,23 @@
     box-shadow: var(--header-shadow);
     text-align: center;
     inline-size: var(--header-menu-width);
-    transform-origin: top;
-    transform: scaleY(0);
     display: none;
     visibility: hidden;
-    animation: expandMenu 0.6s ease-in-out forwards;
+    animation: 600ms ease 0ms 1 normal forwards running expandMenu;
 
     .header__user-avatar-large {
       inline-size: 4.375rem;
       block-size: 4.375rem;
       border-radius: 50%;
       border: 0.125rem solid var(--ds-color-turquoise);
+      animation: 600ms ease 0ms 1 normal forwards running expandMenu;
     }
 
     .header__user-name {
       font-size: 1.2rem;
       font-weight: bold;
       margin-block-end: 1rem;
+      animation: 600ms ease 0ms 1 normal forwards running expandMenu;
     }
   }
 
@@ -65,11 +76,9 @@
 
 @keyframes expandMenu {
   0% {
-    transform: scaleY(0);
-    transform-origin: top;
+    max-height: 0;
   }
   100% {
-    transform: scaleY(1);
-    transform-origin: top;
+    max-height: 50rem;
   }
 }

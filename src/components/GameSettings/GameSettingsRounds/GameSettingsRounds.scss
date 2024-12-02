@@ -1,11 +1,28 @@
+:root {
+  /* Layout */
+  --rounds-spacing: clamp(0.5rem, 2vw, 1rem);
+  --rounds-padding: 0.8rem 1.2rem;
+  --rounds-border-radius: 0.625rem;
+  --rounds-border-width: 0.0625rem;
+
+  /* Typography */
+  --rounds-title-size: clamp(1rem, 3vw, 1.5rem);
+  --rounds-text-size: clamp(0.9rem, 1.5vw, 1rem);
+
+  /* Effects */
+  --rounds-transition: 0.3s ease;
+  --rounds-scale: 1.05;
+}
+
 .rounds {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gs-spacing);
+  gap: var(--rounds-spacing);
 
   h3 {
-    font-size: var(--gs-title-size);
+    text-align: center;
+    font-size: var(--rounds-title-size);
     margin: 0;
   }
 
@@ -13,30 +30,30 @@
     display: flex;
     justify-content: space-around;
     font-weight: bold;
-    gap: var(--gs-spacing);
+    gap: var(--rounds-spacing);
 
     label {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--gs-round-buttons-padding);
-      border-radius: var(--gs-border-radius);
-      border: 0.0625rem solid var(--gs-border-color);
+      padding: var(--rounds-padding);
+      border-radius: var(--rounds-border-radius);
+      border: var(--rounds-border-width) solid var(--ds-color-white-20);
       cursor: pointer;
-      transition: all var(--gs-transition);
+      transition: all var(--rounds-transition);
 
       input[type="radio"] {
         display: none;
       }
 
       &:hover {
-        background: var(--gs-hover-bg);
+        background: var(--ds-color-white-10);
       }
 
       &.active {
-        background: var(--gs-active-bg);
+        background: var(--ds-color-white-20);
         color: var(--ds-color-white);
-        transform: scale(1.05);
+        transform: scale(var(--rounds-scale));
       }
     }
   }

@@ -1,14 +1,23 @@
+:root {
+  /* Typography */
+  --no-googling-font-size: var(--next-round-font-size-small);
+  --no-googling-letter-spacing: 0.0375em;
+
+  /* Effects */
+  --no-googling-text-shadow: var(--next-round-text-shadow);
+}
+
 .no-googling {
-  font-size: var(--next-round-font-size-medium);
+  font-size: var(--no-googling-font-size);
   color: var(--ds-color-red-50);
   font-weight: bold;
-  text-shadow: var(--next-round-text-shadow);
+  text-shadow: var(--no-googling-text-shadow);
   text-align: center;
   display: flex;
   align-items: flex-end;
   flex-grow: 1;
-  letter-spacing: 0.0375em;
-  margin-top: auto; // Dodajemy margin-top: auto, aby przesunąć element w dół
+  letter-spacing: var(--no-googling-letter-spacing);
+  margin-top: auto;
 
   @supports (height: 100dvh) {
     align-items: center;

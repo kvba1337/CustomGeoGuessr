@@ -1,17 +1,24 @@
-.map-buttons {
-  --bg-color: rgba(0, 0, 0, 0.5);
-  --border-radius: 3.125rem;
-  --padding: 0.3125rem;
-  --gap: 0.625rem;
+:root {
+  /* Layout */
+  --minimap-controls-padding: 0.3125rem;
+  --minimap-controls-gap: 0.625rem;
+  --minimap-controls-border-radius: 3.125rem;
+  --minimap-controls-top: 1.25rem;
+  --minimap-controls-left: 2.1875rem;
 
+  /* Colors */
+  --minimap-controls-bg: rgba(0, 0, 0, 0.5);
+}
+
+.map-buttons {
   position: absolute;
-  inset-block-start: 1.25rem;
-  inset-inline-start: 2.1875rem;
+  inset-block-start: var(--minimap-controls-top);
+  inset-inline-start: var(--minimap-controls-left);
   display: flex;
   flex-direction: row;
-  gap: var(--gap);
+  gap: var(--minimap-controls-gap);
   z-index: 2;
-  background-color: var(--bg-color);
-  border-radius: var(--border-radius);
-  padding: var(--padding);
+  background-color: var(--minimap-controls-bg);
+  border-radius: var(--minimap-controls-border-radius);
+  padding: var(--minimap-controls-padding);
 }

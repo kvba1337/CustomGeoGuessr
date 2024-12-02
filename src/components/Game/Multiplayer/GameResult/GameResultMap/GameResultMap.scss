@@ -1,6 +1,15 @@
+:root {
+  /* Layout */
+  --game-result-map-height: 45vh;
+
+  /* Effects */
+  --game-result-border-radius: 1rem;
+  --game-result-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+}
+
 .game-result-map {
   inline-size: 100%;
-  block-size: 45vh;
+  block-size: var(--game-result-map-height);
   border-radius: var(--game-result-border-radius);
   overflow: hidden;
   box-shadow: var(--game-result-shadow);

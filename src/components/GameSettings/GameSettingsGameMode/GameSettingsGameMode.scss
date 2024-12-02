@@ -1,11 +1,30 @@
+:root {
+  /* Layout */
+  --gamemode-spacing: clamp(0.5rem, 2vw, 1rem);
+  --gamemode-label-spacing: clamp(0.5rem, 0.5vh, 1rem);
+  --gamemode-padding: clamp(0.2rem, 1.5vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.8rem);
+  --gamemode-border-radius: 0.9375rem;
+  --gamemode-border-width: 0.0625rem;
+  --gamemode-label-width: 30%;
+
+  /* Typography */
+  --gamemode-title-size: clamp(1rem, 3vw, 1.5rem);
+  --gamemode-text-size: clamp(0.9rem, 1.5vw, 1rem);
+
+  /* Effects */
+  --gamemode-transition: 0.3s ease;
+  --gamemode-scale: 1.05;
+  --gamemode-border-color: rgba(255, 255, 255, 0.2);
+}
+
 .game-mode {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gs-spacing);
+  gap: var(--gamemode-spacing);
 
   h3 {
-    font-size: var(--gs-title-size);
+    font-size: var(--gamemode-title-size);
     font-weight: bold;
     margin: 0;
   }
@@ -14,7 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gs-gamemode-spacing);
+    gap: var(--gamemode-label-spacing);
     inline-size: 100%;
   }
 
@@ -22,23 +41,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--gs-text-size);
+    font-size: var(--gamemode-text-size);
     cursor: pointer;
-    padding: var(--gs-gamemode-buttons-padding);
-    border-radius: var(--gs-border-radius);
-    border: 0.0625rem solid var(--gs-border-color);
-    transition: all var(--gs-transition);
+    padding: var(--gamemode-padding);
+    border-radius: var(--gamemode-border-radius);
+    border: var(--gamemode-border-width) solid var(--gamemode-border-color);
+    transition: all var(--gamemode-transition);
     flex-grow: 1;
-    inline-size: 40%;
+    inline-size: var(--gamemode-label-width);
+
+    @media (max-width: 768px) {
+      inline-size: 50%;
+    }
 
     &:hover {
-      background: var(--gs-hover-bg);
+      background: var(--ds-color-white-10);
     }
 
     &.active {
-      background: var(--gs-active-bg);
+      background: var(--ds-color-white-20);
       font-weight: bold;
-      transform: scale(1.05);
+      transform: scale(var(--gamemode-scale));
     }
 
     input[type="radio"] {

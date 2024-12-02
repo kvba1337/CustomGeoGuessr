@@ -5,18 +5,10 @@
   --game-result-summary-padding: 1rem clamp(0.5rem, 1vh, 2rem);
 
   /* Game Result Summary Colors & Effects */
-  --game-result-summary-bg: rgba(0, 0, 0, 0.7);
+  --game-result-summary-bg: transparent;
   --game-result-summary-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.5);
   --game-result-summary-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
   --game-result-summary-border-radius: 1.25rem;
-
-  /* Table */
-  --table-header-bg: rgb(32, 32, 41);
-  --table-row-hover-bg: rgba(255, 255, 255, 0.2);
-  --table-border: 0.0625rem solid rgba(255, 255, 255, 0.3);
-  --table-font-size: clamp(0.8rem, 1.5vw, 1rem);
-  --table-font-size-small: clamp(0.7rem, 1.2vw, 0.9rem);
-  --table-font-size-large: clamp(0.8rem, 2vw, 1.2rem);
 }
 
 .game-result-summary {
@@ -27,37 +19,42 @@
   block-size: 100dvh;
   max-inline-size: var(--game-result-summary-max-width);
   gap: var(--game-result-summary-spacing);
-  padding: var(--game-result-summary-padding);
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  justify-content: flex-start; // Zmiana z center na flex-start
+  justify-content: flex-start;
   background: var(--game-result-summary-bg);
-  box-shadow: var(--game-result-summary-shadow);
-  text-shadow: var(--game-result-summary-text-shadow);
   color: var(--ds-color-white);
   border-radius: var(--game-result-summary-border-radius);
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 
   &__header {
     font-size: clamp(2rem, 5vw, 2.5rem);
     text-align: center;
     margin: 0.5rem;
+    font-style: italic;
   }
 
   .summary-map {
     inline-size: 100%;
-    block-size: 45vh; // Zmniejszamy wysokość mapy
+    block-size: 45vh;
     border-radius: var(--game-result-summary-border-radius);
     overflow: hidden;
-    box-shadow: var(--game-result-summary-shadow);
+
+    @media (max-width: 768px) {
+      block-size: 35vh;
+    }
   }
 
   .summary-table-container {
     inline-size: 100%;
-    flex: 1; // Dodajemy flex: 1 aby wypełnić pozostałą przestrzeń
-    overflow-y: auto; // Tylko kontener tabeli ma scroll
+    flex: 1;
+    overflow-y: auto;
     margin-block: var(--game-result-summary-spacing);
 
-    // Style dla scrollbara
     &::-webkit-scrollbar {
       inline-size: 0.75rem;
     }
@@ -75,40 +72,6 @@
       &:hover {
         background-color: rgba(255, 255, 255, 0.5);
       }
-    }
-  }
-
-  .continue-btn-container {
-    margin-block-start: auto; // Przycisk na dole
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .continue-btn {
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 1.5625rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    background: rgb(108, 185, 40);
-    background-image: radial-gradient(
-      150% 160% at 50% 15%,
-      hsla(0, 0%, 100%, 0.6) 0,
-      transparent 30%
-    );
-    color: white;
-    border: 0.0625rem solid black;
-    text-shadow: 0 0 0.625rem #000000, 0 0 0.9375rem #000000;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
     }
   }
 }

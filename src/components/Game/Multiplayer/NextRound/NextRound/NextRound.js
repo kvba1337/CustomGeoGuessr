@@ -11,7 +11,9 @@ import "./NextRound.scss";
 const NextRound = () => {
   const dispatch = useDispatch();
   const [countdown, setCountdown] = useState(5);
-  const { currentRound, settings } = useSelector((state) => state.game);
+  const { currentRound, settings, selectedMap } = useSelector(
+    (state) => state.game
+  );
   const { username, avatar } = useSelector((state) => state.user);
   const { opponent } = useSelector((state) => state.room);
   const gameMode = settings?.gameMode?.toUpperCase() || "";
@@ -34,11 +36,16 @@ const NextRound = () => {
   return (
     <div className="next-round-info">
       <div className="next-round-info__content">
-        <NextRoundHeader currentRound={currentRound} gameMode={gameMode} />
+        <NextRoundHeader
+          currentRound={currentRound}
+          gameMode={gameMode}
+          map={selectedMap}
+        />
         <NextRoundPlayers
           username={username}
           avatar={avatar}
           opponent={opponent}
+          currentRound={currentRound}
         />
         <NextRoundStart countdown={countdown} />
         <NextRoundNoGoogling />

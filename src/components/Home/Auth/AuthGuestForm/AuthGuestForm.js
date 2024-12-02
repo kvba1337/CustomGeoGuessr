@@ -50,10 +50,12 @@ const AuthGuestForm = () => {
         handleAvatarClick={handleAvatarClick}
       />
       {selectedAvatar && <AuthSelectedAvatar selectedAvatar={selectedAvatar} />}
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className="error-message animation-shake">{error}</p>}
       {loading && <div className="loading-spinner"></div>}
       {isAuthenticated && (
-        <div className="success-message">Successfully signed in as guest!</div>
+        <div className="success-message animation-slideIn">
+          Successfully signed in as guest!
+        </div>
       )}
       <button
         className="button button-primary button-lg"

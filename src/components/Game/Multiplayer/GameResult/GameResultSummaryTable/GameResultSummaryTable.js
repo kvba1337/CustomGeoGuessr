@@ -21,7 +21,7 @@ const GameResultSummaryTable = ({
           <tr>
             <th>Round</th>
             <th>Your Score</th>
-            <th>Opponent Score</th>
+            <th>{opponentUsername} Score</th>
             <th>{gameType === "battle" ? "Your Health" : "Your Total"}</th>
             <th>
               {gameType === "battle" ? "Opponent Health" : "Opponent Total"}

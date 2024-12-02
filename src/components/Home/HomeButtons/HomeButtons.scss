@@ -1,6 +1,12 @@
+:root {
+  /* Layout */
+  --home-buttons-gap: clamp(0.8rem, 2vw, 1.5rem);
+  --home-buttons-margin: 1rem;
+}
+
 .home__buttons {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.8rem, 2vw, 1.5rem);
-  margin-block-end: 1rem;
+  gap: var(--home-buttons-gap);
+  margin-block-end: var(--home-buttons-margin);
 }

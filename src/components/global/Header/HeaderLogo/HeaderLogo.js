@@ -6,7 +6,11 @@ import "./HeaderLogo.scss";
 const Logo = () => (
   <div className="header__logo-container">
     <Link to="/">
-      <img src={logo} alt="Logo" className="header__logo-image" />
+      <img
+        src={logo}
+        alt="Logo"
+        className="header__logo-image animation-scaleIn"
+      />
     </Link>
   </div>
 );

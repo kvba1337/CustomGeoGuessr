@@ -1,22 +1,47 @@
+:root {
+  /* Layout */
+  --player-width: 50%;
+  --player-gap: 1rem;
+  --avatar-size: clamp(4.6875rem, 15vw, 11.25rem);
+  --avatar-border-width: 0.25rem;
+  --next-round-avatar-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.4);
+
+  /* Effects */
+  --player-hover-scale: 1.05;
+  --player-transition: var(--next-round-transition);
+  --avatar-border-radius: 50%;
+
+  --player-border-radius: 1rem;
+  --player-glow: 0 0 1rem rgba(58, 232, 189, 0.3);
+}
+
 .player {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  transition: transform var(--next-round-transition);
-  gap: 1rem;
-  inline-size: 50%;
+  transition: transform 0.3s;
+  gap: var(--player-gap);
+  inline-size: var(--player-width);
+  padding: 2rem;
+  border-radius: var(--player-border-radius);
+  box-shadow: var(--player-glow);
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    gap: calc(var(--player-gap) * 0.5);
+  }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(var(--player-hover-scale));
   }
 
   .avatar {
-    inline-size: clamp(4.6875rem, 15vw, 11.25rem);
+    inline-size: var(--avatar-size);
     aspect-ratio: 1;
-    border-radius: 50%;
+    border-radius: var(--avatar-border-radius);
     box-shadow: var(--next-round-avatar-shadow);
-    border: 0.25rem solid var(--ds-color-white);
+    border: var(--avatar-border-width) solid var(--ds-color-white);
     object-fit: cover;
     margin: 0;
   }

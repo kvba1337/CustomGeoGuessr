@@ -1,11 +1,20 @@
 :root {
-  --control-bottom: 15rem;
-  --control-left: 0;
+  /* Layout */
+  --streetview-control-bottom: 15rem;
+  --streetview-control-left: 0;
+
+  /* Dimensions */
+  --streetview-width: 100vw;
+  --streetview-height: 100dvh;
+
+  /* Loading */
+  --streetview-loading-gap: 1rem;
+  --streetview-loading-font-size: 1.2rem;
 }
 
 .street-view-map {
-  inline-size: 100vw;
-  block-size: 100dvh;
+  inline-size: var(--streetview-width);
+  block-size: var(--streetview-height);
   position: relative;
 }
 
@@ -14,16 +23,31 @@
 }
 
 .gm-style .gm-bundled-control {
-  inset-block-end: var(--control-bottom) !important;
-  inset-inline-start: var(--control-left) !important;
+  inset-block-end: var(--streetview-control-bottom) !important;
+  inset-inline-start: var(--streetview-control-left) !important;
   inset-inline-end: unset !important;
 }
 
 .transparent-overlay {
   position: absolute;
   inset: 0;
-  inline-size: 100vw;
-  block-size: 100dvh;
+  inline-size: var(--streetview-width);
+  block-size: var(--streetview-height);
   z-index: 3;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--ds-color-white);
+  gap: var(--streetview-loading-gap);
+
+  p {
+    margin: 0;
+    font-size: var(--streetview-loading-font-size);
+  }
 }

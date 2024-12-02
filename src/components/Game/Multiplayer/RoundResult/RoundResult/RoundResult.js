@@ -14,7 +14,7 @@ const RoundResult = () => {
     (state) => state.game
   );
   const { userResult, opponentResult } = roundResults;
-  const { avatar } = useSelector((state) => state.user);
+  const { avatar, username } = useSelector((state) => state.user);
   const { opponent } = useSelector((state) => state.room);
   const gameMode = settings.gameMode.toUpperCase();
 
@@ -41,6 +41,8 @@ const RoundResult = () => {
             opponentResult={opponentResult}
             opponentAvatar={opponent.avatar}
             settings={settings}
+            username={username}
+            opponentUsername={opponent.username}
           />
         </div>
         <RoundResultPlayersResults

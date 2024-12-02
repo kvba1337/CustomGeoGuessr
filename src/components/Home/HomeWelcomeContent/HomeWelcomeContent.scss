@@ -1,27 +1,30 @@
 :root {
+  /* Layout */
   --welcome-padding-block: clamp(4rem, calc(13vh + 5vw), 15rem);
   --welcome-gap: clamp(1rem, 2vh, 2rem);
   --welcome-horizontal-padding: clamp(1rem, 3vw, 2rem);
+  --welcome-features-gap: clamp(1rem, 3vw, 3rem);
+  --welcome-features-padding: clamp(1rem, 2vw, 2rem);
+  --welcome-features-margin: clamp(1rem, 5vw, 6rem);
+  --welcome-button-margin: clamp(1rem, 3vh, 2rem);
 
+  /* Typography */
   --welcome-title-size: clamp(2.5rem, 6vw, 4.5rem);
   --welcome-subtitle-size: clamp(1rem, 2vw, 1.25rem);
   --welcome-feature-text-size: clamp(0.875rem, 1.5vw, 1rem);
   --welcome-feature-icon-size: clamp(1.5rem, 2.5vw, 2rem);
 
+  /* Colors & Backgrounds */
   --welcome-blur-bg-title: var(--ds-color-black-60);
   --welcome-blur-bg-subtitle: var(--ds-color-black-40);
   --welcome-features-bg: var(--ds-color-black-70);
-  --welcome-text-shadow: 0 0.125rem 0.5rem var(--ds-color-black);
 
+  /* Effects */
+  --welcome-text-shadow: 0 0.125rem 0.5rem var(--ds-color-black);
+  --welcome-button-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   --welcome-blur-radius-title: 2rem;
   --welcome-blur-radius-subtitle: 1rem;
   --welcome-border-radius: 1rem;
-  --welcome-features-gap: clamp(1rem, 3vw, 3rem);
-  --welcome-features-padding: clamp(1rem, 2vw, 2rem);
-  --welcome-features-margin: clamp(1rem, 5vw, 6rem);
-
-  --welcome-button-margin: clamp(1rem, 3vh, 2rem);
-  --welcome-button-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .home-welcome {
@@ -37,6 +40,10 @@
 
   @media (max-width: 1500px) {
     padding-block-start: clamp(3rem, calc(8vh + 3vw), 8rem);
+  }
+
+  @media (max-width: 480px) {
+    padding-block-start: 0rem;
   }
 
   &__title {
@@ -100,7 +107,7 @@
     border-radius: var(--welcome-border-radius);
     width: fit-content;
     max-width: 90%;
-    z-index: 2;
+    z-index: 5;
 
     @media (max-width: 1500px) {
       margin-block-start: var(--welcome-features-margin);

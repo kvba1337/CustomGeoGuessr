@@ -12,11 +12,12 @@ import MiniMapContainer from "../MiniMap/MiniMapContainer/MiniMapContainer";
 import MiniMapContainerMobile from "../MiniMap/MiniMapContainerMobile/MiniMapContainerMobile";
 import GameResult from "../GameResult/GameResult/GameResult";
 import RoundResult from "../RoundResult/RoundResult/RoundResult";
+import HUDPlayerProgress from "../HUD/HUDPlayerProgress/HUDPlayerProgress";
 
 const GameMultiplayer = () => {
   useGameStateUpdates();
-  const { status } = useSelector((state) => state.game);
-  const isMobile = window.innerWidth <= 1130;
+  const { status, settings } = useSelector((state) => state.game);
+  const isMobile = window.innerWidth <= 768;
   const [isMapVisible, setIsMapVisible] = useState(false);
   const [isSlidingDown, setIsSlidingDown] = useState(false);
 
@@ -33,10 +34,17 @@ const GameMultiplayer = () => {
       {status === "beforeRound" && <NextRound />}
       {status === "roundLive" && (
         <>
+          {settings.gameType === "battle" ? (
+            <div className="players-progress">
+              <HUDPlayerProgress />
+              <HUDPlayerProgress isReversed={true} />
+            </div>
+          ) : (
+            <HUDRoundInfo />
+          )}
           <HUDReturnButton />
-          <HUDRoundInfo />
           <HUDTimer />
-          <StreetViewContainer closeMap={closeMap} />
+          <StreetViewContainer closeMap={closeMap} isMobile={isMobile} />
           {isMobile ? (
             <MiniMapContainerMobile
               isMapVisible={isMapVisible}

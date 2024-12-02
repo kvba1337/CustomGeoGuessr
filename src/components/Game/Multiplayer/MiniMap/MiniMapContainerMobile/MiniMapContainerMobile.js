@@ -87,14 +87,21 @@ const MiniMapContainerMobile = ({
   }
 
   if (!isLoaded) {
-    return <div>Loading maps...</div>;
+    return <div></div>;
   }
 
   return (
     <>
       {!isMapVisible && (
-        <button className="map-toggle-btn" onClick={toggleMapVisibility}>
-          <i className="fa fa-map"></i>
+        <button
+          className="button map-toggle-btn button-primary button-round"
+          onClick={toggleMapVisibility}
+        >
+          <div className="button-wrapper">
+            <span className="button-label">
+              <i className="fa fa-map"></i>
+            </span>
+          </div>
         </button>
       )}
       {isMapVisible && (
@@ -122,13 +129,15 @@ const MiniMapContainerMobile = ({
               )}
             </GoogleMap>
             <button
-              className={`mobile-guess-btn ${
+              className={`button mobile-guess-btn button-primary button-lg ${
                 !markerLocation || isGuessMade ? "disabled" : ""
               }`}
               onClick={handleGuessClick}
               disabled={!markerLocation || isGuessMade}
             >
-              Guess
+              <div className="button-wrapper">
+                <span className="button-label">Guess</span>
+              </div>
             </button>
           </div>
         </div>

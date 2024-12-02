@@ -72,10 +72,12 @@ const AuthSignInForm = () => {
         }}
         onKeyPress={handleKeyPress}
       />
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className="error-message animation-shake">{error}</p>}
       {loading && <div className="loading-spinner"></div>}
       {isAuthenticated && (
-        <div className="success-message">Successfully registered!</div>
+        <div className="success-message animation-slideIn">
+          Successfully registered!
+        </div>
       )}
       <button
         className="button button-primary button-lg"

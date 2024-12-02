@@ -1,14 +1,13 @@
 :root {
   /* Layout & Sizing */
   --modal-width: clamp(20rem, 90%, 31.25rem);
-  --modal-padding-block: clamp(1.5rem, 4vh, 2.5rem);
+  --modal-padding-block: clamp(3.5rem, 4vh, 4.5rem);
   --modal-padding-inline: clamp(1.5rem, 3vw, 2.5rem);
   --modal-border-radius: 1rem;
   --modal-gap: 2rem;
 
   /* Colors & Effects */
   --modal-overlay-bg: rgba(26, 26, 46, 0.95);
-  --modal-bg: var(--ds-color-purple-100);
   --modal-gradient: linear-gradient(
     135deg,
     rgba(26, 26, 46, 0.95) 0%,
@@ -38,10 +37,6 @@
   /* Animation & Effects */
   --modal-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --modal-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-  /* Close Button */
-  --modal-close-size: 2rem;
-  --modal-close-offset: 1rem;
 }
 
 %modal-overlay {

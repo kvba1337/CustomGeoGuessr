@@ -1,9 +1,14 @@
 .map-btn {
+  /* Colors */
   --btn-bg-color: white;
   --btn-hover-bg-color: #f0f0f0;
+
+  /* Layout */
   --btn-border-radius: 50%;
   --btn-padding: 0.3125rem 0.625rem;
   --btn-font-size: 1.125rem;
+
+  /* Effects */
   --btn-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
   --btn-opacity: 0.8;
   --btn-hover-opacity: 1;

@@ -1,116 +1,103 @@
+:root {
+  /* Layout */
+  --time-limit-gap: clamp(0.5rem, 2vw, 1rem);
+  --time-slider-width: 150%;
+  --time-slider-height: 0.25rem;
+  --time-slider-thumb-size: 1.25rem;
+  --time-slider-margin-start: -25%;
+  --time-slider-margin-bottom: 0.5rem;
+  --time-slider-thumb-margin: -0.5rem;
+
+  /* Typography */
+  --time-limit-title-size: clamp(1rem, 3vw, 1.5rem);
+  --time-limit-text-size: clamp(0.9rem, 1.5vw, 1rem);
+  --time-limit-description-size: clamp(0.8rem, 1.2vw, 0.9rem);
+
+  /* Effects */
+  --time-limit-transition: 0.3s ease;
+  --time-slider-radius: 0.3125rem;
+  --time-slider-thumb-radius: 50%;
+  --time-slider-thumb-border: 0.125rem;
+}
+
 .time-limit {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gs-spacing);
+  gap: var(--time-limit-gap);
 
   &__label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: var(--gs-text-size);
+    font-size: var(--time-limit-text-size);
     font-weight: bold;
     text-align: center;
 
     h3 {
       margin: 0;
-      font-size: var(--gs-title-size);
+      font-size: var(--time-limit-title-size);
     }
 
     p {
-      margin: 0;
-      font-size: var(--gs-description-size);
+      margin-top: 0.3rem;
+      font-size: var(--time-limit-description-size);
       font-weight: normal;
     }
 
     .time-slider {
       all: unset;
-      inline-size: 150%;
-      block-size: 0.25rem;
-      background: var(--ds-color-purple-50);
-      border-radius: 0.3125rem;
-      margin-inline-start: -25%;
-      margin-block-end: 0.5rem;
+      inline-size: var(--time-slider-width);
+      block-size: var(--time-slider-height);
+      margin-inline-start: var(--time-slider-margin-start);
+      margin-block-end: var(--time-slider-margin-bottom);
       position: relative;
       cursor: pointer;
-
-      &::-webkit-slider-runnable-track {
-        inline-size: 100%;
-        block-size: 0.25rem;
-        background: var(--ds-color-purple-50);
-        border-radius: 0.3125rem;
-      }
 
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
+        inline-size: 1.2rem;
+        block-size: 1.2rem;
         border-radius: 50%;
-        background: var(--button-gradient);
-        border: 0.125rem solid var(--ds-color-white);
-        box-shadow: var(--shadow-2);
-        margin-block-start: -0.5rem;
-        cursor: pointer;
-        transition: transform var(--gs-transition);
-
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-
-      &::-moz-range-track {
-        inline-size: 100%;
-        block-size: 0.25rem;
         background: var(--ds-color-purple-50);
-        border-radius: 0.3125rem;
+        margin-block-start: -0.4rem;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       &::-moz-range-thumb {
         appearance: none;
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
+        inline-size: 1.2rem;
+        block-size: 1.2rem;
         border-radius: 50%;
-        background: var(--button-gradient);
-        border: 0.125rem solid var(--ds-color-white);
-        box-shadow: var(--shadow-2);
-        cursor: pointer;
-        transition: transform var(--gs-transition);
-
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-
-      &::-ms-track {
-        inline-size: 100%;
-        block-size: 0.25rem;
-        background: transparent;
-        border: none;
-        color: transparent;
-      }
-
-      &::-ms-fill-lower,
-      &::-ms-fill-upper {
         background: var(--ds-color-purple-50);
-        border-radius: 0.3125rem;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      &::-ms-thumb {
-        appearance: none;
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
-        border-radius: 50%;
-        background: var(--button-gradient);
-        border: 0.125rem solid var(--ds-color-white);
-        box-shadow: var(--shadow-2);
-        cursor: pointer;
-        transition: transform var(--gs-transition);
-        margin-block-start: 0;
+      &::-webkit-slider-runnable-track {
+        inline-size: 100%;
+        block-size: 0.5rem;
+        background: linear-gradient(
+          to right,
+          var(--ds-color-purple-20) var(--slider-value, 0%),
+          var(--ds-color-white-10) var(--slider-value, 0%)
+        );
+        border-radius: 1rem;
+        box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+      }
 
-        &:hover {
-          transform: scale(1.1);
-        }
+      &::-moz-range-track {
+        inline-size: 100%;
+        block-size: 0.5rem;
+        background: linear-gradient(
+          to right,
+          var(--ds-color-purple-20) var(--slider-value, 0%),
+          var(--ds-color-white-10) var(--slider-value, 0%)
+        );
+        border-radius: 1rem;
+        box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
       }
     }
   }

@@ -1,3 +1,8 @@
+:root {
+  /* Layout */
+  --game-result-spacing: 1rem;
+}
+
 .game-result-buttons {
   display: flex;
   justify-content: center;
@@ -15,37 +20,17 @@
     width: 50%;
   }
 
-  .game-summary-btn,
-  .continue-btn {
-    padding: var(--result-button-padding);
-    font-size: var(--result-button-font-size);
-    font-weight: 400;
-    text-transform: uppercase;
-    border-radius: var(--game-result-border-radius);
-    cursor: pointer;
-    transition: transform var(--result-button-transition-ease);
+  @media (max-width: 768px) {
+    inline-size: 100%;
 
-    &:hover {
-      transform: scale(1.05);
+    .game-summary-btn-container,
+    .continue-btn-container {
+      width: auto;
     }
 
-    &:active {
-      transform: scale(0.95);
+    .button {
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
     }
-  }
-
-  .game-summary-btn {
-    background: transparent;
-    color: var(--ds-color-white);
-    border: 0.125rem solid var(--ds-color-white);
-  }
-
-  .continue-btn {
-    background: var(--ds-color-green-80);
-    background-image: var(--button-success-gradient);
-    color: var(--ds-color-white);
-    border: 0.0625rem solid var(--ds-color-black);
-    text-shadow: var(--game-result-text-shadow);
-    box-shadow: var(--game-result-shadow);
   }
 }

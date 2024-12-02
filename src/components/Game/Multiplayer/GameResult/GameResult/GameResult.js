@@ -14,7 +14,7 @@ const GameResult = () => {
   const navigate = useNavigate();
   const { roomId, opponent } = useSelector((state) => state.room);
   const { userId, username, avatar } = useSelector((state) => state.user);
-  const { totalRounds, gameLocations } = useSelector((state) => state.game);
+  const { gameLocations } = useSelector((state) => state.game);
   const [userResults, setUserResults] = useState([]);
   const [opponentResults, setOpponentResults] = useState([]);
   const [gameStatus, setGameStatus] = useState("");
@@ -27,16 +27,6 @@ const GameResult = () => {
     setOpponentResults,
     setGameStatus
   );
-
-  const userTotalScore = userResults.reduce(
-    (acc, round) => acc + round.score,
-    0
-  );
-  const opponentTotalScore = opponentResults.reduce(
-    (acc, round) => acc + round.score,
-    0
-  );
-  const userIsWinner = userTotalScore > opponentTotalScore;
 
   const handleShowSummary = useCallback(() => {
     setShowSummary(true);
@@ -79,20 +69,14 @@ const GameResult = () => {
           <GameResultScoreItem
             avatar={avatar}
             username={username}
-            score={userTotalScore}
-            maxScore={totalRounds * 5000}
-            isWinner={userIsWinner}
-            remainingHp={userResults[userResults.length - 1]?.remainingHp || 0}
+            userResults={userResults}
+            opponentResults={opponentResults}
           />
           <GameResultScoreItem
             avatar={opponent.avatar}
             username={opponent.username}
-            score={opponentTotalScore}
-            maxScore={totalRounds * 5000}
-            isWinner={!userIsWinner}
-            remainingHp={
-              opponentResults[opponentResults.length - 1]?.remainingHp || 0
-            }
+            userResults={opponentResults}
+            opponentResults={userResults}
             reverse
           />
         </div>

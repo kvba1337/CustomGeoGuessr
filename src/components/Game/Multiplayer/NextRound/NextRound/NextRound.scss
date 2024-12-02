@@ -2,7 +2,6 @@
   /* NextRound Layout */
   --next-round-max-width: 50rem;
   --next-round-gap: clamp(1rem, 3vh, 2rem);
-  --next-round-bg: rgba(0, 0, 0, 0.7);
 
   /* Typography */
   --next-round-font-size-small: clamp(1rem, 2vw, 1.2rem);
@@ -10,12 +9,9 @@
   --next-round-font-size-large: clamp(2rem, 5vw, 3.5rem);
 
   /* Colors & Effects */
-  --next-round-text-shadow: 0 0 0.625rem #000, 0 0 0.9375rem #000;
+  --next-round-text-shadow: 0 0 0.1rem #000, 0 0 0.3rem #000;
   --next-round-accent-color: #fecd19;
-  --next-round-vs-shadow: 0 0 0.3125rem #00a2fe, 0 0 0.625rem #367aa1,
-    0 0 0.9375rem #7f36a1, 0 0 1.25rem #56246d;
   --next-round-box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.5);
-  --next-round-avatar-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.4);
 
   /* Transitions */
   --next-round-transition: 1s ease;
@@ -25,13 +21,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; // Dodajemy space-between, aby rozdzielić elementy
+  justify-content: space-between;
   block-size: 100dvh;
   inline-size: 100%;
   text-align: center;
   color: var(--ds-color-white);
   text-shadow: var(--next-round-text-shadow);
-  background: var(--next-round-bg);
+  background: transparent;
   box-shadow: var(--next-round-box-shadow);
   animation: fadeIn var(--next-round-transition);
   position: relative;
@@ -43,9 +39,8 @@
     align-items: center;
     justify-content: center;
     inline-size: min(100%, var(--next-round-max-width));
-    block-size: 100dvh;
+    block-size: 95dvh;
     gap: var(--next-round-gap);
-    margin: var(--next-round-gap);
   }
 }
 

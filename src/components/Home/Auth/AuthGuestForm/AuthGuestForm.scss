@@ -1,8 +1,20 @@
+:root {
+  /* Colors */
+  --guest-form-text-color: var(--ds-color-white);
+
+  /* Typography */
+  --guest-form-font-size: 1.2rem;
+  --guest-form-font-weight: 700;
+
+  /* Spacing */
+  --guest-form-margin: 0;
+}
+
 .guest-form {
   .select-avatar-info {
-    font-size: 1.2rem;
-    color: var(--auth-text);
-    margin: 0;
-    font-weight: bold;
+    font-size: var(--guest-form-font-size);
+    color: var(--guest-form-text-color);
+    margin: var(--guest-form-margin);
+    font-weight: var(--guest-form-font-weight);
   }
 }

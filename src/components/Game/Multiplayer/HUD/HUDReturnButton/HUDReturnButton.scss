@@ -1,7 +1,7 @@
 :root {
   --button-bg-color: #4b4b4b;
   --button-color: white;
-  --button-padding: 10px 12px;
+  --button-padding: 10px 14px;
   --button-font-size: 17px;
   --button-opacity: 0.8;
   --button-hover-opacity: 1;
@@ -11,8 +11,8 @@
 
 .return-button {
   position: absolute;
-  inset-block-end: 2.1875rem; // 35px
-  inset-inline-start: 0.875rem; // 14px
+  inset-block-end: 35px;
+  inset-inline-start: 14px;
   background-color: var(--button-bg-color);
   color: var(--button-color);
   padding: var(--button-padding);

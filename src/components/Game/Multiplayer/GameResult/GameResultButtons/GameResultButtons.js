@@ -5,13 +5,23 @@ const GameResultButtons = ({ onShowSummary, onContinue }) => {
   return (
     <div className="game-result-buttons">
       <div className="game-summary-btn-container">
-        <button className="game-summary-btn" onClick={onShowSummary}>
-          Game Summary
+        <button
+          className="button button-secondary button-lg"
+          onClick={onShowSummary}
+        >
+          <div className="button-wrapper">
+            <span className="button-label">Game Summary</span>
+          </div>
         </button>
       </div>
       <div className="continue-btn-container">
-        <button className="continue-btn" onClick={onContinue}>
-          Continue
+        <button
+          className="button button-primary button-lg"
+          onClick={onContinue}
+        >
+          <div className="button-wrapper">
+            <span className="button-label">Continue</span>
+          </div>
         </button>
       </div>
     </div>

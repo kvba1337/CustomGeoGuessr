@@ -1,40 +1,33 @@
 :root {
-  --multiplayer-container-width: clamp(18.75rem, 90%, 75rem);
-  --multiplayer-spacing: clamp(1rem, 2vw, 2rem);
+  /* Layout */
+  --multiplayer-content-gap: 2rem;
+  --multiplayer-content-margin: 2rem;
 
-  --container-padding-mobile: 0.5rem;
-  --container-padding-tablet: 1rem;
-  --container-padding-desktop: 2rem;
-
-  --multiplayer-gradient-blue: rgba(0, 162, 254, 0.6);
-  --multiplayer-gradient-pink: rgba(255, 20, 147, 0.7);
-  --multiplayer-gradient-purple: rgba(161, 155, 217, 0.4);
-
-  --item-padding: clamp(2rem, 3vw, 3rem);
-  --item-border-radius: 0.9375rem;
-  --item-transition: 0.3s ease;
-  --item-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.2);
-  --item-hover-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.3);
+  /* Background */
+  --bg-gradient-teal-opacity-low: rgba(58, 232, 189, 0.5);
+  --bg-gradient-teal-opacity-high: rgba(58, 232, 189, 0.8);
+  --bg-gradient-purple: #7950e5;
+  --bg-gradient-stop: 92.09%;
 }
 
 .multiplayer-container {
   display: flex;
   flex-direction: column;
-  min-block-size: 100vh;
+  min-block-size: 100dvh;
   background: radial-gradient(
       66.5% 221.21% at 136.03% -61.44%,
-      rgba(58, 232, 189, 0.5) 0%,
-      rgba(58, 232, 189, 0) 92.09%
+      var(--bg-gradient-teal-opacity-low) 0%,
+      rgba(58, 232, 189, 0) var(--bg-gradient-stop)
     ),
     radial-gradient(
       93.54% 126.91% at 29.15% -56.29%,
-      rgba(58, 232, 189, 0.8) 0%,
-      rgba(58, 232, 189, 0) 92.09%
+      var(--bg-gradient-teal-opacity-high) 0%,
+      rgba(58, 232, 189, 0) var(--bg-gradient-stop)
     ),
     radial-gradient(
       86.19% 101.84% at -17.13% -24.8%,
-      #7950e5 0%,
-      rgba(121, 80, 229, 0) 92.09%
+      var(--bg-gradient-purple) 0%,
+      rgba(121, 80, 229, 0) var(--bg-gradient-stop)
     ),
     var(--ds-color-purple-100);
 }
@@ -44,8 +37,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin: 2rem auto;
+  gap: var(--multiplayer-content-gap);
+  margin: var(--multiplayer-content-margin) auto;
   justify-content: center;
   color: var(--ds-color-white);
 }

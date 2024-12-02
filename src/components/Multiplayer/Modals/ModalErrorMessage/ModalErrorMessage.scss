@@ -1,13 +1,25 @@
+:root {
+  /* Layout */
+  --modal-error-padding: 1rem;
+  --modal-error-border-radius: 0.625rem;
+  --modal-error-width: 70%;
+  --modal-error-border-width: 0.0625rem;
+
+  /* Typography */
+  --modal-error-font-size: 1.5rem;
+  --modal-error-font-weight: 500;
+}
+
 .error-message {
-  padding: 1rem;
-  border-radius: 0.625rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+  padding: var(--modal-error-padding);
+  border-radius: var(--modal-error-border-radius);
+  font-size: var(--modal-error-font-size);
+  font-weight: var(--modal-error-font-weight);
   text-align: center;
-  inline-size: 70%;
+  inline-size: var(--modal-error-width);
   margin: 0;
   transition: background var(--modal-transition), color var(--modal-transition);
   background-color: var(--modal-error-bg);
   color: var(--modal-error-color);
-  border: 0.0625rem solid var(--modal-error-color);
+  border: var(--modal-error-border-width) solid var(--modal-error-color);
 }

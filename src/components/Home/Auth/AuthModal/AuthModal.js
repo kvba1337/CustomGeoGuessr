@@ -23,7 +23,7 @@ const AuthModal = () => {
 
   return (
     <div className="auth-modal">
-      <div className="auth-modal-content">
+      <div className="auth-modal__container">
         <div className="auth-modal__tabs">
           <button
             className={`auth-modal__tab ${

@@ -1,36 +1,52 @@
+:root {
+  /* Layout */
+  --next-round-header-gap: clamp(0rem, 5vh, 10rem);
+  --next-round-header-letter-spacing: 0.05em;
+  --next-round-header-line-height: 1.2;
+
+  /* Typography */
+  --next-round-header-font-size-small: var(--next-round-font-size-small);
+  --next-round-header-font-size-medium: var(--next-round-font-size-medium);
+  --next-round-header-font-size-large: var(--next-round-font-size-large);
+
+  /* Effects */
+  --next-round-header-opacity: 0.8;
+}
+
 .next-round-info__header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--next-round-header-letter-spacing);
   text-transform: uppercase;
-  gap: clamp(0rem, 5vh, 10rem);
+  gap: var(--next-round-header-gap);
   margin-bottom: auto;
-
-  .current-round {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--next-round-font-size-large);
-    opacity: 0.8;
-  }
 
   .game-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: bold;
+    font-style: italic;
 
     h1 {
-      font-size: var(--next-round-font-size-small);
+      font-size: calc(var(--next-round-header-font-size-small) * 0.7);
       color: var(--ds-color-white);
       margin: 0;
       text-shadow: var(--next-round-text-shadow);
+      letter-spacing: 0.01rem;
     }
 
     h2 {
-      font-size: var(--next-round-font-size-medium);
+      font-size: var(--next-round-header-font-size-medium);
       color: var(--next-round-accent-color);
-      line-height: 1.2;
+      line-height: var(--next-round-header-line-height);
+      margin: 0;
+    }
+
+    h3 {
+      font-size: calc(var(--next-round-header-font-size-small) * 0.7);
+      color: var(--ds-color-white-80);
       margin: 0;
     }
   }

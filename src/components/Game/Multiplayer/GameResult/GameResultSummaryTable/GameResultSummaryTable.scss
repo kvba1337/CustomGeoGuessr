@@ -1,3 +1,24 @@
+:root {
+  /* Layout */
+  --table-header-height: 2.5rem;
+  --table-cell-padding: 0.5rem;
+
+  /* Typography */
+  --table-font-size: clamp(0.8rem, 1.5vw, 1rem);
+  --table-font-size-small: clamp(0.7rem, 1.2vw, 0.9rem);
+  --table-font-size-large: clamp(0.8rem, 2vw, 1.2rem);
+
+  /* Colors */
+  --table-header-bg: var(--ds-color-black-50);
+  --table-row-hover-bg: var(--ds-color-white-10);
+  --table-text-mute: var(--ds-color-white-50);
+  --table-text-damage: var(--ds-color-red-50);
+  --table-text-gained: var(--ds-color-green-50);
+
+  /* Borders */
+  --table-border: 0.0625rem solid rgba(255, 255, 255, 0.3);
+}
+
 .summary-table-container {
   inline-size: 100%;
   overflow-x: auto;
@@ -17,6 +38,8 @@
     position: sticky;
     inset-block-start: 0;
     z-index: 1;
+    text-transform: uppercase;
+    color: var(--table-text-mute);
 
     th {
       padding: 0.5rem;
@@ -52,28 +75,30 @@
           font-weight: bold;
           font-size: var(--table-font-size-large);
           font-style: italic;
+          letter-spacing: 0.05rem;
 
           .distance {
-            font-weight: bold;
+            font-weight: normal;
             font-size: var(--table-font-size-small);
-            color: #9e9e9e;
+            color: var(--table-text-mute);
             font-style: normal;
           }
         }
 
         .damage,
         .gained-points {
-          font-weight: bold;
+          font-weight: normal;
           font-size: var(--table-font-size-small);
-          color: #9e9e9e;
+          color: var(--table-text-mute);
           font-style: normal;
+          letter-spacing: 0.1rem;
 
           &--taken {
-            color: #ca3333;
+            color: var(--table-text-damage);
           }
 
           &--gained {
-            color: #44ff44;
+            color: var(--table-text-gained);
           }
         }
       }

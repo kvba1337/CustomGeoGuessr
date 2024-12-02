@@ -20,11 +20,21 @@ const MiniMapGuessButton = ({ onClick, disabled, hasMarker }) => {
 
   return (
     <button
-      className={`submit-guess-btn ${disabled || !hasMarker ? "disabled" : ""}`}
+      className={`submit-guess-btn button button-primary button-lg ${
+        disabled || !hasMarker ? "disabled" : ""
+      }`}
       onClick={handleClick}
       disabled={disabled}
     >
-      {disabled ? "GUESS" : hasMarker ? "GUESS" : "PLACE YOUR PIN ON THE MAP"}
+      <div className="button-wrapper">
+        <span className="button-label">
+          {disabled
+            ? "GUESS"
+            : hasMarker
+            ? "GUESS"
+            : "PLACE YOUR PIN ON THE MAP"}
+        </span>
+      </div>
     </button>
   );
 };

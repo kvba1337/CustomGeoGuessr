@@ -1,3 +1,9 @@
+:root {
+  /* Layout */
+  --multiplayer-container-width: clamp(18.75rem, 90%, 75rem);
+  --multiplayer-spacing: clamp(1rem, 2vw, 2rem);
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -7,8 +13,7 @@
   flex-wrap: wrap;
   gap: var(--multiplayer-spacing);
 
-  @media (max-width: 48rem) {
-    // 768px
+  @media (max-width: 768px) {
     flex-direction: column;
     gap: calc(var(--multiplayer-spacing) * 0.75);
 

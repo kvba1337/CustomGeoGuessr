@@ -1,11 +1,22 @@
+:root {
+  /* Layout */
+  --round-result-map-height: 45vh;
+  --round-result-map-border-radius: 0.5rem;
+  --round-result-map-padding: 0.75rem;
+}
+
 .round-result-map {
-  inline-size: 100%;
-  block-size: 45vh;
-  border-radius: var(--round-result-border-radius);
+  block-size: var(--round-result-map-height);
+  border-radius: var(--round-result-map-border-radius);
   overflow: hidden;
-  box-shadow: var(--round-result-shadow);
+  padding: var(--round-result-map-padding);
+  background: var(--ds-color-purple-100);
 
   .gm-style {
-    border-radius: var(--round-result-border-radius);
+    border-radius: var(--round-result-map-border-radius);
+  }
+
+  #result-map {
+    border-radius: var(--round-result-map-border-radius);
   }
 }

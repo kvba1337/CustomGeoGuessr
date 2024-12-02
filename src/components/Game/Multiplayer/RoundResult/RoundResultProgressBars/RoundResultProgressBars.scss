@@ -1,27 +1,70 @@
+:root {
+  /* Layout */
+  --round-result-spacing: 1rem;
+  --round-result-padding: 1rem;
+  --round-result-border-radius: 0.625rem;
+
+  /* Typography */
+  --round-result-font-size: 0.875rem;
+  --round-result-font-weight: 600;
+
+  /* Avatar */
+  --round-result-avatar-size: clamp(2rem, 5vw, 3.125rem);
+  --round-result-avatar-border: 0.1875rem solid var(--ds-color-turquoise);
+
+  /* Effects */
+  --round-result-transition: 0.3s ease;
+  --round-result-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  --round-result-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .progress-bars {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   inline-size: 100%;
+  margin-block-start: -1.4rem;
   gap: var(--round-result-spacing);
   opacity: 0;
-  animation: fadeIn var(--round-result-transition) forwards;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 1s;
 
   .progress-bar-container {
     display: flex;
     align-items: center;
     border-radius: var(--round-result-border-radius);
-    background: var(--ds-color-white-10);
-    inline-size: 40%;
-    gap: calc(var(--round-result-spacing) * 0.5);
-    padding: calc(var(--round-result-padding) * 0.5);
+    inline-size: 35%;
+    gap: calc(var(--round-result-spacing) * 2);
+
+    @media (max-width: 768px) {
+      inline-size: 45%;
+      gap: calc(var(--round-result-spacing) * 2);
+    }
+
+    .progress-bar-wrapper {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .player-name {
+        color: var(--ds-color-white);
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-top: 0.2rem;
+        text-transform: uppercase;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
 
     .avatar {
       inline-size: clamp(2rem, 5vw, 3.125rem);
       aspect-ratio: 1;
       border-radius: 50%;
       box-shadow: var(--round-result-shadow);
-      border: 0.1875rem solid var(--ds-color-white);
+      border: 0.1875rem solid var(--ds-color-turquoise);
     }
 
     .progress-bar {

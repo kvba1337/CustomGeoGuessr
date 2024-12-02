@@ -1,3 +1,11 @@
+:root {
+  /* Layout */
+  --header-logo-size: clamp(2rem, 10vw, 3.5rem);
+
+  /* Effects */
+  --header-logo-shadow: 0 0 0.3125rem var(--ds-color-black);
+}
+
 .header__logo-container {
   display: flex;
   align-items: center;
@@ -7,7 +15,7 @@
   transform: translateX(-50%);
 
   .header__logo-image {
-    block-size: clamp(2rem, 10vw, 3.5rem);
-    filter: drop-shadow(0 0 0.3125rem var(--ds-color-black));
+    block-size: var(--header-logo-size);
+    filter: drop-shadow(var(--header-logo-shadow));
   }
 }

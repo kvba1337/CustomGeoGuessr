@@ -1,28 +1,30 @@
+:root {
+  /* Layout */
+  --minimap-mobile-button-spacing: 1rem;
+  --minimap-mobile-height: 70%;
+  --minimap-mobile-width: 100%;
+
+  /* Typography */
+  --minimap-mobile-font-size: 1.5rem;
+
+  /* Colors */
+  --minimap-mobile-container-bg: rgba(0, 0, 0, 0.8);
+
+  /* Effects */
+  --minimap-mobile-animation-duration: 0.5s;
+  --minimap-mobile-button-shadow: 0 0 0 0.3rem var(--ds-color-white-20);
+}
+
 .map-toggle-btn {
   position: absolute;
-  inset-block-end: 1.25rem;
-  inset-inline-end: 1.25rem;
-  background: rgb(108, 185, 40);
-  background-image: radial-gradient(
-    150% 160% at 50% 15%,
-    hsla(0, 0%, 100%, 0.6) 0,
-    transparent 30%
-  );
-  color: white;
-  padding: 0.625rem;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 1);
+  inset-block-end: var(--minimap-mobile-button-spacing);
+  inset-inline-end: var(--minimap-mobile-button-spacing);
   z-index: 10;
+  box-shadow: var(--minimap-mobile-button-shadow) !important;
 
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
+  i {
+    font-size: var(--minimap-mobile-font-size);
+    color: white;
   }
 }
 
@@ -30,62 +32,35 @@
   position: fixed;
   inset-block-end: 0;
   inset-inline-start: 0;
-  inline-size: 100%;
-  block-size: 70%;
-  background: rgba(0, 0, 0, 0.8);
+  inline-size: var(--minimap-mobile-width);
+  block-size: var(--minimap-mobile-height);
+  background: var(--minimap-mobile-container-bg);
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: slideUp 0.5s ease-in-out;
+  animation: slideUp var(--minimap-mobile-animation-duration) ease-in-out;
 
   &.slide-down {
-    animation: slideDown 0.5s ease-in-out;
+    animation: slideDown var(--minimap-mobile-animation-duration) ease-in-out;
   }
 }
 
 .map-wrapper {
-  inline-size: 100%;
+  inline-size: var(--minimap-mobile-width);
   block-size: 100%;
   position: relative;
 }
 
 #mobile-guess-map {
-  inline-size: 100%;
+  inline-size: var(--minimap-mobile-width);
   block-size: 100%;
 }
 
 .mobile-guess-btn {
   position: absolute;
-  inset-block-end: 1.25rem;
-  inset-inline-end: 1.25rem;
-  background: rgb(108, 185, 40);
-  background-image: radial-gradient(
-    150% 160% at 50% 15%,
-    hsla(0, 0%, 100%, 0.6) 0,
-    transparent 30%
-  );
-  color: white;
-  padding: 1rem;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  border-radius: 1.5625rem;
-  cursor: pointer;
-  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 1);
-
-  &:not(.disabled):hover {
-    transform: scale(1.05);
-  }
-
-  &:not(.disabled):active {
-    transform: scale(0.95);
-  }
-
-  &.disabled {
-    background: #999;
-    cursor: default;
-    opacity: 0.7;
-  }
+  inset-block-end: var(--minimap-mobile-button-spacing);
+  inset-inline-end: var(--minimap-mobile-button-spacing);
 }
 
 @keyframes slideUp {

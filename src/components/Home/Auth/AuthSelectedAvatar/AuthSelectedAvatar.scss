@@ -1,3 +1,12 @@
+:root {
+  /* Avatar dimensions */
+  --avatar-selected-size: 6.25rem;
+  --avatar-border-radius: 50%;
+
+  /* Effects */
+  --avatar-transition: 0.3s ease;
+}
+
 .selected-avatar {
   img {
     inline-size: var(--avatar-selected-size);

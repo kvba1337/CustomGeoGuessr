@@ -1,3 +1,20 @@
+:root {
+  /* Layout & Spacing */
+  --item-padding: clamp(2rem, 3vw, 3rem);
+  --item-border-radius: 0.9375rem;
+
+  /* Typography */
+  --item-title-size: clamp(1.3rem, 2vw, 1.5rem);
+  --item-text-size: clamp(0.9rem, 1.5vw, 1rem);
+  --item-icon-size: clamp(2rem, 4vw, 3rem);
+
+  /* Effects */
+  --item-transition: 0.3s ease;
+  --item-hover-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.3);
+  --item-icon-shadow: 0 0 0.625rem rgba(191, 123, 46, 0.5),
+    0 0 1.25rem rgba(191, 123, 46, 0.3);
+}
+
 .item {
   flex: 1;
   margin: calc(var(--multiplayer-spacing) * 0.25);

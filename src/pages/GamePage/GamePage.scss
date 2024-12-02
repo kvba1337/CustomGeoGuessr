@@ -1,6 +1,7 @@
 :root {
   --z-index-overlay: 3;
   --overlay-bg: transparent;
+  --overlay-pointer-events: all;
 }
 
 .game-page {
@@ -8,15 +9,12 @@
 
   .transparent-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: var(--overlay-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: var(--z-index-overlay);
-    pointer-events: all;
+    pointer-events: var(--overlay-pointer-events);
   }
 }

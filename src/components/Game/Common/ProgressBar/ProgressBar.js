@@ -3,16 +3,16 @@ import "./ProgressBar.scss";
 
 const getProgressBarModifier = (value, max) => {
   const percentage = (value / max) * 100;
-  if (percentage < 33) {
+  if (percentage < 15) {
     return "progress-bar--low";
-  } else if (percentage < 66) {
+  } else if (percentage < 50) {
     return "progress-bar--medium";
   } else {
     return "progress-bar--high";
   }
 };
 
-const ProgressBar = ({ value, max, showValue }) => {
+const ProgressBar = ({ value, max, showValue, reverse }) => {
   const [progressValue, setProgressValue] = useState(value);
   const progressBarModifier = getProgressBarModifier(progressValue, max);
 
@@ -37,10 +37,15 @@ const ProgressBar = ({ value, max, showValue }) => {
     };
 
     animateProgress(progressValue, value, 300);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (
-    <div className={`progress-bar ${progressBarModifier}`}>
+    <div
+      className={`progress-bar ${progressBarModifier} ${
+        reverse ? "progress-bar--reverse" : ""
+      }`}
+    >
       <progress value={progressValue} max={max}></progress>
       {showValue && (
         <span className="progress-value">{Math.floor(progressValue)}</span>

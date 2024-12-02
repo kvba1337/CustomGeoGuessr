@@ -1,20 +1,35 @@
+:root {
+  /* Typography */
+  --map-info-title-size: clamp(1.5rem, 3vw, 3rem);
+  --map-info-text-size: clamp(0.9rem, 1.5vw, 1rem);
+  --map-info-text-color: var(--ds-color-white);
+
+  /* Layout */
+  --map-info-spacing: 0rem;
+  --map-info-padding: clamp(1rem, 2vw, 1.5rem);
+
+  /* Effects */
+  --map-info-text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+}
+
 .map-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: var(--map-info-text-color);
   justify-content: center;
-  gap: var(--gs-map-spacing);
+  gap: var(--map-info-spacing);
 
   .map-title {
-    font-size: var(--gs-map-title-size);
-    text-shadow: var(--gs-text-shadow);
+    font-size: var(--map-info-title-size);
+    text-shadow: var(--map-info-text-shadow);
     margin: 0;
   }
 
   .map-description {
-    font-size: var(--gs-map-text-size);
+    font-size: var(--map-info-text-size);
     margin: 0;
-    padding-inline: var(--gs-padding);
+    padding-inline: var(--map-info-padding);
   }
 }

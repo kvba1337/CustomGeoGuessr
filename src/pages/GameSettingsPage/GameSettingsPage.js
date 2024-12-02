@@ -17,35 +17,35 @@ const GameSettingsPage = () => {
     <div className="game-settings-container">
       <Header />
       <div className="game-settings">
-        <div className="game-settings__content">
-          {!showSettings ? (
-            <>
-              <GameSettingsMode />
-              <button
-                className="settings-btn"
-                onClick={() => setShowSettings(true)}
-              >
-                Continue
-              </button>
-            </>
-          ) : (
-            <>
-              <GameSettingsMapInfo />
-              {gameType === "classic" ? (
-                <div className="settings">
-                  <GameSettingsRounds />
-                  <GameSettingsTime />
-                  <GameSettingsGameMode />
-                </div>
-              ) : (
-                <div className="settings">
-                  <GameSettingsGameMode />
-                </div>
-              )}
-              <GameSettingsStartGameButton />
-            </>
-          )}
-        </div>
+        {!showSettings ? (
+          <div className="game-settings__content">
+            <GameSettingsMode />
+            <button
+              className="button button-primary button-lg"
+              onClick={() => setShowSettings(true)}
+            >
+              <div className="button-wrapper">
+                <span className="button-label">Continue</span>
+              </div>
+            </button>
+          </div>
+        ) : (
+          <div className="game-settings__content_v2">
+            <GameSettingsMapInfo />
+            {gameType === "classic" ? (
+              <div className="settings">
+                <GameSettingsRounds />
+                <GameSettingsTime />
+                <GameSettingsGameMode />
+              </div>
+            ) : (
+              <div className="settings">
+                <GameSettingsGameMode />
+              </div>
+            )}
+            <GameSettingsStartGameButton />
+          </div>
+        )}
       </div>
     </div>
   );

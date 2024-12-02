@@ -1,7 +1,20 @@
+:root {
+  --map-grid-min-column-width: 17rem;
+  --map-grid-padding: 1rem;
+  --map-grid-gap: 1rem;
+  --map-grid-overflow-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
+}
+
 .map-selection-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: var(--map-selection-grid-gap);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--map-grid-min-column-width), 1fr)
+  );
+  gap: var(--map-grid-gap);
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--map-grid-padding);
+  box-shadow: var(--map-grid-overflow-shadow);
 }

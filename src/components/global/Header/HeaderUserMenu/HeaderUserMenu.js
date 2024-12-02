@@ -1,4 +1,3 @@
-// HeaderUserMenu.js
 import React from "react";
 import "./HeaderUserMenu.scss";
 
