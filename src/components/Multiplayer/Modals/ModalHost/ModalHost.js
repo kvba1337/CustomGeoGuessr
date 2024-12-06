@@ -14,6 +14,7 @@ import ModalCloseButton from "../ModalCloseButton/ModalCloseButton";
 import ModalErrorMessage from "../ModalErrorMessage/ModalErrorMessage";
 import ModalRoomInfo from "../ModalRoomInfo/ModalRoomInfo";
 import ModalLeaveButton from "../ModalLeaveButton/ModalLeaveButton";
+import ModalPlayersInfo from "../ModalPlayersInfo/ModalPlayersInfo";
 import "./ModalHost.scss";
 
 const ModalHost = ({ onClose }) => {
@@ -97,6 +98,7 @@ const ModalHost = ({ onClose }) => {
           ) : (
             <>
               <ModalRoomInfo roomId={roomId} status={status} />
+              <ModalPlayersInfo status={status} />
               <div className="host-modal__buttons">
                 <button
                   className="button button-primary button-lg"

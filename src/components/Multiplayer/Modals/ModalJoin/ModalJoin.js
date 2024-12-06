@@ -13,6 +13,7 @@ import { database } from "@services/firebaseConfig";
 import ModalCloseButton from "../ModalCloseButton/ModalCloseButton";
 import ModalErrorMessage from "../ModalErrorMessage/ModalErrorMessage";
 import ModalLeaveButton from "../ModalLeaveButton/ModalLeaveButton";
+import ModalPlayersInfo from "../ModalPlayersInfo/ModalPlayersInfo";
 import "./ModalJoin.scss";
 
 const ModalJoin = ({ onClose }) => {
@@ -176,19 +177,14 @@ const ModalJoin = ({ onClose }) => {
                   {hostedRoomError ? (
                     <ModalErrorMessage />
                   ) : (
-                    <p className="join-modal__message success animation-slideIn">
-                      Successfully connected to the room:
-                      <br />
-                      <span>{roomId}</span>
-                      {opponent && opponent.username && (
-                        <p className="join-modal__player-info">
-                          Playing with:{" "}
-                          <span className="host-modal__username">
-                            {opponent.username}
-                          </span>
-                        </p>
-                      )}
-                    </p>
+                    <>
+                      <p className="join-modal__message success animation-slideIn">
+                        Successfully connected to the room:
+                        <br />
+                        <span>{roomId}</span>
+                      </p>
+                      {status !== "waiting" && <ModalPlayersInfo />}
+                    </>
                   )}
                   <ModalLeaveButton handleLeave={handleLeave} />
                 </>

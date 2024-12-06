@@ -1,0 +1,80 @@
+:root {
+  /* Layout */
+  --modal-players-gap: clamp(1rem, 5vw, 3rem);
+  --modal-players-avatar-size: clamp(3rem, 8vw, 5rem);
+  --modal-players-margin: 0.5rem;
+
+  /* Typography */
+  --modal-players-username-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  --modal-players-vs-size: clamp(1.5rem, 4vw, 2rem);
+
+  /* Effects */
+  --modal-players-avatar-border: 0.2rem solid var(--ds-color-white);
+  --modal-players-avatar-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.4);
+  --modal-players-vs-shadow: 0 0.25rem 0 var(--ds-color-black-50),
+    0.125rem 0.125rem 0.5rem var(--ds-color-blue-50),
+    0 -0.25rem 0.5rem var(--ds-color-purple-50);
+  --modal-player-glow: 0 0 1rem rgba(58, 232, 189, 0.3);
+}
+
+.modal-players {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--modal-players-gap);
+  margin: var(--modal-players-margin) 0;
+  width: 100%;
+
+  .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      padding: 1rem 0.5rem;
+    }
+
+    .avatar {
+      width: var(--modal-players-avatar-size);
+      height: var(--modal-players-avatar-size);
+      border-radius: 50%;
+      border: none;
+      box-shadow: none;
+    }
+
+    .question-mark {
+      width: calc(var(--modal-players-avatar-size) - 0.5rem);
+      height: calc(var(--modal-players-avatar-size) - 0.5rem);
+      border: var(--modal-players-avatar-border);
+      box-shadow: var(--modal-players-avatar-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        font-size: calc(var(--modal-players-avatar-size) * 0.5);
+        color: var(--ds-color-turquoise);
+        opacity: 0.8;
+      }
+    }
+
+    .username {
+      font-size: var(--modal-players-username-size);
+      font-weight: 600;
+      color: var(--ds-color-white);
+      text-align: center;
+      max-width: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .vs {
+    font-size: var(--modal-players-vs-size);
+    font-weight: bold;
+    font-style: italic;
+    color: var(--ds-color-white);
+    text-shadow: var(--modal-players-vs-shadow);
+  }
+}
