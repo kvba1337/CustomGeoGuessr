@@ -447,6 +447,19 @@ ul {
   animation: slideIn 0.3s ease-out;
 }
 
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animation-fadeInBackGround {
+  animation: fadeInBackground 0.5s ease-in forwards;
+}
+
 #__next,
 body,
 html {

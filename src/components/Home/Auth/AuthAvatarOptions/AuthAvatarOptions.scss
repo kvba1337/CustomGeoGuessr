@@ -31,7 +31,6 @@
   border-radius: var(--avatar-border-radius);
   cursor: pointer;
   transition: all var(--avatar-transition);
-  border: var(--avatar-border-width) solid var(--avatar-border-transparent);
 
   &:hover {
     transform: scale(var(--avatar-hover-scale));
@@ -43,7 +42,6 @@
   }
 
   &.selected {
-    border-color: var(--ds-color-orange-50);
     box-shadow: 0 0 0.75rem var(--ds-color-orange-50);
   }
 }
