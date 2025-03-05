@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import Header from "@components/global/Header/Header/Header";
-import GameSettingsGameMode from "@components/GameSettings/GameSettingsGameMode/GameSettingsGameMode";
-import GameSettingsRounds from "@components/GameSettings/GameSettingsRounds/GameSettingsRounds";
-import GameSettingsStartGameButton from "@components/GameSettings/GameSettingsStartGameButton/GameSettingsStartGameButton";
-import GameSettingsTime from "@components/GameSettings/GameSettingsTime/GameSettingsTime";
-import GameSettingsMapInfo from "@components/GameSettings/GameSettingsMapInfo/GameSettingsMapInfo";
-import GameSettingsMode from "@components/GameSettings/GameSettingsMode/GameSettingsMode";
-import "./GameSettingsPage.scss";
+import GameSettingsGameMode from "@components/GameSettings/GameSettingsGameMode/GameSettingsGameMode"
+import GameSettingsMapInfo from "@components/GameSettings/GameSettingsMapInfo/GameSettingsMapInfo"
+import GameSettingsMode from "@components/GameSettings/GameSettingsMode/GameSettingsMode"
+import GameSettingsRounds from "@components/GameSettings/GameSettingsRounds/GameSettingsRounds"
+import GameSettingsStartGameButton from "@components/GameSettings/GameSettingsStartGameButton/GameSettingsStartGameButton"
+import GameSettingsTime from "@components/GameSettings/GameSettingsTime/GameSettingsTime"
+import Header from "@components/global/Header/Header/Header"
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import "./GameSettingsPage.scss"
 
 const GameSettingsPage = () => {
-  const [showSettings, setShowSettings] = useState(false);
-  const { gameType } = useSelector((state) => state.gameSettings);
+  const [showSettings, setShowSettings] = useState(false)
+  const { gameType } = useSelector((state) => state.gameSettings)
 
   return (
     <div className="game-settings-container">
@@ -48,7 +48,7 @@ const GameSettingsPage = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GameSettingsPage;
+export default GameSettingsPage

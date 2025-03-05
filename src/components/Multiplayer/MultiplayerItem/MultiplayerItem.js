@@ -1,5 +1,5 @@
-import React from "react";
-import "./MultiplayerItem.scss";
+import React from "react"
+import "./MultiplayerItem.scss"
 
 const MultiplayerItem = ({ title, description, icon }) => {
   return (
@@ -10,7 +10,7 @@ const MultiplayerItem = ({ title, description, icon }) => {
       <h2>{title}</h2>
       <p>{description}</p>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MultiplayerItem);
+export default React.memo(MultiplayerItem)

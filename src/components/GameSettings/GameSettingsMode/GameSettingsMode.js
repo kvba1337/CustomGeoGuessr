@@ -1,15 +1,15 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setGameType } from "@redux/actions/gameSettingsActions";
-import "./GameSettingsMode.scss";
+import { setGameType } from "@redux/actions/gameSettingsActions"
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "./GameSettingsMode.scss"
 
 const GameSettingsMode = () => {
-  const dispatch = useDispatch();
-  const { gameType } = useSelector((state) => state.gameSettings);
+  const dispatch = useDispatch()
+  const { gameType } = useSelector((state) => state.gameSettings)
 
   const handleGameTypeChange = (type) => {
-    dispatch(setGameType(type));
-  };
+    dispatch(setGameType(type))
+  }
 
   return (
     <div className="game-type">
@@ -46,7 +46,7 @@ const GameSettingsMode = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GameSettingsMode;
+export default GameSettingsMode

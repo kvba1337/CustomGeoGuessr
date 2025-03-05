@@ -1,26 +1,25 @@
-import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { GoogleMap } from "@react-google-maps/api";
-
-import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker";
-import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline";
-import correctLocation from "@assets/images/icons/correct-location.png";
-import { extendMapBounds, getMapOptions } from "@utils/mapUtils";
-import "./GameResultMap.scss";
+import correctLocation from "@assets/images/icons/correct-location.png"
+import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker"
+import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline"
+import { GoogleMap } from "@react-google-maps/api"
+import { extendMapBounds, getMapOptions } from "@utils/mapUtils"
+import React, { useEffect, useRef } from "react"
+import { useSelector } from "react-redux"
+import "./GameResultMap.scss"
 
 const GameResultMap = ({ userResults, opponentResults }) => {
   const { gameLocations, selectedMap, settings } = useSelector(
     (state) => state.game
-  );
-  const { gameType } = settings;
-  const { avatar } = useSelector((state) => state.user);
-  const { opponent } = useSelector((state) => state.room);
-  const mapRef = useRef(null);
+  )
+  const { gameType } = settings
+  const { avatar } = useSelector((state) => state.user)
+  const { opponent } = useSelector((state) => state.room)
+  const mapRef = useRef(null)
 
   const completedLocations =
     gameType === "battle"
       ? gameLocations.slice(0, userResults.length)
-      : gameLocations;
+      : gameLocations
 
   useEffect(() => {
     if (mapRef.current) {
@@ -30,9 +29,9 @@ const GameResultMap = ({ userResults, opponentResults }) => {
         userResults,
         opponentResults,
         selectedMap
-      );
+      )
     }
-  }, [completedLocations, userResults, opponentResults, selectedMap]);
+  }, [completedLocations, userResults, opponentResults, selectedMap])
 
   return (
     <div className="game-result-map">
@@ -73,7 +72,7 @@ const GameResultMap = ({ userResults, opponentResults }) => {
         ))}
       </GoogleMap>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameResultMap);
+export default React.memo(GameResultMap)

@@ -1,22 +1,21 @@
-import React, { useRef, useEffect, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { GoogleMap } from "@react-google-maps/api";
-
-import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker";
-import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline";
-import correctLocation from "@assets/images/icons/correct-location.png";
-import { extendMapBounds, getMapOptions } from "@utils/mapUtils";
-import "./RoundResultMap.scss";
+import correctLocation from "@assets/images/icons/correct-location.png"
+import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker"
+import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline"
+import { GoogleMap } from "@react-google-maps/api"
+import { extendMapBounds, getMapOptions } from "@utils/mapUtils"
+import React, { useCallback, useEffect, useRef } from "react"
+import { useSelector } from "react-redux"
+import "./RoundResultMap.scss"
 
 const RoundResultMap = () => {
   const { gameLocations, currentRound, roundResults, selectedMap } =
-    useSelector((state) => state.game);
-  const { avatar } = useSelector((state) => state.user);
-  const { opponent } = useSelector((state) => state.room);
+    useSelector((state) => state.game)
+  const { avatar } = useSelector((state) => state.user)
+  const { opponent } = useSelector((state) => state.room)
 
-  const { userResult, opponentResult } = roundResults;
-  const currentLocation = gameLocations[currentRound - 1];
-  const mapRef = useRef(null);
+  const { userResult, opponentResult } = roundResults
+  const currentLocation = gameLocations[currentRound - 1]
+  const mapRef = useRef(null)
 
   const fitBounds = useCallback(() => {
     if (mapRef.current && currentLocation) {
@@ -26,21 +25,21 @@ const RoundResultMap = () => {
         [userResult],
         [opponentResult],
         selectedMap
-      );
+      )
     }
-  }, [currentLocation, userResult, opponentResult, selectedMap]);
+  }, [currentLocation, userResult, opponentResult, selectedMap])
 
   useEffect(() => {
-    fitBounds();
-  }, [fitBounds]);
+    fitBounds()
+  }, [fitBounds])
 
   const handleMapLoad = useCallback(
     (map) => {
-      mapRef.current = map;
-      fitBounds();
+      mapRef.current = map
+      fitBounds()
     },
     [fitBounds]
-  );
+  )
 
   return (
     <div className="round-result-map">
@@ -74,7 +73,7 @@ const RoundResultMap = () => {
         )}
       </GoogleMap>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(RoundResultMap);
+export default React.memo(RoundResultMap)

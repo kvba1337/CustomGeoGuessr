@@ -1,6 +1,6 @@
-import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
-import "./GameResultScoreItem.scss";
+import React, { useMemo } from "react"
+import { useSelector } from "react-redux"
+import "./GameResultScoreItem.scss"
 
 const GameResultScoreItem = ({
   avatar,
@@ -9,17 +9,17 @@ const GameResultScoreItem = ({
   opponentResults,
   reverse,
 }) => {
-  const { settings } = useSelector((state) => state.game);
-  const { gameType } = settings;
+  const { settings } = useSelector((state) => state.game)
+  const { gameType } = settings
 
   const opponentTotalScore = useMemo(() => {
     if (!Array.isArray(opponentResults) || opponentResults.length === 0) {
-      return 0;
+      return 0
     }
 
-    const validResults = opponentResults.filter((result) => result !== null);
-    return validResults.reduce((acc, result) => acc + (result.score || 0), 0);
-  }, [opponentResults]);
+    const validResults = opponentResults.filter((result) => result !== null)
+    return validResults.reduce((acc, result) => acc + (result.score || 0), 0)
+  }, [opponentResults])
 
   const stats = useMemo(() => {
     if (!Array.isArray(userResults) || userResults.length === 0) {
@@ -27,37 +27,37 @@ const GameResultScoreItem = ({
         bestScore: 0,
         averageDistance: 0,
         totalScore: 0,
-      };
+      }
     }
 
-    const validResults = userResults.filter((result) => result !== null);
+    const validResults = userResults.filter((result) => result !== null)
 
     const bestScore = Math.max(
       ...validResults.map((result) => result.score || 0)
-    );
+    )
 
     const totalDistance = validResults.reduce((acc, result) => {
-      const distance = parseFloat(result.distanceToTarget);
-      return acc + (isNaN(distance) ? 0 : distance);
-    }, 0);
-    const averageDistance = (totalDistance / validResults.length).toFixed(0);
+      const distance = parseFloat(result.distanceToTarget)
+      return acc + (isNaN(distance) ? 0 : distance)
+    }, 0)
+    const averageDistance = (totalDistance / validResults.length).toFixed(0)
 
     const totalScore = validResults.reduce(
       (acc, result) => acc + (result.score || 0),
       0
-    );
+    )
 
     return {
       bestScore,
       averageDistance,
       totalScore,
-    };
-  }, [userResults]);
+    }
+  }, [userResults])
 
   const isUserWinner = useMemo(() => {
-    if (!opponentTotalScore || !stats.totalScore) return false;
-    return stats.totalScore > opponentTotalScore;
-  }, [stats.totalScore, opponentTotalScore]);
+    if (!opponentTotalScore || !stats.totalScore) return false
+    return stats.totalScore > opponentTotalScore
+  }, [stats.totalScore, opponentTotalScore])
 
   return (
     <div className={`score-container__item ${reverse ? "reverse" : ""}`}>
@@ -99,7 +99,7 @@ const GameResultScoreItem = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameResultScoreItem);
+export default React.memo(GameResultScoreItem)

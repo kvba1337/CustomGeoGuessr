@@ -1,5 +1,5 @@
-import React from "react";
-import "./HomeWelcomeContent.scss";
+import React from "react"
+import "./HomeWelcomeContent.scss"
 
 const HomeWelcomeContent = ({ onPlayClick }) => (
   <div className="home-welcome">
@@ -28,6 +28,6 @@ const HomeWelcomeContent = ({ onPlayClick }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default HomeWelcomeContent;
+export default HomeWelcomeContent

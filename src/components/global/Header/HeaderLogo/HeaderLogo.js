@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "@assets/images/logo/logo.webp";
-import "./HeaderLogo.scss";
+import logo from "@assets/images/logo/logo.webp"
+import React from "react"
+import { Link } from "react-router-dom"
+import "./HeaderLogo.scss"
 
 const Logo = () => (
   <div className="header__logo-container">
@@ -13,6 +13,6 @@ const Logo = () => (
       />
     </Link>
   </div>
-);
+)
 
-export default React.memo(Logo);
+export default React.memo(Logo)

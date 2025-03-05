@@ -1,10 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import "./ModalPlayersInfo.scss";
+import React from "react"
+import { useSelector } from "react-redux"
+import "./ModalPlayersInfo.scss"
 
 const ModalPlayersInfo = ({ status }) => {
-  const { avatar, username } = useSelector((state) => state.user);
-  const { opponent } = useSelector((state) => state.room);
+  const { avatar, username } = useSelector((state) => state.user)
+  const { opponent } = useSelector((state) => state.room)
 
   return (
     <div className="modal-players">
@@ -33,7 +33,7 @@ const ModalPlayersInfo = ({ status }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(ModalPlayersInfo);
+export default React.memo(ModalPlayersInfo)

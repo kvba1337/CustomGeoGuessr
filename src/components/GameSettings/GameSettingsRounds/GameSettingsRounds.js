@@ -1,19 +1,18 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { setRounds } from "@redux/actions/gameSettingsActions";
-import "./GameSettingsRounds.scss";
+import { setRounds } from "@redux/actions/gameSettingsActions"
+import React, { useCallback } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "./GameSettingsRounds.scss"
 
 const GameSettingsRounds = () => {
-  const dispatch = useDispatch();
-  const { rounds } = useSelector((state) => state.gameSettings);
+  const dispatch = useDispatch()
+  const { rounds } = useSelector((state) => state.gameSettings)
 
   const handleRoundsChange = useCallback(
     (rounds) => {
-      dispatch(setRounds(rounds));
+      dispatch(setRounds(rounds))
     },
     [dispatch]
-  );
+  )
 
   return (
     <div className="rounds">
@@ -31,7 +30,7 @@ const GameSettingsRounds = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameSettingsRounds);
+export default React.memo(GameSettingsRounds)

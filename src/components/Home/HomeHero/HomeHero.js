@@ -1,6 +1,6 @@
-import React from "react";
-import HomeButtons from "@components/Home/HomeButtons/HomeButtons";
-import "./HomeHero.scss";
+import HomeButtons from "@components/Home/HomeButtons/HomeButtons"
+import React from "react"
+import "./HomeHero.scss"
 
 const HomeHero = () => (
   <div className="home__hero">
@@ -9,6 +9,6 @@ const HomeHero = () => (
       <HomeButtons />
     </div>
   </div>
-);
+)
 
-export default HomeHero;
+export default HomeHero

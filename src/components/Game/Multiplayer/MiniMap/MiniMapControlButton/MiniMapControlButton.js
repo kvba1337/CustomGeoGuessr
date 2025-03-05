@@ -1,5 +1,5 @@
-import React from "react";
-import "./MiniMapControlButton.scss";
+import React from "react"
+import "./MiniMapControlButton.scss"
 
 const MiniMapControlButton = ({ onClick, icon, disabled }) => (
   <button
@@ -9,6 +9,6 @@ const MiniMapControlButton = ({ onClick, icon, disabled }) => (
   >
     <i className={`fa ${icon}`}></i>
   </button>
-);
+)
 
-export default React.memo(MiniMapControlButton);
+export default React.memo(MiniMapControlButton)

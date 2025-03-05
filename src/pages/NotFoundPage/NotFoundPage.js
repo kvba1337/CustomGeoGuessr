@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./NotFoundPage.scss";
+import React from "react"
+import { Link } from "react-router-dom"
+import "./NotFoundPage.scss"
 
 const NotFoundPage = () => {
   return (
@@ -15,7 +15,7 @@ const NotFoundPage = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotFoundPage;
+export default NotFoundPage

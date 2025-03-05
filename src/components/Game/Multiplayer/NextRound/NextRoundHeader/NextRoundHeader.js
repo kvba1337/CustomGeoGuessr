@@ -1,5 +1,5 @@
-import React from "react";
-import "./NextRoundHeader.scss";
+import React from "react"
+import "./NextRoundHeader.scss"
 
 const NextRoundHeader = ({ currentRound, gameMode, map }) => (
   <div className="next-round-info__header">
@@ -9,6 +9,6 @@ const NextRoundHeader = ({ currentRound, gameMode, map }) => (
       <h3>{map?.title}</h3>
     </div>
   </div>
-);
+)
 
-export default React.memo(NextRoundHeader);
+export default React.memo(NextRoundHeader)

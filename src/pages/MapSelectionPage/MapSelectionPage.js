@@ -1,8 +1,7 @@
-import React from "react";
-
-import Header from "@components/global/Header/Header/Header";
-import MapSelectionGrid from "@components/MapSelection/MapSelectionGrid/MapSelectionGrid";
-import "./MapSelectionPage.scss";
+import Header from "@components/global/Header/Header/Header"
+import MapSelectionGrid from "@components/MapSelection/MapSelectionGrid/MapSelectionGrid"
+import React from "react"
+import "./MapSelectionPage.scss"
 
 const MapSelectionPage = () => {
   return (
@@ -12,7 +11,7 @@ const MapSelectionPage = () => {
         <MapSelectionGrid />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MapSelectionPage;
+export default MapSelectionPage

@@ -1,5 +1,5 @@
-import React from "react";
-import "./AuthInputField.scss";
+import React from "react"
+import "./AuthInputField.scss"
 
 const AuthInputField = ({ type, placeholder, value, onChange, onKeyPress }) => (
   <input
@@ -9,6 +9,6 @@ const AuthInputField = ({ type, placeholder, value, onChange, onKeyPress }) => (
     onChange={onChange}
     onKeyPress={onKeyPress}
   />
-);
+)
 
-export default React.memo(AuthInputField);
+export default React.memo(AuthInputField)

@@ -1,5 +1,5 @@
-import React from "react";
-import "./MultiplayerButtons.scss";
+import React from "react"
+import "./MultiplayerButtons.scss"
 
 const MultiplayerButtons = ({ onHostClick, onJoinClick }) => {
   return (
@@ -18,7 +18,7 @@ const MultiplayerButtons = ({ onHostClick, onJoinClick }) => {
         </div>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MultiplayerButtons);
+export default React.memo(MultiplayerButtons)

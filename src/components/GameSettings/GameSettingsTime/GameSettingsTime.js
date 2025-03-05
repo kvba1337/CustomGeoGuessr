@@ -1,29 +1,29 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setTimeLimit } from "@redux/actions/gameSettingsActions";
-import "./GameSettingsTime.scss";
+import { setTimeLimit } from "@redux/actions/gameSettingsActions"
+import React, { useCallback, useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "./GameSettingsTime.scss"
 
 const GameSettingsTime = () => {
-  const dispatch = useDispatch();
-  const { timeLimit } = useSelector((state) => state.gameSettings);
-  const sliderRef = useRef(null);
+  const dispatch = useDispatch()
+  const { timeLimit } = useSelector((state) => state.gameSettings)
+  const sliderRef = useRef(null)
 
   const handleTimeLimitChange = useCallback(
     (e) => {
-      const value = Number(e.target.value);
-      const percentage = ((value - 10) / (240 - 10)) * 100;
-      e.target.style.setProperty("--slider-value", `${percentage}%`);
-      dispatch(setTimeLimit(value));
+      const value = Number(e.target.value)
+      const percentage = ((value - 10) / (240 - 10)) * 100
+      e.target.style.setProperty("--slider-value", `${percentage}%`)
+      dispatch(setTimeLimit(value))
     },
     [dispatch]
-  );
+  )
 
   useEffect(() => {
     if (sliderRef.current) {
-      const percentage = ((timeLimit - 10) / (240 - 10)) * 100;
-      sliderRef.current.style.setProperty("--slider-value", `${percentage}%`);
+      const percentage = ((timeLimit - 10) / (240 - 10)) * 100
+      sliderRef.current.style.setProperty("--slider-value", `${percentage}%`)
     }
-  }, [timeLimit]);
+  }, [timeLimit])
 
   return (
     <div className="time-limit">
@@ -44,7 +44,7 @@ const GameSettingsTime = () => {
         </label>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameSettingsTime);
+export default React.memo(GameSettingsTime)

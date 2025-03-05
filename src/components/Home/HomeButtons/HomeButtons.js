@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./HomeButtons.scss";
+import React from "react"
+import { Link } from "react-router-dom"
+import "./HomeButtons.scss"
 
 const HomeButtons = () => (
   <div className="home__buttons">
@@ -19,6 +19,6 @@ const HomeButtons = () => (
       </div>
     </Link>
   </div>
-);
+)
 
-export default HomeButtons;
+export default HomeButtons

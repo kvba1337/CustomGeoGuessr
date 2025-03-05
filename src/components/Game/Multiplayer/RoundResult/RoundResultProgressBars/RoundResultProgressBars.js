@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ProgressBar from "@components/Game/Common/ProgressBar/ProgressBar";
-import "./RoundResultProgressBars.scss";
+import ProgressBar from "@components/Game/Common/ProgressBar/ProgressBar"
+import React, { useEffect, useState } from "react"
+import "./RoundResultProgressBars.scss"
 
 const RoundResultProgressBars = ({
   avatar,
@@ -11,19 +11,19 @@ const RoundResultProgressBars = ({
   username,
   opponentUsername,
 }) => {
-  const { gameType } = settings;
-  const maxValue = gameType === "battle" ? 6000 : 5000;
-  const [userHp, setUserHp] = useState(userResult?.prevHp);
-  const [opponentHp, setOpponentHp] = useState(opponentResult?.prevHp);
+  const { gameType } = settings
+  const maxValue = gameType === "battle" ? 6000 : 5000
+  const [userHp, setUserHp] = useState(userResult?.prevHp)
+  const [opponentHp, setOpponentHp] = useState(opponentResult?.prevHp)
 
   useEffect(() => {
     if (gameType === "battle") {
       setTimeout(() => {
-        setUserHp(userResult?.remainingHp || 0);
-        setOpponentHp(opponentResult?.remainingHp || 0);
-      }, 6300);
+        setUserHp(userResult?.remainingHp || 0)
+        setOpponentHp(opponentResult?.remainingHp || 0)
+      }, 6300)
     }
-  }, [gameType, userResult, opponentResult]);
+  }, [gameType, userResult, opponentResult])
   return (
     <div className="progress-bars">
       <div className="progress-bar-container">
@@ -54,7 +54,7 @@ const RoundResultProgressBars = ({
         <img src={opponentAvatar} alt="Opponent Avatar" className="avatar" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(RoundResultProgressBars);
+export default React.memo(RoundResultProgressBars)

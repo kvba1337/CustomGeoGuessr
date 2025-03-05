@@ -1,9 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import "./ModalRoomInfo.scss";
+import React from "react"
+import { useSelector } from "react-redux"
+import "./ModalRoomInfo.scss"
 
 const ModalRoomInfo = ({ roomId, status }) => {
-  const { opponent } = useSelector((state) => state.room);
+  const { opponent } = useSelector((state) => state.room)
 
   return (
     <>
@@ -28,7 +28,7 @@ const ModalRoomInfo = ({ roomId, status }) => {
         </p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default React.memo(ModalRoomInfo);
+export default React.memo(ModalRoomInfo)

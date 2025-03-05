@@ -1,10 +1,9 @@
-import { combineReducers } from "redux";
-
-import { gameReducer } from "./gameReducer";
-import { gameSettingsReducer } from "./gameSettingsReducer";
-import { mapReducer } from "./mapReducer";
-import { roomReducer } from "./roomReducer";
-import { userReducer } from "./userReducer";
+import { combineReducers } from "redux"
+import { gameReducer } from "./gameReducer"
+import { gameSettingsReducer } from "./gameSettingsReducer"
+import { mapReducer } from "./mapReducer"
+import { roomReducer } from "./roomReducer"
+import { userReducer } from "./userReducer"
 
 export const rootReducer = combineReducers({
   game: gameReducer,
@@ -12,4 +11,4 @@ export const rootReducer = combineReducers({
   map: mapReducer,
   room: roomReducer,
   user: userReducer,
-});
+})

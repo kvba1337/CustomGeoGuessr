@@ -1,32 +1,31 @@
-import { configureStore } from "@reduxjs/toolkit";
-
-import { rootReducer } from "./reducers";
-import authMiddleware from "./middleware/authMiddleware";
-import localStorageMiddleware from "./middleware/localStorageMiddleware";
+import { configureStore } from "@reduxjs/toolkit"
+import authMiddleware from "./middleware/authMiddleware"
+import localStorageMiddleware from "./middleware/localStorageMiddleware"
+import { rootReducer } from "./reducers"
 
 const loadStateFromLocalStorage = () => {
   try {
-    const serializedUserState = localStorage.getItem("userState");
-    const serializedRoomState = localStorage.getItem("roomState");
+    const serializedUserState = localStorage.getItem("userState")
+    const serializedRoomState = localStorage.getItem("roomState")
 
     const userState = serializedUserState
       ? JSON.parse(serializedUserState)
-      : undefined;
+      : undefined
     const roomState = serializedRoomState
       ? JSON.parse(serializedRoomState)
-      : undefined;
+      : undefined
 
     return {
       user: userState,
       room: roomState,
-    };
+    }
   } catch (error) {
-    console.error("Error loading state from localStorage:", error);
-    return undefined;
+    console.error("Error loading state from localStorage:", error)
+    return undefined
   }
-};
+}
 
-const preloadedState = loadStateFromLocalStorage();
+const preloadedState = loadStateFromLocalStorage()
 
 const createAppStore = async () => {
   try {
@@ -35,12 +34,12 @@ const createAppStore = async () => {
       middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(authMiddleware, localStorageMiddleware),
       preloadedState,
-    });
+    })
 
-    return store;
+    return store
   } catch (err) {
-    throw new Error("Error creating store: ", err);
+    throw new Error("Error creating store: ", err)
   }
-};
+}
 
-export default createAppStore;
+export default createAppStore

@@ -1,22 +1,21 @@
-import React, { useCallback } from "react";
-import { useSelector } from "react-redux";
-import { ref, update } from "firebase/database";
-
-import { database } from "@services/firebaseConfig";
-import "./MiniMapGuessButton.scss";
+import { database } from "@services/firebaseConfig"
+import { ref, update } from "firebase/database"
+import React, { useCallback } from "react"
+import { useSelector } from "react-redux"
+import "./MiniMapGuessButton.scss"
 
 const MiniMapGuessButton = ({ onClick, disabled, hasMarker }) => {
-  const { roomId } = useSelector((state) => state.room);
-  const { userId } = useSelector((state) => state.user);
+  const { roomId } = useSelector((state) => state.room)
+  const { userId } = useSelector((state) => state.user)
 
   const handleClick = useCallback(() => {
     if (!disabled && hasMarker) {
-      onClick();
+      onClick()
       update(ref(database, `rooms/${roomId}/users/${userId}`), {
         hasGuessed: true,
-      });
+      })
     }
-  }, [disabled, hasMarker, onClick, roomId, userId]);
+  }, [disabled, hasMarker, onClick, roomId, userId])
 
   return (
     <button
@@ -31,12 +30,12 @@ const MiniMapGuessButton = ({ onClick, disabled, hasMarker }) => {
           {disabled
             ? "GUESS"
             : hasMarker
-            ? "GUESS"
-            : "PLACE YOUR PIN ON THE MAP"}
+              ? "GUESS"
+              : "PLACE YOUR PIN ON THE MAP"}
         </span>
       </div>
     </button>
-  );
-};
+  )
+}
 
-export default React.memo(MiniMapGuessButton);
+export default React.memo(MiniMapGuessButton)

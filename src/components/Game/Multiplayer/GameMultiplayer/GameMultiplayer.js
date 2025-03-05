@@ -1,33 +1,32 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import useGameStateUpdates from "@hooks/useGameStateUpdates";
-
-import "./GameMultiplayer.scss";
-import NextRound from "../NextRound/NextRound/NextRound";
-import HUDReturnButton from "../HUD/HUDReturnButton/HUDReturnButton";
-import HUDRoundInfo from "../HUD/HUDRoundInfo/HUDRoundInfo";
-import HUDTimer from "../HUD/HUDTimer/HUDTimer";
-import StreetViewContainer from "../StreetViewContainer/StreetViewContainer";
-import MiniMapContainer from "../MiniMap/MiniMapContainer/MiniMapContainer";
-import MiniMapContainerMobile from "../MiniMap/MiniMapContainerMobile/MiniMapContainerMobile";
-import GameResult from "../GameResult/GameResult/GameResult";
-import RoundResult from "../RoundResult/RoundResult/RoundResult";
-import HUDPlayerProgress from "../HUD/HUDPlayerProgress/HUDPlayerProgress";
+import useGameStateUpdates from "@hooks/useGameStateUpdates"
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import "./GameMultiplayer.scss"
+import GameResult from "../GameResult/GameResult/GameResult"
+import HUDPlayerProgress from "../HUD/HUDPlayerProgress/HUDPlayerProgress"
+import HUDReturnButton from "../HUD/HUDReturnButton/HUDReturnButton"
+import HUDRoundInfo from "../HUD/HUDRoundInfo/HUDRoundInfo"
+import HUDTimer from "../HUD/HUDTimer/HUDTimer"
+import MiniMapContainer from "../MiniMap/MiniMapContainer/MiniMapContainer"
+import MiniMapContainerMobile from "../MiniMap/MiniMapContainerMobile/MiniMapContainerMobile"
+import NextRound from "../NextRound/NextRound/NextRound"
+import RoundResult from "../RoundResult/RoundResult/RoundResult"
+import StreetViewContainer from "../StreetViewContainer/StreetViewContainer"
 
 const GameMultiplayer = () => {
-  useGameStateUpdates();
-  const { status, settings } = useSelector((state) => state.game);
-  const isMobile = window.innerWidth <= 768;
-  const [isMapVisible, setIsMapVisible] = useState(false);
-  const [isSlidingDown, setIsSlidingDown] = useState(false);
+  useGameStateUpdates()
+  const { status, settings } = useSelector((state) => state.game)
+  const isMobile = window.innerWidth <= 768
+  const [isMapVisible, setIsMapVisible] = useState(false)
+  const [isSlidingDown, setIsSlidingDown] = useState(false)
 
   const closeMap = () => {
-    setIsSlidingDown(true);
+    setIsSlidingDown(true)
     setTimeout(() => {
-      setIsMapVisible(false);
-      setIsSlidingDown(false);
-    }, 500);
-  };
+      setIsMapVisible(false)
+      setIsSlidingDown(false)
+    }, 500)
+  }
 
   return (
     <div className="game-multiplayer">
@@ -60,7 +59,7 @@ const GameMultiplayer = () => {
       {status === "roundOver" && <RoundResult />}
       {status === "gameOver" && <GameResult />}
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameMultiplayer);
+export default React.memo(GameMultiplayer)

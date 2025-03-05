@@ -1,72 +1,71 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import DOMPurify from "dompurify";
-
-import { validateUsername, validatePassword } from "@utils/authUtils";
-import { registerNewUser } from "@redux/actions/userActions";
-import AuthAvatarOptions from "../AuthAvatarOptions/AuthAvatarOptions";
-import AuthSelectedAvatar from "../AuthSelectedAvatar/AuthSelectedAvatar";
-import AuthInputField from "../AuthInputField/AuthInputField";
-import "../AuthModal/AuthModal.scss";
+import { registerNewUser } from "@redux/actions/userActions"
+import { validatePassword, validateUsername } from "@utils/authUtils"
+import DOMPurify from "dompurify"
+import React, { useCallback, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import AuthAvatarOptions from "../AuthAvatarOptions/AuthAvatarOptions"
+import AuthInputField from "../AuthInputField/AuthInputField"
+import AuthSelectedAvatar from "../AuthSelectedAvatar/AuthSelectedAvatar"
+import "../AuthModal/AuthModal.scss"
 
 const AuthSignUpForm = () => {
-  const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch()
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [selectedAvatar, setSelectedAvatar] = useState(null)
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
 
   const clearError = useCallback(() => {
-    setError("");
-  }, []);
+    setError("")
+  }, [])
 
   const handleAvatarClick = useCallback(
     (avatar) => {
-      setSelectedAvatar(avatar);
-      clearError();
+      setSelectedAvatar(avatar)
+      clearError()
     },
     [clearError]
-  );
+  )
 
   const handleSignUp = useCallback(async () => {
-    const usernameError = validateUsername(username);
-    const passwordError = validatePassword(password);
+    const usernameError = validateUsername(username)
+    const passwordError = validatePassword(password)
 
     if (usernameError || passwordError) {
-      setError(usernameError || passwordError);
-      return;
+      setError(usernameError || passwordError)
+      return
     }
 
     if (!selectedAvatar) {
-      setError("Avatar is required");
-      return;
+      setError("Avatar is required")
+      return
     }
 
-    const sanitizedUsername = DOMPurify.sanitize(username);
-    const sanitizedPassword = DOMPurify.sanitize(password);
+    const sanitizedUsername = DOMPurify.sanitize(username)
+    const sanitizedPassword = DOMPurify.sanitize(password)
 
-    setLoading(true);
+    setLoading(true)
     try {
       await dispatch(
         registerNewUser(sanitizedUsername, sanitizedPassword, selectedAvatar)
-      );
+      )
     } catch (err) {
-      setError(err.message);
+      setError(err.message)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [dispatch, username, password, selectedAvatar]);
+  }, [dispatch, username, password, selectedAvatar])
 
   const handleKeyPress = useCallback(
     (e) => {
       if (e.key === "Enter") {
-        handleSignUp();
+        handleSignUp()
       }
     },
     [handleSignUp]
-  );
+  )
 
   return (
     <div className="sign-up-form">
@@ -75,8 +74,8 @@ const AuthSignUpForm = () => {
         placeholder="Username"
         value={username}
         onChange={(e) => {
-          setUsername(e.target.value);
-          clearError();
+          setUsername(e.target.value)
+          clearError()
         }}
         onKeyPress={handleKeyPress}
       />
@@ -85,8 +84,8 @@ const AuthSignUpForm = () => {
         placeholder="Password"
         value={password}
         onChange={(e) => {
-          setPassword(e.target.value);
-          clearError();
+          setPassword(e.target.value)
+          clearError()
         }}
         onKeyPress={handleKeyPress}
       />
@@ -112,7 +111,7 @@ const AuthSignUpForm = () => {
         </div>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(AuthSignUpForm);
+export default React.memo(AuthSignUpForm)

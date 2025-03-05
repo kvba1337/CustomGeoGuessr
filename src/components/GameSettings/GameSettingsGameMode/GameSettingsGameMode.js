@@ -1,19 +1,18 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { setGameMode } from "@redux/actions/gameSettingsActions";
-import "./GameSettingsGameMode.scss";
+import { setGameMode } from "@redux/actions/gameSettingsActions"
+import React, { useCallback } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "./GameSettingsGameMode.scss"
 
 const GameSettingsGameMode = () => {
-  const dispatch = useDispatch();
-  const { gameMode } = useSelector((state) => state.gameSettings);
+  const dispatch = useDispatch()
+  const { gameMode } = useSelector((state) => state.gameSettings)
 
   const handleGameModeChange = useCallback(
     (mode) => {
-      dispatch(setGameMode(mode));
+      dispatch(setGameMode(mode))
     },
     [dispatch]
-  );
+  )
 
   return (
     <div className="game-mode">
@@ -31,7 +30,7 @@ const GameSettingsGameMode = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameSettingsGameMode);
+export default React.memo(GameSettingsGameMode)

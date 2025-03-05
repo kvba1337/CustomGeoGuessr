@@ -1,6 +1,6 @@
-import React from "react";
-import MultiplayerItem from "../MultiplayerItem/MultiplayerItem";
-import "./MultiplayerContainer.scss";
+import React from "react"
+import MultiplayerItem from "../MultiplayerItem/MultiplayerItem"
+import "./MultiplayerContainer.scss"
 
 const MultiplayerContainer = () => {
   const items = [
@@ -22,7 +22,7 @@ const MultiplayerContainer = () => {
         "Design your own game with thousands of maps and customizable settings.",
       icon: "fas fa-cog",
     },
-  ];
+  ]
 
   return (
     <div className="container">
@@ -35,7 +35,7 @@ const MultiplayerContainer = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MultiplayerContainer);
+export default React.memo(MultiplayerContainer)

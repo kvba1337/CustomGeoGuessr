@@ -1,4 +1,4 @@
-export const LOGOUT_USER = "LOGOUT_USER";
-export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
-export const SET_USER = "SET_USER";
-export const SET_USER_AS_GUEST = "SET_USER_AS_GUEST";
+export const LOGOUT_USER = "LOGOUT_USER"
+export const SET_AUTHENTICATED = "SET_AUTHENTICATED"
+export const SET_USER = "SET_USER"
+export const SET_USER_AS_GUEST = "SET_USER_AS_GUEST"

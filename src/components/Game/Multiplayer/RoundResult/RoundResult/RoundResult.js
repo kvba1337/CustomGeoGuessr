@@ -1,33 +1,32 @@
-import React, { useEffect, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-import RoundResultMap from "../RoundResultMap/RoundResultMap";
-import RoundResultHeader from "../RoundResultHeader/RoundResultHeader";
-import RoundResultProgressBars from "../RoundResultProgressBars/RoundResultProgressBars";
-import RoundResultPlayersResults from "../RoundResultPlayersResults/RoundResultPlayersResults";
-import { handleNextRound } from "@redux/actions/gameActions";
-import "./RoundResult.scss";
+import { handleNextRound } from "@redux/actions/gameActions"
+import React, { useCallback, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import RoundResultHeader from "../RoundResultHeader/RoundResultHeader"
+import RoundResultMap from "../RoundResultMap/RoundResultMap"
+import RoundResultPlayersResults from "../RoundResultPlayersResults/RoundResultPlayersResults"
+import RoundResultProgressBars from "../RoundResultProgressBars/RoundResultProgressBars"
+import "./RoundResult.scss"
 
 const RoundResult = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { currentRound, roundResults, settings } = useSelector(
     (state) => state.game
-  );
-  const { userResult, opponentResult } = roundResults;
-  const { avatar, username } = useSelector((state) => state.user);
-  const { opponent } = useSelector((state) => state.room);
-  const gameMode = settings.gameMode.toUpperCase();
+  )
+  const { userResult, opponentResult } = roundResults
+  const { avatar, username } = useSelector((state) => state.user)
+  const { opponent } = useSelector((state) => state.room)
+  const gameMode = settings.gameMode.toUpperCase()
 
   const startNextRoundTimer = useCallback(() => {
     const timer = setTimeout(() => {
-      dispatch(handleNextRound());
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, [dispatch]);
+      dispatch(handleNextRound())
+    }, 10000)
+    return () => clearTimeout(timer)
+  }, [dispatch])
 
   useEffect(() => {
-    startNextRoundTimer();
-  }, [startNextRoundTimer]);
+    startNextRoundTimer()
+  }, [startNextRoundTimer])
 
   return (
     <div className="round-result">
@@ -52,7 +51,7 @@ const RoundResult = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(RoundResult);
+export default React.memo(RoundResult)

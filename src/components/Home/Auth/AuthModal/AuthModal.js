@@ -1,25 +1,24 @@
-import React, { useState, useCallback } from "react";
-
-import AuthGuestForm from "../AuthGuestForm/AuthGuestForm";
-import AuthSignInForm from "../AuthSignInForm/AuthSignInForm";
-import AuthSignUpForm from "../AuthSignUpForm/AuthSignUpForm";
-import "./AuthModal.scss";
+import React, { useCallback, useState } from "react"
+import AuthGuestForm from "../AuthGuestForm/AuthGuestForm"
+import AuthSignInForm from "../AuthSignInForm/AuthSignInForm"
+import AuthSignUpForm from "../AuthSignUpForm/AuthSignUpForm"
+import "./AuthModal.scss"
 
 const AuthModal = () => {
-  const [activeTab, setActiveTab] = useState("guest");
+  const [activeTab, setActiveTab] = useState("guest")
 
   const renderContent = useCallback(() => {
     switch (activeTab) {
       case "guest":
-        return <AuthGuestForm />;
+        return <AuthGuestForm />
       case "signIn":
-        return <AuthSignInForm />;
+        return <AuthSignInForm />
       case "signUp":
-        return <AuthSignUpForm />;
+        return <AuthSignUpForm />
       default:
-        return <AuthGuestForm />;
+        return <AuthGuestForm />
     }
-  }, [activeTab]);
+  }, [activeTab])
 
   return (
     <div className="auth-modal">
@@ -53,7 +52,7 @@ const AuthModal = () => {
         <div className="auth-modal__content">{renderContent()}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(AuthModal);
+export default React.memo(AuthModal)

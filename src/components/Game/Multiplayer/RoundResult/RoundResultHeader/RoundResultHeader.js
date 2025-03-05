@@ -1,14 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import "./RoundResultHeader.scss";
+import React from "react"
+import { useSelector } from "react-redux"
+import "./RoundResultHeader.scss"
 
 const RoundResultHeader = ({ gameMode, currentRound }) => {
-  const { settings } = useSelector((state) => state.game);
-  const { gameType } = settings;
-  const multiplier = 1.0 + Math.max(0, Math.floor(currentRound - 4)) * 0.5;
+  const { settings } = useSelector((state) => state.game)
+  const { gameType } = settings
+  const multiplier = 1.0 + Math.max(0, Math.floor(currentRound - 4)) * 0.5
   const formatMultiplier = (value) => {
-    return Number.isInteger(value) ? value.toString() : value.toFixed(1);
-  };
+    return Number.isInteger(value) ? value.toString() : value.toFixed(1)
+  }
 
   return (
     <div className="round-result-header">
@@ -23,7 +23,7 @@ const RoundResultHeader = ({ gameMode, currentRound }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(RoundResultHeader);
+export default React.memo(RoundResultHeader)

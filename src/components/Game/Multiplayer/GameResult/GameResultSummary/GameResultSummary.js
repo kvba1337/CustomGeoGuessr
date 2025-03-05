@@ -1,13 +1,12 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { GoogleMap } from "@react-google-maps/api";
-
-import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker";
-import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline";
-import correctLocation from "@assets/images/icons/correct-location.png";
-import { extendMapBounds, getMapOptions } from "@utils/mapUtils";
-import GameResultSummaryTable from "../GameResultSummaryTable/GameResultSummaryTable";
-import "./GameResultSummary.scss";
+import correctLocation from "@assets/images/icons/correct-location.png"
+import CustomMarker from "@components/Game/Common/CustomMarker/CustomMarker"
+import CustomPolyline from "@components/Game/Common/CustomPolyline/CustomPolyline"
+import { GoogleMap } from "@react-google-maps/api"
+import { extendMapBounds, getMapOptions } from "@utils/mapUtils"
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux"
+import GameResultSummaryTable from "../GameResultSummaryTable/GameResultSummaryTable"
+import "./GameResultSummary.scss"
 
 const GameResultSummary = ({
   userResults,
@@ -15,11 +14,11 @@ const GameResultSummary = ({
   gameLocations,
   onContinue,
 }) => {
-  const { avatar } = useSelector((state) => state.user);
-  const { opponent } = useSelector((state) => state.room);
-  const { selectedMap } = useSelector((state) => state.game);
-  const [selectedRound, setSelectedRound] = useState(1);
-  const mapRef = useRef(null);
+  const { avatar } = useSelector((state) => state.user)
+  const { opponent } = useSelector((state) => state.room)
+  const { selectedMap } = useSelector((state) => state.game)
+  const [selectedRound, setSelectedRound] = useState(1)
+  const mapRef = useRef(null)
 
   const fitBounds = useCallback(() => {
     if (selectedRound !== null && mapRef.current) {
@@ -29,27 +28,27 @@ const GameResultSummary = ({
         [userResults[selectedRound]],
         [opponentResults[selectedRound]],
         selectedMap
-      );
+      )
     }
-  }, [selectedRound, gameLocations, userResults, opponentResults, selectedMap]);
+  }, [selectedRound, gameLocations, userResults, opponentResults, selectedMap])
 
   useEffect(() => {
-    fitBounds();
-  }, [fitBounds]);
+    fitBounds()
+  }, [fitBounds])
 
   const handleRowClick = (roundIndex) => {
-    setSelectedRound(roundIndex);
-  };
+    setSelectedRound(roundIndex)
+  }
 
   const handleMapLoad = (map) => {
-    mapRef.current = map;
-    fitBounds();
-  };
+    mapRef.current = map
+    fitBounds()
+  }
 
-  const userResultsArray = Array.isArray(userResults) ? userResults : [];
+  const userResultsArray = Array.isArray(userResults) ? userResults : []
   const opponentResultsArray = Array.isArray(opponentResults)
     ? opponentResults
-    : [];
+    : []
 
   return (
     <div className="game-result-summary">
@@ -114,7 +113,7 @@ const GameResultSummary = ({
         </div>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameResultSummary);
+export default React.memo(GameResultSummary)

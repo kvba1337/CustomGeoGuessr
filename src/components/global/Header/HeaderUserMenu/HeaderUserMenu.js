@@ -1,5 +1,5 @@
-import React from "react";
-import "./HeaderUserMenu.scss";
+import React from "react"
+import "./HeaderUserMenu.scss"
 
 const UserMenu = ({ avatar, username, handleLogout }) => (
   <div className="header__user">
@@ -22,6 +22,6 @@ const UserMenu = ({ avatar, username, handleLogout }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default React.memo(UserMenu);
+export default React.memo(UserMenu)

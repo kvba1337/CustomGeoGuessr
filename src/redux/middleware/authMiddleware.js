@@ -1,14 +1,14 @@
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 const authMiddleware = (store) => (next) => (action) => {
-  const idToken = Cookies.get("idToken");
+  const idToken = Cookies.get("idToken")
   if (idToken) {
     action.headers = {
       ...action.headers,
       Authorization: `Bearer ${idToken}`,
-    };
+    }
   }
-  return next(action);
-};
+  return next(action)
+}
 
-export default authMiddleware;
+export default authMiddleware

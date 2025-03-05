@@ -1,9 +1,9 @@
 import {
-  SET_USER,
-  SET_USER_AS_GUEST,
   LOGOUT_USER,
   SET_AUTHENTICATED,
-} from "../constants/userConstants";
+  SET_USER,
+  SET_USER_AS_GUEST,
+} from "../constants/userConstants"
 
 const initialState = {
   userId: null,
@@ -11,7 +11,7 @@ const initialState = {
   avatar: null,
   isGuest: false,
   isAuthenticated: false,
-};
+}
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,20 +19,20 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
-      };
+      }
     case SET_USER_AS_GUEST:
       return {
         ...state,
         ...action.payload,
-      };
+      }
     case LOGOUT_USER:
-      return initialState;
+      return initialState
     case SET_AUTHENTICATED:
       return {
         ...state,
         isAuthenticated: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

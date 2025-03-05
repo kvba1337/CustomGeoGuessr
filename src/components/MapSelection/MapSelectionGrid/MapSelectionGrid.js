@@ -1,24 +1,23 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import MapSelectionMapTile from "../MapSelectionMapTile/MapSelectionMapTile";
-import { setSelectedMap, fetchMap } from "@redux/actions/mapActions";
-import "./MapSelectionGrid.scss";
+import { fetchMap, setSelectedMap } from "@redux/actions/mapActions"
+import React, { useCallback } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import MapSelectionMapTile from "../MapSelectionMapTile/MapSelectionMapTile"
+import "./MapSelectionGrid.scss"
 
 const MapSelectionGrid = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { roomId } = useSelector((state) => state.room);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { roomId } = useSelector((state) => state.room)
 
   const handlePlayClick = useCallback(
     async (mapId) => {
-      await dispatch(fetchMap(mapId));
-      dispatch(setSelectedMap(mapId, roomId));
-      navigate("/game-settings");
+      await dispatch(fetchMap(mapId))
+      dispatch(setSelectedMap(mapId, roomId))
+      navigate("/game-settings")
     },
     [dispatch, navigate, roomId]
-  );
+  )
 
   const maps = [
     { id: 1, title: "Tricity", image: "map1.jpg" },
@@ -29,7 +28,7 @@ const MapSelectionGrid = () => {
     { id: 6, title: "Gdańsk", image: "map6.jpg" },
     { id: 7, title: "Famous Places", image: "map7.jpg" },
     { id: 8, title: "Famous Movies", image: "map8.jpg" },
-  ];
+  ]
 
   return (
     <div className="map-selection__content">
@@ -43,7 +42,7 @@ const MapSelectionGrid = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MapSelectionGrid);
+export default React.memo(MapSelectionGrid)

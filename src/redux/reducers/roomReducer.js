@@ -15,7 +15,7 @@ import {
   SET_OPPONENT_DATA,
   SET_ROOM_ID,
   SET_ROOM_STATUS,
-} from "../constants/roomConstants";
+} from "../constants/roomConstants"
 
 const initialState = {
   loading: false,
@@ -27,7 +27,7 @@ const initialState = {
     username: null,
     avatar: null,
   },
-};
+}
 
 export const roomReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,30 +35,30 @@ export const roomReducer = (state = initialState, action) => {
     case JOIN_ROOM_REQUEST:
     case DELETE_ROOM_REQUEST:
     case LEAVE_ROOM_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true }
     case CREATE_ROOM_SUCCESS:
     case JOIN_ROOM_SUCCESS:
-      return { ...state, loading: false, roomId: action.payload, error: null };
+      return { ...state, loading: false, roomId: action.payload, error: null }
     case CREATE_ROOM_FAIL:
     case JOIN_ROOM_FAIL:
     case DELETE_ROOM_FAIL:
     case LEAVE_ROOM_FAIL:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload }
     case DELETE_ROOM_SUCCESS:
     case LEAVE_ROOM_SUCCESS:
-      return { ...state, loading: false, roomId: null, status: null };
+      return { ...state, loading: false, roomId: null, status: null }
     case SET_ROOM_ID:
-      return { ...state, roomId: action.payload };
+      return { ...state, roomId: action.payload }
     case SET_ROOM_STATUS:
-      return { ...state, status: action.payload };
+      return { ...state, status: action.payload }
     case CLEAR_ROOM_ERROR:
-      return { ...state, error: null };
+      return { ...state, error: null }
     case SET_OPPONENT_DATA:
       return {
         ...state,
         opponent: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

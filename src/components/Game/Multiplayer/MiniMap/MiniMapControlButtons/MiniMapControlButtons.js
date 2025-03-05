@@ -1,7 +1,6 @@
-import React from "react";
-
-import MiniMapControlButton from "../MiniMapControlButton/MiniMapControlButton";
-import "./MiniMapControlButtons.scss";
+import React from "react"
+import MiniMapControlButton from "../MiniMapControlButton/MiniMapControlButton"
+import "./MiniMapControlButtons.scss"
 
 const MiniMapControlButtons = ({
   onZoomIn,
@@ -22,7 +21,7 @@ const MiniMapControlButtons = ({
         disabled={isMinSize}
       />
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MiniMapControlButtons);
+export default React.memo(MiniMapControlButtons)

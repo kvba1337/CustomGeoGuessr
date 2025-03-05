@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import "./GameResultSummaryTable.scss";
+import React from "react"
+import { useSelector } from "react-redux"
+import "./GameResultSummaryTable.scss"
 
 const GameResultSummaryTable = ({
   gameLocations,
@@ -9,10 +9,10 @@ const GameResultSummaryTable = ({
   opponentUsername,
   onRowClick,
 }) => {
-  const { settings } = useSelector((state) => state.game);
-  const { gameType } = settings;
+  const { settings } = useSelector((state) => state.game)
+  const { gameType } = settings
 
-  const completedRounds = userResultsArray.filter((result) => result !== null);
+  const completedRounds = userResultsArray.filter((result) => result !== null)
 
   return (
     <div className="summary-table-container">
@@ -31,14 +31,14 @@ const GameResultSummaryTable = ({
         <tbody>
           {completedRounds.map((_, index) => {
             const userPrevHp =
-              index === 0 ? 6000 : userResultsArray[index - 1]?.remainingHp;
-            const userCurrentHp = userResultsArray[index]?.remainingHp;
-            const userDamageTaken = userPrevHp - userCurrentHp;
+              index === 0 ? 6000 : userResultsArray[index - 1]?.remainingHp
+            const userCurrentHp = userResultsArray[index]?.remainingHp
+            const userDamageTaken = userPrevHp - userCurrentHp
 
             const opponentPrevHp =
-              index === 0 ? 6000 : opponentResultsArray[index - 1]?.remainingHp;
-            const opponentCurrentHp = opponentResultsArray[index]?.remainingHp;
-            const opponentDamageTaken = opponentPrevHp - opponentCurrentHp;
+              index === 0 ? 6000 : opponentResultsArray[index - 1]?.remainingHp
+            const opponentCurrentHp = opponentResultsArray[index]?.remainingHp
+            const opponentDamageTaken = opponentPrevHp - opponentCurrentHp
 
             return (
               <tr key={index} onClick={() => onRowClick(index)}>
@@ -122,12 +122,12 @@ const GameResultSummaryTable = ({
                   )}
                 </td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameResultSummaryTable);
+export default React.memo(GameResultSummaryTable)

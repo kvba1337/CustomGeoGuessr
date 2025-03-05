@@ -1,24 +1,24 @@
-import React, { useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { resetGame, resetGameState } from "@redux/actions/gameActions";
-import useFetchGameResults from "@hooks/useFetchGameResults";
-import GameResultMap from "../GameResultMap/GameResultMap";
-import GameResultSummary from "../GameResultSummary/GameResultSummary";
-import GameResultScoreItem from "../GameResultScoreItem/GameResultScoreItem";
-import GameResultButtons from "../GameResultButtons/GameResultButtons";
-import "./GameResult.scss";
+import useFetchGameResults from "@hooks/useFetchGameResults"
+import { resetGame, resetGameState } from "@redux/actions/gameActions"
+import React, { useCallback, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import GameResultButtons from "../GameResultButtons/GameResultButtons"
+import GameResultMap from "../GameResultMap/GameResultMap"
+import GameResultScoreItem from "../GameResultScoreItem/GameResultScoreItem"
+import GameResultSummary from "../GameResultSummary/GameResultSummary"
+import "./GameResult.scss"
 
 const GameResult = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { roomId, opponent } = useSelector((state) => state.room);
-  const { userId, username, avatar } = useSelector((state) => state.user);
-  const { gameLocations } = useSelector((state) => state.game);
-  const [userResults, setUserResults] = useState([]);
-  const [opponentResults, setOpponentResults] = useState([]);
-  const [gameStatus, setGameStatus] = useState("");
-  const [showSummary, setShowSummary] = useState(false);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { roomId, opponent } = useSelector((state) => state.room)
+  const { userId, username, avatar } = useSelector((state) => state.user)
+  const { gameLocations } = useSelector((state) => state.game)
+  const [userResults, setUserResults] = useState([])
+  const [opponentResults, setOpponentResults] = useState([])
+  const [gameStatus, setGameStatus] = useState("")
+  const [showSummary, setShowSummary] = useState(false)
 
   useFetchGameResults(
     roomId,
@@ -26,17 +26,17 @@ const GameResult = () => {
     setUserResults,
     setOpponentResults,
     setGameStatus
-  );
+  )
 
   const handleShowSummary = useCallback(() => {
-    setShowSummary(true);
-  }, []);
+    setShowSummary(true)
+  }, [])
 
   const handleContinue = useCallback(() => {
-    dispatch(resetGame(roomId));
-    dispatch(resetGameState());
-    navigate("/multiplayer");
-  }, [dispatch, navigate, roomId]);
+    dispatch(resetGame(roomId))
+    dispatch(resetGameState())
+    navigate("/multiplayer")
+  }, [dispatch, navigate, roomId])
 
   if (showSummary) {
     return (
@@ -50,7 +50,7 @@ const GameResult = () => {
           />
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -87,7 +87,7 @@ const GameResult = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GameResult;
+export default GameResult

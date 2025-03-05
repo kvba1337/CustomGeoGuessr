@@ -1,11 +1,11 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"
 import {
-  getAuth,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  getAuth,
   signInAnonymously,
-} from "firebase/auth";
-import { getDatabase } from "firebase/database";
+  signInWithEmailAndPassword,
+} from "firebase/auth"
+import { getDatabase } from "firebase/database"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,11 +16,11 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-};
+}
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
+const database = getDatabase(app)
 
 export {
   auth,
@@ -28,4 +28,4 @@ export {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInAnonymously,
-};
+}

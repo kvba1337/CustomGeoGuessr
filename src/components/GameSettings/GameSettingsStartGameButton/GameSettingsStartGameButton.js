@@ -1,20 +1,19 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import { startGame } from "@redux/actions/gameSettingsActions";
-import "./GameSettingsStartGameButton.scss";
+import { startGame } from "@redux/actions/gameSettingsActions"
+import React, { useCallback } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import "./GameSettingsStartGameButton.scss"
 
 const GameSettingsStartGameButton = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { roomId } = useSelector((state) => state.room);
-  const settings = useSelector((state) => state.gameSettings);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { roomId } = useSelector((state) => state.room)
+  const settings = useSelector((state) => state.gameSettings)
 
   const handleStartGame = useCallback(async () => {
-    await dispatch(startGame(roomId, settings));
-    navigate("/game");
-  }, [dispatch, navigate, roomId, settings]);
+    await dispatch(startGame(roomId, settings))
+    navigate("/game")
+  }, [dispatch, navigate, roomId, settings])
 
   return (
     <button
@@ -25,7 +24,7 @@ const GameSettingsStartGameButton = () => {
         <span className="button-label">Start Game</span>
       </div>
     </button>
-  );
-};
+  )
+}
 
-export default React.memo(GameSettingsStartGameButton);
+export default React.memo(GameSettingsStartGameButton)

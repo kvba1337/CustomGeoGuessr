@@ -1,81 +1,81 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { ref, onValue, update } from "firebase/database";
-import { formatTime } from "@utils/timeUtils";
-import { database } from "@services/firebaseConfig";
-import "./HUDTimer.scss";
+import { database } from "@services/firebaseConfig"
+import { formatTime } from "@utils/timeUtils"
+import { onValue, ref, update } from "firebase/database"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { useSelector } from "react-redux"
+import "./HUDTimer.scss"
 
-const dashArray = 467.347;
+const dashArray = 467.347
 
 const HUDTimer = () => {
-  const { timeLimit, gameType } = useSelector((state) => state.game.settings);
-  const { roomId } = useSelector((state) => state.room);
-  const { userId } = useSelector((state) => state.user);
-  const [remainingTime, setRemainingTime] = useState(timeLimit);
-  const [isTimerActive, setIsTimerActive] = useState(gameType !== "battle");
-  const [showOverlay, setShowOverlay] = useState(false);
+  const { timeLimit, gameType } = useSelector((state) => state.game.settings)
+  const { roomId } = useSelector((state) => state.room)
+  const { userId } = useSelector((state) => state.user)
+  const [remainingTime, setRemainingTime] = useState(timeLimit)
+  const [isTimerActive, setIsTimerActive] = useState(gameType !== "battle")
+  const [showOverlay, setShowOverlay] = useState(false)
 
   const handleTimeUpdate = useCallback(() => {
     setRemainingTime((prevTime) => {
       if (prevTime <= 1) {
         update(ref(database, `rooms/${roomId}/users/${userId}`), {
           hasGuessed: true,
-        });
-        return 0;
+        })
+        return 0
       }
-      return prevTime - 1;
-    });
-  }, [roomId, userId]);
+      return prevTime - 1
+    })
+  }, [roomId, userId])
 
   useEffect(() => {
-    if (gameType !== "battle") return;
+    if (gameType !== "battle") return
 
-    const usersRef = ref(database, `rooms/${roomId}/users`);
+    const usersRef = ref(database, `rooms/${roomId}/users`)
     const unsubscribe = onValue(usersRef, (snapshot) => {
-      const users = snapshot.val();
-      const opponentId = Object.keys(users).find((id) => id !== userId);
+      const users = snapshot.val()
+      const opponentId = Object.keys(users).find((id) => id !== userId)
 
-      const user = users[userId];
-      const opponent = users[opponentId];
+      const user = users[userId]
+      const opponent = users[opponentId]
 
       if (!user?.hasGuessed || !opponent?.hasGuessed) {
         if (user?.hasGuessed || opponent?.hasGuessed) {
-          setRemainingTime(15);
-          setIsTimerActive(true);
+          setRemainingTime(15)
+          setIsTimerActive(true)
         }
 
         if (opponent?.hasGuessed) {
-          setShowOverlay(true);
-          setTimeout(() => setShowOverlay(false), 3500);
+          setShowOverlay(true)
+          setTimeout(() => setShowOverlay(false), 3500)
         }
       }
-    });
+    })
 
-    return () => unsubscribe();
-  }, [roomId, userId, gameType]);
+    return () => unsubscribe()
+  }, [roomId, userId, gameType])
 
   useEffect(() => {
-    let timer;
+    let timer
     if (isTimerActive && remainingTime > 0) {
-      timer = setInterval(handleTimeUpdate, 1000);
+      timer = setInterval(handleTimeUpdate, 1000)
     }
-    return () => clearInterval(timer);
-  }, [handleTimeUpdate, isTimerActive, remainingTime]);
+    return () => clearInterval(timer)
+  }, [handleTimeUpdate, isTimerActive, remainingTime])
 
   const dashOffset = useMemo(
     () =>
       dashArray *
       (1 - remainingTime / (gameType === "battle" ? 15 : timeLimit)),
     [remainingTime, timeLimit, gameType]
-  );
+  )
 
   if (!isTimerActive && gameType === "battle") {
-    return null;
+    return null
   }
 
   const timerClass = `timer animation-scaleIn ${
     remainingTime <= 10 ? "warning" : ""
-  }`;
+  }`
 
   return (
     <>
@@ -110,7 +110,7 @@ const HUDTimer = () => {
         </svg>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default React.memo(HUDTimer);
+export default React.memo(HUDTimer)

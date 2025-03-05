@@ -1,46 +1,45 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { signInAsGuest } from "@redux/actions/userActions";
-import AuthAvatarOptions from "../AuthAvatarOptions/AuthAvatarOptions";
-import AuthSelectedAvatar from "../AuthSelectedAvatar/AuthSelectedAvatar";
-import "../AuthModal/AuthModal.scss";
-import "./AuthGuestForm.scss";
+import { signInAsGuest } from "@redux/actions/userActions"
+import React, { useCallback, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import AuthAvatarOptions from "../AuthAvatarOptions/AuthAvatarOptions"
+import AuthSelectedAvatar from "../AuthSelectedAvatar/AuthSelectedAvatar"
+import "../AuthModal/AuthModal.scss"
+import "./AuthGuestForm.scss"
 
 const AuthGuestForm = () => {
-  const dispatch = useDispatch();
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch()
+  const [selectedAvatar, setSelectedAvatar] = useState(null)
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
 
   const clearError = useCallback(() => {
-    setError("");
-  }, []);
+    setError("")
+  }, [])
 
   const handleAvatarClick = useCallback(
     (avatar) => {
-      setSelectedAvatar(avatar);
-      clearError();
+      setSelectedAvatar(avatar)
+      clearError()
     },
     [clearError]
-  );
+  )
 
   const handleContinue = useCallback(async () => {
     if (!selectedAvatar) {
-      setError("Avatar is required");
-      return;
+      setError("Avatar is required")
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
-      await dispatch(signInAsGuest(selectedAvatar));
+      await dispatch(signInAsGuest(selectedAvatar))
     } catch (err) {
-      setError(err.message);
+      setError(err.message)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [dispatch, selectedAvatar]);
+  }, [dispatch, selectedAvatar])
 
   return (
     <div className="guest-form">
@@ -67,7 +66,7 @@ const AuthGuestForm = () => {
         </div>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(AuthGuestForm);
+export default React.memo(AuthGuestForm)

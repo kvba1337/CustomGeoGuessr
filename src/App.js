@@ -1,25 +1,24 @@
-import React, { useCallback } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import useAuth from "@hooks/useAuth";
-
-import HomePage from "@pages/HomePage/HomePage";
-import MapSelectionPage from "@pages/MapSelectionPage/MapSelectionPage";
-import GameSettingsPage from "@pages/GameSettingsPage/GameSettingsPage";
-import GamePage from "@pages/GamePage/GamePage";
-import MultiplayerPage from "@pages/MultiplayerPage/MultiplayerPage";
-import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
+import useAuth from "@hooks/useAuth"
+import GamePage from "@pages/GamePage/GamePage"
+import GameSettingsPage from "@pages/GameSettingsPage/GameSettingsPage"
+import HomePage from "@pages/HomePage/HomePage"
+import MapSelectionPage from "@pages/MapSelectionPage/MapSelectionPage"
+import MultiplayerPage from "@pages/MultiplayerPage/MultiplayerPage"
+import NotFoundPage from "@pages/NotFoundPage/NotFoundPage"
+import React, { useCallback } from "react"
+import { useSelector } from "react-redux"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 const App = React.memo(() => {
-  useAuth();
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  useAuth()
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
 
   const ProtectedRoute = useCallback(
     ({ children }) => {
-      return isAuthenticated ? children : <Navigate to="/" />;
+      return isAuthenticated ? children : <Navigate to="/" />
     },
     [isAuthenticated]
-  );
+  )
 
   return (
     <Routes>
@@ -58,7 +57,7 @@ const App = React.memo(() => {
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  );
-});
+  )
+})
 
-export default App;
+export default App

@@ -1,5 +1,5 @@
-import React from "react";
-import "./GameResultButtons.scss";
+import React from "react"
+import "./GameResultButtons.scss"
 
 const GameResultButtons = ({ onShowSummary, onContinue }) => {
   return (
@@ -25,7 +25,7 @@ const GameResultButtons = ({ onShowSummary, onContinue }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(GameResultButtons);
+export default React.memo(GameResultButtons)

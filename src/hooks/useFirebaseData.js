@@ -1,18 +1,17 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-
-import { fetchGameData } from "@redux/actions/gameActions";
-import { fetchOpponentData } from "@redux/actions/roomActions";
+import { fetchGameData } from "@redux/actions/gameActions"
+import { fetchOpponentData } from "@redux/actions/roomActions"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 
 const useFirebaseData = (roomId, userId) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (roomId) {
-      dispatch(fetchGameData(roomId));
-      dispatch(fetchOpponentData(roomId, userId));
+      dispatch(fetchGameData(roomId))
+      dispatch(fetchOpponentData(roomId, userId))
     }
-  }, [dispatch, roomId, userId]);
-};
+  }, [dispatch, roomId, userId])
+}
 
-export default useFirebaseData;
+export default useFirebaseData

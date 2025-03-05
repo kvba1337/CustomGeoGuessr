@@ -1,8 +1,8 @@
-import React from "react";
-import { Polyline } from "@react-google-maps/api";
+import { Polyline } from "@react-google-maps/api"
+import React from "react"
 
 const CustomPolyline = ({ location, location2 }) => {
-  if (!location || !location2) return null;
+  if (!location || !location2) return null
 
   const polylineOptions = {
     geodesic: false,
@@ -21,9 +21,9 @@ const CustomPolyline = ({ location, location2 }) => {
         repeat: "10px",
       },
     ],
-  };
+  }
 
-  return <Polyline path={[location, location2]} options={polylineOptions} />;
-};
+  return <Polyline path={[location, location2]} options={polylineOptions} />
+}
 
-export default React.memo(CustomPolyline);
+export default React.memo(CustomPolyline)

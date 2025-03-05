@@ -1,8 +1,8 @@
-import React from "react";
-import "./MapSelectionMapTile.scss";
+import React from "react"
+import "./MapSelectionMapTile.scss"
 
 const MapSelectionMapTile = ({ map, onPlayClick }) => {
-  const imagePath = require(`@assets/images/maps/${map.image}`);
+  const imagePath = require(`@assets/images/maps/${map.image}`)
 
   return (
     <div className="tile">
@@ -17,7 +17,7 @@ const MapSelectionMapTile = ({ map, onPlayClick }) => {
         </div>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(MapSelectionMapTile);
+export default React.memo(MapSelectionMapTile)
