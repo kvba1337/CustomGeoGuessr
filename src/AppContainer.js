@@ -36,4 +36,6 @@ const AppContainer = React.memo(() => {
   )
 })
 
+AppContainer.displayName = "AppContainer"
+
 export default AppContainer

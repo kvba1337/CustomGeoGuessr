@@ -8,8 +8,8 @@ const GameSettingsGameMode = () => {
   const { gameMode } = useSelector((state) => state.gameSettings)
 
   const handleGameModeChange = useCallback(
-    (mode) => {
-      dispatch(setGameMode(mode))
+    (e) => {
+      dispatch(setGameMode(e.target.value))
     },
     [dispatch]
   )
@@ -19,13 +19,15 @@ const GameSettingsGameMode = () => {
       <h3>Game Mode:</h3>
       <div className="game-mode__labels">
         {["Move", "NoMove", "NMPZ"].map((mode) => (
-          <label
-            key={mode}
-            className={gameMode === mode ? "active" : ""}
-            onClick={() => handleGameModeChange(mode)}
-          >
+          <label key={mode} className={gameMode === mode ? "active" : ""}>
+            <input
+              type="radio"
+              name="gameMode"
+              value={mode}
+              checked={gameMode === mode}
+              onChange={handleGameModeChange}
+            />
             {mode}
-            <input type="radio" name="gameMode" value={mode} />
           </label>
         ))}
       </div>

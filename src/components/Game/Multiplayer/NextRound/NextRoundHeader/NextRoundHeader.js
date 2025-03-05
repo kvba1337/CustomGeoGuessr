@@ -1,7 +1,7 @@
 import React from "react"
 import "./NextRoundHeader.scss"
 
-const NextRoundHeader = ({ currentRound, gameMode, map }) => (
+const NextRoundHeader = ({ gameMode, map }) => (
   <div className="next-round-info__header">
     <div className="game-info">
       <h1>DUELS</h1>

@@ -11,15 +11,25 @@ const GameSettingsMode = () => {
     dispatch(setGameType(type))
   }
 
+  const handleKeyDown = (e, type) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      handleGameTypeChange(type)
+    }
+  }
+
   return (
     <div className="game-type">
       <h2>Select Game Type</h2>
       <div className="game-type__options">
-        <div
+        <button
           className={`game-type__option ${
             gameType === "classic" ? "active" : ""
           }`}
           onClick={() => handleGameTypeChange("classic")}
+          onKeyDown={(e) => handleKeyDown(e, "classic")}
+          aria-pressed={gameType === "classic"}
+          type="button"
         >
           <h3>Classic Mode</h3>
           <p>Play with predefined number of rounds and time limit</p>
@@ -28,12 +38,15 @@ const GameSettingsMode = () => {
             <li>Set time limit per round</li>
             <li>Select movement restrictions</li>
           </ul>
-        </div>
-        <div
+        </button>
+        <button
           className={`game-type__option ${
             gameType === "battle" ? "active" : ""
           }`}
           onClick={() => handleGameTypeChange("battle")}
+          onKeyDown={(e) => handleKeyDown(e, "battle")}
+          aria-pressed={gameType === "battle"}
+          type="button"
         >
           <h3>Battle Mode</h3>
           <p>Fight until one player runs out of health points</p>
@@ -43,7 +56,7 @@ const GameSettingsMode = () => {
             <li>15s timer after first guess</li>
             <li>Select movement restrictions</li>
           </ul>
-        </div>
+        </button>
       </div>
     </div>
   )

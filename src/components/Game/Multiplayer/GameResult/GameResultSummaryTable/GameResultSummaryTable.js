@@ -3,7 +3,6 @@ import { useSelector } from "react-redux"
 import "./GameResultSummaryTable.scss"
 
 const GameResultSummaryTable = ({
-  gameLocations,
   userResultsArray,
   opponentResultsArray,
   opponentUsername,

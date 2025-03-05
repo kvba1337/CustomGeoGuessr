@@ -23,15 +23,22 @@ const avatars = [
 const AuthAvatarOptions = ({ selectedAvatar, handleAvatarClick }) => (
   <div className="avatar-options">
     {avatars.map((avatar, index) => (
-      <img
+      <button
         key={index}
-        src={avatar}
-        alt={`Avatar ${index + 1}`}
-        className={`avatar-option ${
+        type="button"
+        className={`avatar-option-button ${
           selectedAvatar === avatar ? "selected" : ""
         }`}
         onClick={() => handleAvatarClick(avatar)}
-      />
+        aria-label={`Select avatar ${index + 1}`}
+        aria-pressed={selectedAvatar === avatar}
+      >
+        <img
+          src={avatar}
+          alt={`Avatar ${index + 1}`}
+          className="avatar-option"
+        />
+      </button>
     ))}
   </div>
 )

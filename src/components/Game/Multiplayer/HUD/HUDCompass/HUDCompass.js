@@ -92,7 +92,7 @@ const HUDCompass = ({ panorama }) => {
     }
   }, [panorama, updateCompass])
 
-  const renderLatitudeLines = (index) =>
+  const renderLatitudeLines = () =>
     [...Array(LINES_COUNT)].map((_, i) => (
       <span
         key={i}

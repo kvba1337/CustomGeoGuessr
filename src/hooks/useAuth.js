@@ -12,7 +12,7 @@ const useAuth = () => {
       if (user) {
         user
           .getIdToken()
-          .then((idToken) => {
+          .then(() => {
             dispatch({
               type: "SET_AUTHENTICATED",
               payload: true,

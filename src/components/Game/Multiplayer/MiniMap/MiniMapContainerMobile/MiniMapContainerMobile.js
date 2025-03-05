@@ -67,7 +67,7 @@ const MiniMapContainerMobile = ({
     [selectedMap]
   )
 
-  const toggleMapVisibility = () => {
+  const toggleMapVisibility = useCallback(() => {
     setIsMapVisible((prev) => !prev)
     if (isMapVisible) {
       setIsSlidingDown(true)
@@ -75,7 +75,23 @@ const MiniMapContainerMobile = ({
         setIsSlidingDown(false)
       }, 500)
     }
-  }
+  }, [isMapVisible, setIsMapVisible, setIsSlidingDown])
+
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Escape" && isMapVisible) {
+        toggleMapVisibility()
+      }
+    },
+    [isMapVisible, toggleMapVisibility]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [handleKeyDown])
 
   useEffect(() => {
     setIsMapVisible(false)
@@ -108,9 +124,21 @@ const MiniMapContainerMobile = ({
           className={`mobile-map-container ${
             isSlidingDown ? "slide-down" : "slide-up"
           }`}
-          onClick={toggleMapVisibility}
+          role="dialog"
+          aria-label="Map selection"
         >
-          <div className="map-wrapper" onClick={(e) => e.stopPropagation()}>
+          <button
+            className="map-overlay-close"
+            onClick={toggleMapVisibility}
+            aria-label="Close map"
+          >
+            <span className="sr-only">Close map</span>
+          </button>
+          <div
+            className="map-wrapper"
+            role="region"
+            aria-label="Interactive map"
+          >
             <GoogleMap
               id="mobile-guess-map"
               onClick={handleMapClick}

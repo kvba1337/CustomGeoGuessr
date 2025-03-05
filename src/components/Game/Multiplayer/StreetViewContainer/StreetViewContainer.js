@@ -99,8 +99,14 @@ const StreetViewContainer = ({ closeMap, isMobile }) => {
     closeMap()
   }
 
-  const handleTouchStart = (event) => {
+  const handleTouchStart = () => {
     handleStreetViewClick()
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === "Escape") {
+      handleStreetViewClick()
+    }
   }
 
   if (loadError) {
@@ -120,8 +126,12 @@ const StreetViewContainer = ({ closeMap, isMobile }) => {
   return (
     <div
       className="street-view-map"
+      role="button"
       onClick={handleStreetViewClick}
       onTouchStart={handleTouchStart}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      aria-label="Street view map"
     >
       {!isMobile && <HUDCompass panorama={panorama} />}
       <GoogleMap mapContainerStyle={{ width: "100%", height: "100%" }}>
@@ -132,10 +142,7 @@ const StreetViewContainer = ({ closeMap, isMobile }) => {
           options={options}
         />
         {settings.gameMode === "NMPZ" && (
-          <div
-            className="transparent-overlay"
-            onClick={(event) => event.stopPropagation()}
-          ></div>
+          <div className="transparent-overlay" aria-hidden="true"></div>
         )}
       </GoogleMap>
     </div>

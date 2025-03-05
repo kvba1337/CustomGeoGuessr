@@ -19,13 +19,16 @@ const GameSettingsRounds = () => {
       <h3>Number Of Rounds:</h3>
       <div className="rounds__options">
         {[3, 5, 10, 15].map((round) => (
-          <label
-            key={round}
-            className={rounds === round ? "active" : ""}
-            onClick={() => handleRoundsChange(round)}
-          >
+          <label key={round} className={rounds === round ? "active" : ""}>
+            <input
+              type="radio"
+              name="rounds"
+              value={round}
+              checked={rounds === round}
+              onChange={() => handleRoundsChange(round)}
+              id={`round-${round}`}
+            />
             {round}
-            <input type="radio" name="rounds" value={round} />
           </label>
         ))}
       </div>
